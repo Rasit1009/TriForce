@@ -1,4 +1,7 @@
-<h1>Kunden-Dashboard</h1>
-<ngx-consumer></ngx-consumer>
-<!-- <h1>Händler-Dashboard</h1>
-<ngx-seller></ngx-seller> -->
+<!-- <h1>Kunden-Dashboard</h1>
+<ngx-consumer></ngx-consumer>  -->
+<!-- <h1>Händler-Dashboard</h1> -->
+<!--<ngx-seller></ngx-seller> -->
+<ngx-consumer *ngIf=!isSeller&&!isFirst></ngx-consumer> 
+<ngx-dashboard2 *ngIf=isSeller&&!isFirst></ngx-dashboard2>
+<app-sc-choice *ngIf=isFirst></app-sc-choice>

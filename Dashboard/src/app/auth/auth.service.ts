@@ -36,10 +36,7 @@ public savePeople(people: Person): Observable<any>{
 
   public decode(authResult: any) {
     var token = this.jwtHelper.decodeToken(authResult);
-    this.token = token; 
-    
-    alert("unser dekodiertes token lautet: " + token.email);
-    alert("unser dekodiertes token lautet: " + token.sub);
+    this.token = token;
     this.id = token.sub;
     this.email = token.email; 
     
@@ -57,7 +54,7 @@ public getToken(){
     responseType: 'token id_token',
     audience: 'https://lolocode.eu.auth0.com/userinfo',
     redirectUri: 'http://localhost:8000/callback',     
-    scope: 'openid email' 
+    scope: 'openid email'
   });
 
 

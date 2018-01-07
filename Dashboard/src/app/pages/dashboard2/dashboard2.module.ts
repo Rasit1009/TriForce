@@ -64,5 +64,8 @@ import { EchartsComponent } from './echarts/echarts.component';
     EchartsRadarComponent,
     EchartsComponent,
   ],
+  exports: [
+    Dashboard2Component,
+  ]
 })
 export class Dashboard2Module { }

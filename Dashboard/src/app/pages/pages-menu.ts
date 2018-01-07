@@ -5,7 +5,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Kunden-Dashboard',
     icon: 'fa fa-home',
     link: '/pages/dashboard1',
-    home: true,
+    //home: true,
   },
   
   {
@@ -38,7 +38,7 @@ export const MENU_ITEMS_SELLER : NbMenuItem[] = [
     title: 'Händler-Dashboard',
     icon: 'fa fa-home',
     link: '/pages/dashboard2',
-    home: true,
+    //home: true,
   },
 {
   title: 'Händlerdaten verwalten',
@@ -59,6 +59,7 @@ export const MENU_ITEMS_FIRST : NbMenuItem[] =[
     title: 'Bitte Wählen Sie',
     icon: 'fa fa-question-circle-o',
     link: '/pages/sc-choice',
+    //home: true,
   }
 ];
 

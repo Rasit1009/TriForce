@@ -38,11 +38,10 @@ export class ScChoiceComponent implements OnInit {
    if(ischecked1){
      alert('Händler gewählt');
      this.auth.getToken(); 
-     alert(this.auth.token.sub);
      this.people.i = this.auth.token.sub;
      this.people.isSeller = true; 
-     alert(this.people.i + " und " + this.people.isSeller);
      this.personService.setSeller(this.people).subscribe();
+     location.reload(); 
 
    }
    else if(ischecked2){
@@ -50,7 +49,6 @@ export class ScChoiceComponent implements OnInit {
      this.auth.getToken(); 
      this.people.i = this.auth.token.sub;
      this.people.isSeller = false; 
-     alert(this.people.i + " und " + this.people.isSeller);
      this.personService.setSeller(this.people).subscribe();
      location.reload(); 
      

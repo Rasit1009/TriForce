@@ -15,6 +15,9 @@ import { ScChoiceComponent } from './sc-choice.component';
   ],
   declarations: [
     ScChoiceComponent,
+  ],
+  exports: [
+    ScChoiceComponent,
   ]
 })
 export class ScChoiceModule { }

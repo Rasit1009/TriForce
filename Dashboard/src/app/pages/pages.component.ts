@@ -40,9 +40,8 @@ ngOnInit(): void {
     this.personService.getPeople().subscribe(res =>{ 
       this.people = res; 
       this.person = res.find(x => x.i === this.token);
-        alert(this.person.i);
-        alert(this.person.vorhanden);
         this.isSeller = this.person.isSeller; 
+        this.isFirst = this.person.vorhanden; 
     });
   }
   catch (error) {

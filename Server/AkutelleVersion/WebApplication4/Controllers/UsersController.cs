@@ -63,6 +63,7 @@ namespace WebApplication4
             {
                 //vorhanden = true;
                 Person.vorhanden = false;
+                _context.SaveChanges(); 
                 return Ok(Person);
             }
          
