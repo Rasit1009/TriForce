@@ -13,10 +13,15 @@ export class ScChoiceComponent implements OnInit {
 
   id = 0; 
   isSeller = false;
-  people = new Person(this.id, this.isSeller); 
+  vorhanden = false; 
+  people = new Person(this.id, this.isSeller, this.vorhanden); 
 
 
-  constructor(private auth : AuthService, private personService : PersonService) { }
+  constructor(private auth : AuthService, private personService : PersonService) {
+
+    
+
+   }
 
   ngOnInit() {
   }
@@ -32,15 +37,23 @@ export class ScChoiceComponent implements OnInit {
 
    if(ischecked1){
      alert('Händler gewählt');
-     alert(this.auth.id);
-     this.people.i = this.auth.id;
+     this.auth.getToken(); 
+     alert(this.auth.token.sub);
+     this.people.i = this.auth.token.sub;
      this.people.isSeller = true; 
      alert(this.people.i + " und " + this.people.isSeller);
      this.personService.setSeller(this.people).subscribe();
 
    }
    else if(ischecked2){
-     alert('Käufer gewählt. Bitte neu einloggen');
+     alert('Käufer gewählt');
+     this.auth.getToken(); 
+     this.people.i = this.auth.token.sub;
+     this.people.isSeller = false; 
+     alert(this.people.i + " und " + this.people.isSeller);
+     this.personService.setSeller(this.people).subscribe();
+     location.reload(); 
+     
    }
    else{
      alert('läuft');

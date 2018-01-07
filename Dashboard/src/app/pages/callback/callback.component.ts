@@ -15,6 +15,7 @@ export class CallbackComponent implements OnInit{
   constructor(private auth: AuthService) {}
   login() {
     this.auth.handleAuthentication();
+    this.auth.scheduleRenewal(); 
   }
   logout() {
     this.auth.logout();

@@ -4,7 +4,8 @@ import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
 import { JwtHelper } from 'angular2-jwt';
 import {Http} from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/observable/fromEvent';
 import { Person, PersonService } from '../pages/datacomplete_consumer/services/person.service';
 import { PagesComponent } from '../pages/pages.component';
 
@@ -17,6 +18,7 @@ id : string;
 jwtHelper: JwtHelper = new JwtHelper();
 exists : boolean = false;
 email : string; 
+token : any; 
 
 
 
@@ -32,8 +34,9 @@ public savePeople(people: Person): Observable<any>{
  .post('http://localhost:49873/api/users', people);
 }
 
-  private decode(authResult: any) {
-    var token = this.jwtHelper.decodeToken(authResult.idToken);
+  public decode(authResult: any) {
+    var token = this.jwtHelper.decodeToken(authResult);
+    this.token = token; 
     
     alert("unser dekodiertes token lautet: " + token.email);
     alert("unser dekodiertes token lautet: " + token.sub);
@@ -41,7 +44,12 @@ public savePeople(people: Person): Observable<any>{
     this.email = token.email; 
     
     this.http.get('http://localhost:49873/api/users/Get/' + token.sub).subscribe(res => {});
+    return this.token.sub;
   }
+
+public getToken(){
+  return this.token; 
+}
 
   auth0 = new auth0.WebAuth({
     clientID: 'u9ppezA7kI29KclGl7qlailQbwnwqu30',
@@ -75,7 +83,8 @@ public savePeople(people: Person): Observable<any>{
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-    this.decode(authResult); 
+    this.decode(authResult.idToken); 
+    this.scheduleRenewal();
   }
 
   public logout(): void {
@@ -84,7 +93,7 @@ public savePeople(people: Person): Observable<any>{
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    this.router.navigate(['/']);
+    location.replace("http://localhost:4200");
   }
 
   public isAuthenticated(): boolean {
@@ -93,6 +102,48 @@ public savePeople(people: Person): Observable<any>{
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
+
+  public scheduleRenewal() {
+    if(!this.isAuthenticated()) return;
+    this.unscheduleRenewal();
+  
+    const expiresAt = JSON.parse(window.localStorage.getItem('expires_at'));
+  
+    const source = Observable.of(expiresAt).flatMap(
+      expiresAt => {
+  
+        const now = Date.now();
+  
+        // Use the delay in a timer to
+        // run the refresh at the proper time
+        return Observable.timer(Math.max(1, expiresAt - now));
+      });
+  
+    // Once the delay time from above is
+    // reached, get a new JWT and schedule
+    // additional refreshes
+    this.auth0.refreshSubscription = source.subscribe(() => {
+      this.renewToken();
+      this.scheduleRenewal();
+    });
+  }
+  
+  public unscheduleRenewal() {
+    if(!this.auth0.refreshSubscription) return;
+    this.auth0.refreshSubscription.unsubscribe();
+  }
+
+  public renewToken() {
+    this.auth0.checkSession({}, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setSession(result);
+      }
+    });
+  }
+
+
 
 
 }
