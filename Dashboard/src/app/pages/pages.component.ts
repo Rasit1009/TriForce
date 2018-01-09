@@ -11,8 +11,8 @@ import { Http } from '@angular/http';
   selector: 'ngx-pages',
   template: `
     <ngx-sample-layout>
-      <nb-menu [items]="consumer" *ngIf="!isSeller && !isFirst"></nb-menu>
       <nb-menu [items]="seller" *ngIf="isSeller && !isFirst"></nb-menu>     
+      <nb-menu [items]="consumer" *ngIf="!isSeller && !isFirst"></nb-menu>
       <nb-menu [items]="first" *ngIf="isFirst"></nb-menu> 
       <router-outlet></router-outlet>
     </ngx-sample-layout>
@@ -27,6 +27,10 @@ export class PagesComponent implements OnInit{
   people : Person[] = []; 
   person = new Person(null,false,false);
   token : any; 
+
+  consumer = MENU_ITEMS;
+  seller = MENU_ITEMS_SELLER;
+  first = MENU_ITEMS_FIRST;
 
   
 constructor(private auth : AuthService, private personService : PersonService, private http : Http){
@@ -47,40 +51,6 @@ ngOnInit(): void {
   catch (error) {
     alert("NICHT EINGELOGGT");
   }
-}
+} 
 
-getSeller(){
-  if(this.auth.email == 'seller@test.de'){
-    return this.isSeller = true;
-  }
-}
-
-getLogin(){
-  return this.auth.id; 
-}
-
-getFirstLogin(da : string){
-  alert("in der methode 1");
-  if(da.toString() == 'true'){  
-    this.isFirst = true;
-    alert(this.isFirst);
-  } else {
-    this.isFirst = false;
-    alert("in der methode 3"); 
-  }
-  return this.isFirst; 
-}
-
-isFirstLogin(){
-return this.isFirst;
-}
-
-getSC(){
-
-  return true; 
-}
-  
-  consumer = MENU_ITEMS;
-  seller = MENU_ITEMS_SELLER;
-  first = MENU_ITEMS_FIRST;
 }
