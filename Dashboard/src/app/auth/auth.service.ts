@@ -13,33 +13,21 @@ import { PagesComponent } from '../pages/pages.component';
 export class AuthService {
 
   
-constructor(private http:Http, public router : Router) { } 
+constructor(private http:Http, public router : Router, public personService : PersonService) { } 
 id : string; 
 jwtHelper: JwtHelper = new JwtHelper();
 exists : boolean = false;
 email : string; 
-token : any; 
+token : any;
+person = new Person(null,false,false,null,null,null,null); 
+title : string = "HALLO";
 
-
-
-public getPeopleExist(i : number): Observable<any>{
-  return this.http
- .get('http://localhost:49873/api/users/1')
- .map(r => r.json())
- .map(e => e.this.exists);
-}
-
-public savePeople(people: Person): Observable<any>{
- return this.http
- .post('http://localhost:49873/api/users', people);
-}
 
   public decode(authResult: any) {
     var token = this.jwtHelper.decodeToken(authResult);
     this.token = token;
     this.id = token.sub;
-    this.email = token.email; 
-    
+    this.email = token.email;
     this.http.get('http://localhost:49873/api/users/Get/' + token.sub).subscribe(res => {});
     return this.token.sub;
   }
