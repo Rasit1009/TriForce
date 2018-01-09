@@ -13,9 +13,7 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private auth: AuthService) {
-    this.auth.scheduleRenewal();
-  }
+  constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
     
