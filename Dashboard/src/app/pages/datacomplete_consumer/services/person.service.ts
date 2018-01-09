@@ -12,7 +12,7 @@ export class PersonService {
      return this.http
     .get('http://localhost:49873/api/users/')
     .map(r =>r.json())
-    .map(e =>e.map (c=> new Person(c.i,c.isSeller,c.vorhanden)));
+    .map(e =>e.map (c=> new Person(c.i,c.isSeller,c.vorhanden, c.firstname, c.lastname, c.email, c.street)));
     
   }
   
@@ -30,6 +30,6 @@ export class PersonService {
   
 }
 export class Person{
-  constructor(public i, public isSeller, public vorhanden){
+  constructor(public i, public isSeller, public vorhanden, public firstname, public lastname, public email, public street){
   }
 }

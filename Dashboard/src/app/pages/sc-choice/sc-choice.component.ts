@@ -14,7 +14,7 @@ export class ScChoiceComponent implements OnInit {
   id = 0; 
   isSeller = false;
   vorhanden = false; 
-  people = new Person(this.id, this.isSeller, this.vorhanden); 
+  people = new Person(null,false,false,null,null,null,null);
 
 
   constructor(private auth : AuthService, private personService : PersonService) {

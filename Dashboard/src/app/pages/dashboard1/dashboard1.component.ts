@@ -15,7 +15,7 @@ export class Dashboard1Component implements OnInit{
   id : any; 
   isFirst : boolean = false; 
   people : Person[] = []; 
-  person = new Person(null,false,false);
+  person = new Person(null,false,false,null,null,null,null);
   token : any; 
 
   
