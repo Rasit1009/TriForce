@@ -28,11 +28,23 @@
   </nb-card>
 
   <div id="coupon" style="display:none;">
-    <div id="leftdiv"><ngx-qrcode [qrc-element-type]="elementType" [qrc-value] = "value1">
-      </ngx-qrcode></div>
-    <div id="rightdiv">Herzlichen Glückwunsch du hast einen verfügbaren Gutschein:<br><br>
-      <h5>Einen kostenlosen Haarschnitt mit Waschen und Kopfmassage.</h5><br>
-      Einfach deinen Gutschein LOLOCode vorzeigen und sparen!
-    </div>
+
+
+      <nb-card>
+          <nb-card-header>Dein Gutschein</nb-card-header>
+          <nb-card-body>
+
+              <div id="rightdiv"><ngx-qrcode [qrc-element-type]="elementType" [qrc-value] = "value1">
+                </ngx-qrcode></div>
+              <div id="leftdiv">Herzlichen Glückwunsch du hast einen verfügbaren Gutschein:<br><br>
+                <h4><b>Einen kostenlosen Haarschnitt </b></h4>
+                  <h6>inkl Waschen und Kopfmassage.</h6><br><br>
+                Einfach deinen Gutschein LOLOCode vorzeigen und sparen!
+              </div>
+    
+          </nb-card-body>
+        </nb-card>
+
+
   
 </div>
