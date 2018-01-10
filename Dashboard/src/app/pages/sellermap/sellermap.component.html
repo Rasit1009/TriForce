@@ -5,8 +5,7 @@
   [longitude]="lng"
   [zoom]="zoom"
   [disableDefaultUI]="false"
-  [zoomControl]="false"
-  (mapClick)="mapClicked($event)">
+  [zoomControl]="false">
 
   <agm-marker 
       *ngFor="let m of markers; let i = index"
@@ -18,16 +17,16 @@
       (dragEnd)="markerDragEnd(m, $event)">
       
     <agm-info-window>
-      <strong>RasitHatSchöneAugen</strong>
+      <strong>Händler#XX</strong>
     </agm-info-window>
     
   </agm-marker>
   
-  <agm-circle [latitude]="lat + 0.3" [longitude]="lng" 
-      [radius]="5000"
+  <agm-circle [latitude]="lat" [longitude]="lng" 
+      [radius]="200"
       [fillColor]="'red'"
-      [circleDraggable]="true"
-      [editable]="true">
+      [circleDraggable]="false"
+      [editable]="false">
   </agm-circle>
 
 </agm-map>
