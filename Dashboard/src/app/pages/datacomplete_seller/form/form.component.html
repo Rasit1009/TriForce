@@ -4,7 +4,7 @@
 
            <!-- Name des Geschaefts //ffried 06.12. -->
           <div class="input-group">
-            <input type="text" placeholder="Name des Geschäfts" class="form-control"/>
+            <input type="text" placeholder="Unternehmen" class="form-control"/>
           </div>
 
            <!-- Vor- und Nachname //ffried 06.12. -->
@@ -19,7 +19,7 @@
 
            <!-- Adresse //ffried 06.12. -->
           <div class="input-group">
-            <input type="text" placeholder="Straße und Hausnummer" class="form-control"/>
+            <input type="text" placeholder="Unternehmensadresse" class="form-control"/>
           </div>
           <div class="input-group">
             <input type="text" placeholder="PLZ und Ort" class="form-control"/>
@@ -29,17 +29,15 @@
           <br>
           <small class="form-text">Wählen Sie Ihre Branche
             </small>
-          <br>
           <div class="form-group">
               <select class="form-control">
-                  <option>Imbiss</option>
-                  <option>Restaurant</option>
+                  <option> </option>
+                  <option>Gastronomie</option>
                   <option>Bar/Club</option>
-                  <option>Bäcker</option>
                   <option>Lebensmittel</option>
-                  <option>Friseur</option>
                   <option>Fachgeschäft</option>
                   <option>Dienstleister</option>
+                  <option>Hotel/Unterkunft</option>
                   <option>Sonstige</option>
               </select>
             </div>
@@ -47,14 +45,43 @@
           <!-- Werbetext //ffried 06.12. -->
           <small class="form-text">Beschreiben Sie Ihr Angebot in einem kurzen Text. Dieser Text wird für Ihre Kunden sichtbar sein.
             </small>
-          <br>
           <div class="input-group">
             <textarea rows="5" placeholder="Werbetext" class="form-control"></textarea>
           </div>
-
-          <!-- Speichern-Button //ffried 06.12. -->
-          <br>
-          <button type="submit" class="btn btn-danger">Speichern</button>
-
         </nb-card-body>
       </nb-card>
+
+
+
+
+      <nb-card>
+          <nb-card-header>Individuelles Gutschein System</nb-card-header>
+          <nb-card-body>
+
+
+              <div class="row coupon-inputs">
+                  <div class="col-sm-6 input-group">
+                      <h4>Bei einem Umsatz pro Kunde von: </h4>
+                  </div>
+                  <div class="col-sm-6 input-group">
+                    <input type="number" placeholder="€ Umsatz eingeben" class="form-control"/>
+                  </div>
+
+                 
+                </div>
+
+                <div class="row coupon-inputs">
+                    <div class="col-sm-6 input-group">
+                        <h4>Stelle ich einen Gutschein aus in Höhe von: </h4>
+                    </div>
+                    <div class="col-sm-6 input-group">
+                      <input type="number" placeholder="€ Gutschein eingeben" class="form-control"/>
+                    </div>
+                  </div>
+      
+
+<br><br>
+
+              <button type="submit" class="btn btn-danger">Speichern</button><br>
+          </nb-card-body>
+        </nb-card>

@@ -4,6 +4,7 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ModalComponent } from './modal/modal.component';
+import { promise } from 'selenium-webdriver';
 
 
 
@@ -15,7 +16,10 @@ import { ModalComponent } from './modal/modal.component';
 export class SellermapComponent implements OnInit{
 
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal) {
+    console.log("Yolo");
+    
+   }
 
   showLargeModal() {
     const activeModal = this.modalService.open(ModalComponent, { size: 'lg', container: 'nb-layout' });
@@ -31,37 +35,54 @@ positionlat: number = 50.916733;
 positionlng: number = 6.941262;
 
 
+setData(){
+  if (window.navigator && window.navigator.geolocation) {
+    window.navigator.geolocation.getCurrentPosition(
+        position => {
+            this.geolocationPosition = position,
+                //console.log(position)
+                this.positionlat = position.coords.latitude;                      
+                this.positionlng = position.coords.longitude;
+                console.log(this.positionlat);
+                console.log(this.positionlng);
+  
+        },
+        error => {
+            switch (error.code) {
+                case 1:
+                    console.log('Standort nicht zugelassen');
+                    break;
+                case 2:
+                    console.log('Standort nicht gefunden');
+                    break;
+                case 3:
+                    console.log('Timeout');
+                    break;
+            }
+        }
+    );
+  }; 
+}
 
   ngOnInit() {
-    
-        if (window.navigator && window.navigator.geolocation) {
-            window.navigator.geolocation.getCurrentPosition(
-                position => {
-                    this.geolocationPosition = position,
-                        //console.log(position)
-                        this.positionlat = position.coords.latitude;                      
-                        this.positionlng = position.coords.longitude;
-                        console.log(this.positionlat);
-                        console.log(this.positionlng);
-          
-                },
-                error => {
-                    switch (error.code) {
-                        case 1:
-                            console.log('Standort nicht zugelassen');
-                            break;
-                        case 2:
-                            console.log('Standort nicht gefunden');
-                            break;
-                        case 3:
-                            console.log('Timeout');
-                            break;
-                    }
-                }
-            );
-        };  
+    console.log("Yala");
+    this.setLocation().then(() => this.setAll()); 
     }
 
+    setLocation(){    
+      var promise = new Promise((resolve, reject) => {
+                 this.setData();
+        setTimeout(() => {
+          resolve();
+        }, 1000);
+      });
+      return promise;
+    }
+
+    setAll(){
+      this.mylocationconverterx();
+      this.mylocationconvertery();
+    }
 
     mylocationconverterx(){
       var x = this.positionlat;
@@ -86,8 +107,6 @@ positionlng: number = 6.941262;
   lng: number = this.positionlng;
   
 
-
-
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
   }
@@ -106,8 +125,8 @@ positionlng: number = 6.941262;
   
   markers: marker[] = [
     {
-      lat: this.mylocationconverterx(),
-      lng: this.mylocationconvertery(),
+      lat: this.positionlat,
+      lng: this.positionlng,
 		  label: '',
       draggable: false
 	  },
