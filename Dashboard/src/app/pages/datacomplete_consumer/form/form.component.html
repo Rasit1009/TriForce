@@ -7,11 +7,11 @@
        <br>
       <div class="row full-name-inputs">
         <div class="col-sm-6 input-group">
-          <input *ngFor = "let person of people" type="text" [value] ="person.vorname" class="form-control"/>
+          <input id="firstname" type="input" [value] ="person.firstname" class="form-control"/>
         </div>
         
         <div class="col-sm-6 input-group">
-          <input *ngFor = "let person of people" type="text" [value] ="person.nachname" class="form-control"/>
+          <input id="lastname" type="input" [value] ="person.lastname" class="form-control"/>
         </div>
       </div>
 

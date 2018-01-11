@@ -112,7 +112,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable();
     this.person = person; 
     var index = this.people.findIndex(x => x.i === this.person.i)
     this.people[index] = this.person; 
-    this.personService.savePeople(this.person).subscribe(() =>{
+    this.personService.savePeople(this.person).subscribe(() =>{ alert("daten gespeichert");
     });
   }
 

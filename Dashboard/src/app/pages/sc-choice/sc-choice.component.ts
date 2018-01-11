@@ -36,7 +36,7 @@ export class ScChoiceComponent implements OnInit {
   }
    else if(ischecked2){
      alert('Käufer gewählt');
-     this.person.isSeller = true; 
+     this.person.isSeller = false; 
      this.person.vorhanden = false; 
      this.auth.setNewUserData(this.person); 
      this.auth.setUser(this.person);
