@@ -16,6 +16,6 @@ export class AppComponent implements OnInit {
   constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
-    
+    console.log("das kommt natürlich als erstes");   
   }
 }

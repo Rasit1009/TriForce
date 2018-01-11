@@ -10,32 +10,25 @@ import { Http } from '@angular/http';
   templateUrl: './dashboard1.component.html',
 })
 export class Dashboard1Component implements OnInit{
+  person : Person; 
+  isSeller : boolean = false; 
+  vorhanden : boolean = false; 
   
-  isSeller : boolean = false;
-  id : any; 
-  isFirst : boolean = false; 
-  people : Person[] = []; 
-  person = new Person(null,false,false,null,null,null,null);
-  token : any; 
+  constructor(public auth : AuthService){
+    this.auth.isPersonSource.subscribe(res => {
+      this.person = res;
+      try {
+        this.isSeller = this.person.isSeller; 
+        this.vorhanden = this.person.vorhanden; 
+        console.log(this.person.i);
+      } catch (error) {
+        console.log("noch kein user da "); 
+      }
+    })
+  }
 
-  
-constructor(private auth : AuthService, private personService : PersonService, private http : Http){
-}
 
 ngOnInit(): void {
-  
-  try {
-    this.token = localStorage.getItem("id_token");
-    this.token = this.auth.decode(this.token);
-    this.personService.getPeople().subscribe(res =>{ 
-      this.people = res; 
-      this.person = res.find(x => x.i === this.token);
-        this.isSeller = this.person.isSeller;  
-        this.isFirst = this.person.vorhanden; 
-    });
-  }
-  catch (error) {
-    alert("NICHT EINGELOGGT");
-  }
+
 }
 }

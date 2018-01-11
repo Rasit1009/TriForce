@@ -56,14 +56,15 @@ namespace WebApplication4
                 _context.Users.Add(Person);
                 _context.SaveChanges();
                 //vorhanden = false;
-                return Ok(null);
+                return Ok(Person);
 
             }
             else
             {
                 //vorhanden = true;
                 Person.vorhanden = false;
-                _context.SaveChanges(); 
+                _context.SaveChanges();
+                _context.Users.Update(Person);
                 return Ok(Person);
             }
          

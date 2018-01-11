@@ -13,9 +13,7 @@ people: Person[] = [];
   }
 
   public ngOnInit(): void{
-   this.personService
-   .getPeople()
-   .subscribe(result => this.people = result)
+
   }
 
   public deleteClick(person: Person){
@@ -26,7 +24,7 @@ people: Person[] = [];
   }
 
   public savePeople(){
-    this.personService.savePeople(this.people).subscribe(() => alert('Gespeichert!'));
+   // this.personService.savePeople(this.people).subscribe(() => alert('Gespeichert!'));
   }
   starRate = 2;
   heartRate = 4;
