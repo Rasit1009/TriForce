@@ -1,0 +1,27 @@
+    <div class="modal-header">
+        <span>{{ modalHeader }}</span>
+        <button class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+      <nb-card>
+            <nb-card-body>
+  
+             
+                    <div class="modal-body">
+                            <div id="logoleft">
+                                <img class="rig-img" id="logopic" src="{{ logopicture }}">
+                            </div>
+                            <div id="textright"> {{ descriptionSeller }}
+                       
+                            </div>
+                          </div>
+            </nb-card-body>
+           
+          </nb-card>
+      
+      <div class="modal-footer">
+            <button class="btn btn-md btn-primary" (click)="closeModal()">Zurück</button>
+      </div>

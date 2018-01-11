@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { MouseEvent } from '@agm/core';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { ModalComponent } from './modal/modal.component';
+import { promise } from 'selenium-webdriver';
 
 
 
@@ -10,61 +14,98 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
   templateUrl: './sellermap.component.html',
 })
 export class SellermapComponent implements OnInit{
-  geolocationPosition: Position;
-  positionlat: number = 50.916733;
-  positionlng: number = 6.941262;
 
 
+  constructor(private modalService: NgbModal) {
+    console.log("Yolo");
+    
+   }
 
+  showLargeModal() {
+    const activeModal = this.modalService.open(ModalComponent, { size: 'lg', container: 'nb-layout' });
+    console.log('constructortest');
+    activeModal.componentInstance.modalHeader = 'Museum Ludwig';
+    
+  }
+
+sellerName = 'Museum Ludwig';
+
+geolocationPosition: Position;
+positionlat: number = 50.916733;
+positionlng: number = 6.941262;
+
+
+setData(){
+  if (window.navigator && window.navigator.geolocation) {
+    window.navigator.geolocation.getCurrentPosition(
+        position => {
+            this.geolocationPosition = position,
+                //console.log(position)
+                this.positionlat = position.coords.latitude;                      
+                this.positionlng = position.coords.longitude;
+                console.log(this.positionlat);
+                console.log(this.positionlng);
+  
+        },
+        error => {
+            switch (error.code) {
+                case 1:
+                    console.log('Standort nicht zugelassen');
+                    break;
+                case 2:
+                    console.log('Standort nicht gefunden');
+                    break;
+                case 3:
+                    console.log('Timeout');
+                    break;
+            }
+        }
+    );
+  }; 
+}
 
   ngOnInit() {
-    
-        if (window.navigator && window.navigator.geolocation) {
-            window.navigator.geolocation.getCurrentPosition(
-                position => {
-                    this.geolocationPosition = position,
-                        console.log(position)
-                        console.log('Längengrad: ' + position.coords.latitude);
-                        console.log('Breitengrad: ' + position.coords.longitude);
-                        this.positionlat = position.coords.latitude;                      
-                        this.positionlng = position.coords.longitude;
-                        console.log('Längengrad: ' + this.positionlat);
-                        console.log('Breitengrad: ' + this.positionlng);
-                        this.mylocation(this.positionlat, this.positionlng);
-                },
-                error => {
-                    switch (error.code) {
-                        case 1:
-                            console.log('Standort nicht zugelassen');
-                            break;
-                        case 2:
-                            console.log('Standort nicht gefunden');
-                            break;
-                        case 3:
-                            console.log('Timeout');
-                            break;
-                    }
-                }
-            );
-        };  
+    console.log("Yala");
+    this.setLocation().then(() => this.setAll()); 
     }
 
-    mylocation(x : number, y : number){
-      x = this.positionlat;
-      y = this.positionlng;
-      console.log('Längengrad: ' + x);
-      console.log('Breitengrad: ' + y);
+    setLocation(){    
+      var promise = new Promise((resolve, reject) => {
+                 this.setData();
+        setTimeout(() => {
+          resolve();
+        }, 1000);
+      });
+      return promise;
+    }
+
+    setAll(){
+      this.mylocationconverterx();
+      this.mylocationconvertery();
+    }
+
+    mylocationconverterx(){
+      var x = this.positionlat;
+      console.log('LängengradconverterX: ' + x);
    return x;
+    }
+
+    mylocationconvertery(){
+      var y = this.positionlng
+      console.log('LängengradconverterY: ' + y);
+   return y;
     }
 
   // google maps zoom level
   zoom: number = 12;
   
   // initial center position for the map
-  lat: number = 50.941278;
-  lng: number = 6.958281;
+  //lat: number = 50.941278;
+  //lng: number = 6.958281;
 
-
+  lat: number = this.positionlat;
+  lng: number = this.positionlng;
+  
 
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
@@ -84,9 +125,9 @@ export class SellermapComponent implements OnInit{
   
   markers: marker[] = [
     {
-      lat: this.mylocation(this.lat,this.lng),
+      lat: this.positionlat,
       lng: this.positionlng,
-		  label: 'Me',
+		  label: '',
       draggable: false
 	  },
 	  {

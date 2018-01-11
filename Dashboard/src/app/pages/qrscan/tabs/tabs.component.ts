@@ -48,8 +48,6 @@ consumerid: any;
 indb(){
 
 
-    this.sellerid = document.getElementById("sellerid");
-    this.seller_id = this.sellerid.value;
 
     this.amount = document.getElementById("amount");
     this.amount_id = this.amount.value;
@@ -58,7 +56,7 @@ indb(){
     this.consumer_id = this.consumerid.value;
 
 
-  alert('An den Händler ' + this.seller_id + ' wurde der Betrag ' + this.amount_id + ' für den Kunden mit der ID ' + this.consumer_id + ' gutgeschrieben.');
+  alert('Für den Herr/Frau Schneider wurde der Betrag ' + this.amount_id + '€ gutgeschrieben.');
 }
 
 

@@ -5,10 +5,39 @@
   [longitude]="lng"
   [zoom]="zoom"
   [disableDefaultUI]="false"
-  [zoomControl]="false"
-  (mapClick)="mapClicked($event)">
+  [zoomControl]="false">
 
   <agm-marker 
+      *ngFor="let m of markers; let i = index"
+      (markerClick)="showLargeModal()"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [label]="m.label"
+      [markerDraggable]="m.draggable"
+      (dragEnd)="markerDragEnd(m, $event)">
+      
+    <agm-info-window>
+      <strong>{{sellerName}}</strong>
+    </agm-info-window>
+    
+  </agm-marker>
+
+
+
+  <agm-marker 
+  [latitude]="this.positionlat "
+  [longitude]="this.positionlng"
+  [label]="test"
+  >
+  
+<agm-info-window>
+  <strong>Mein Standort</strong>
+</agm-info-window>
+
+</agm-marker>
+
+
+  <!-- <agm-marker 
       *ngFor="let m of markers; let i = index"
       (markerClick)="clickedMarker(m.label, i)"
       [latitude]="m.lat"
@@ -18,16 +47,18 @@
       (dragEnd)="markerDragEnd(m, $event)">
       
     <agm-info-window>
-      <strong>RasitHatSchöneAugen</strong>
+      <strong>Händler#XX</strong>
     </agm-info-window>
     
   </agm-marker>
+
+-->
   
-  <agm-circle [latitude]="lat + 0.3" [longitude]="lng" 
-      [radius]="5000"
+  <agm-circle [latitude]="lat" [longitude]="lng" 
+      [radius]="200"
       [fillColor]="'red'"
-      [circleDraggable]="true"
-      [editable]="true">
+      [circleDraggable]="false"
+      [editable]="false">
   </agm-circle>
 
 </agm-map>
