@@ -19,8 +19,11 @@
   </nb-action>
    <nb-action class="control-item" disabled icon="nb-notifications"></nb-action> -->
   <nb-action></nb-action>
-  <nb-action class="control-item" icon="nb-paper-plane" (click)="logOut()"></nb-action>
   
+  <nb-action style="cursor: pointer;" (click)="logOut()"> Abmelden
+  <nb-action class="control-item" title="Abmelden" icon="nb-power" ></nb-action>
+</nb-action>
+
   <nb-action class="control-item">
     <nb-search type="rotate-layout" (click)="startSearch()"></nb-search>
   </nb-action>
