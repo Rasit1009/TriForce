@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit,OnInit } from '@angular/core';
+
 
 import { Router } from '@angular/router'; 
 
+declare var $: any;
 
 
 
@@ -14,10 +16,23 @@ import { Router } from '@angular/router';
              
            `
 })
-export class SellerComponent { 
+export class SellerComponent  implements AfterViewInit{ 
   
 
+  ngAfterViewInit() {
 
+
+    //Wiederherstellung des Smooth-Scrolling //ffried 12.01.18
+    $('a.page-scroll').bind('click', function (event: any) {
+      var $anchor = $(this);
+      $('html, body').stop().animate({
+        scrollTop: ($($anchor.attr('href')).offset().top - 50)
+      }, 1250, 'easeInOutExpo');
+      event.preventDefault();
+    });
+
+
+  }
      
  
 }
