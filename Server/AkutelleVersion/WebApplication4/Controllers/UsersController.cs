@@ -61,7 +61,11 @@ namespace WebApplication4
                 //vorhanden = true;
                 Person.vorhanden = false;
                 _context.SaveChanges();
+<<<<<<< HEAD
                 _context.Update(Person);
+=======
+                _context.Users.Update(Person);
+>>>>>>> fa3b12a9c37f198dabf090bf65dac6d9cb749e5b
                 return Ok(Person);
             }
          
