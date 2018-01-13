@@ -11,10 +11,8 @@ export class Header2Component implements AfterViewInit {
   
   ngAfterViewInit() {
 
-    
-    
 
-
+    //Wiederherstellung des Smooth-Scrolling //ffried 12.01.18
     $('a.page-scroll').bind('click', function (event: any) {
       var $anchor = $(this);
       $('html, body').stop().animate({
