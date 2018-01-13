@@ -63,13 +63,13 @@ namespace WebApplication4.Migrations
                     b.Property<int>("Userid")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Birthday");
+
                     b.Property<string>("Business");
 
                     b.Property<string>("Businessname");
 
                     b.Property<string>("City");
-
-                    b.Property<int>("Day");
 
                     b.Property<string>("Email");
 
@@ -89,8 +89,6 @@ namespace WebApplication4.Migrations
 
                     b.Property<string>("Lastname");
 
-                    b.Property<int>("Month");
-
                     b.Property<int>("PLZ");
 
                     b.Property<string>("Profession");
@@ -98,8 +96,6 @@ namespace WebApplication4.Migrations
                     b.Property<string>("Street");
 
                     b.Property<string>("Text");
-
-                    b.Property<int>("Year");
 
                     b.Property<bool>("vorhanden");
 
