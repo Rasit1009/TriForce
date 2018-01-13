@@ -12,7 +12,7 @@
         <div *ngIf="remainingScans() == 0">
         <div class="details">Ausreichend Punkte gesammelt</div>
         <br>
-        <button class="btn btn-md btn-primary" (click)="showDiv()" >Gutschein Generieren</button>
+        <button class="btn btn-md btn-primary" (click)="showDiv()" >Gutschein anzeigen</button>
         <br>
         <br>
         </div>
@@ -28,23 +28,6 @@
   </nb-card>
 
   <div id="coupon" style="display:none;">
-
-
-      <nb-card>
-          <nb-card-header>Dein Gutschein</nb-card-header>
-          <nb-card-body>
-
-              <div id="rightdiv"><ngx-qrcode [qrc-element-type]="elementType" [qrc-value] = "value1">
-                </ngx-qrcode></div>
-              <div id="leftdiv">Herzlichen Glückwunsch du hast einen verfügbaren Gutschein:<br><br>
-                <h4><b>Einen kostenlosen Haarschnitt </b></h4>
-                  <h6>inkl Waschen und Kopfmassage.</h6><br><br>
-                Einfach deinen Gutschein LOLOCode vorzeigen und sparen!
-              </div>
-    
-          </nb-card-body>
-        </nb-card>
-
-
-  
+    <ngx-qrcode [qrc-element-type]="elementType" [qrc-value] = "value1">
+  </ngx-qrcode>
 </div>

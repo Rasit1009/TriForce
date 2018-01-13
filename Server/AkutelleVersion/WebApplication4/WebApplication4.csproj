@@ -33,6 +33,8 @@
     <Compile Remove="Migrations\20171220181439_six.Designer.cs" />
     <Compile Remove="Migrations\20171220181817_six.cs" />
     <Compile Remove="Migrations\20171220181817_six.Designer.cs" />
+    <Compile Remove="Migrations\20180110154752_j14.cs" />
+    <Compile Remove="Migrations\20180110154752_j14.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

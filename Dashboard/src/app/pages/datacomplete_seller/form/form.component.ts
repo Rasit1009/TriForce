@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../../auth/auth.service';
-import { Person } from '../../datacomplete_consumer/services/person.service';
 
 @Component({
   selector: 'ngx-form',
@@ -8,7 +6,6 @@ import { Person } from '../../datacomplete_consumer/services/person.service';
   templateUrl: './form.component.html',
 })
 export class FormComponent {
-
 
   starRate = 2;
   heartRate = 4;

@@ -8,7 +8,6 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class CallbackComponent implements OnInit{
   ngOnInit(): void {
-      console.log("danach das");
       this.login();
   }
 

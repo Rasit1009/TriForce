@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Person, PersonService } from '../services/person.service';
-import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'ngx-form',
@@ -8,25 +7,26 @@ import { AuthService } from '../../../auth/auth.service';
   templateUrl: './form.component.html',
 })
 export class FormComponent implements OnInit {
-
-  
-  person : Person = this.auth.person;
-
-  constructor(public auth : AuthService){
-
+people: Person[] = [];
+  constructor(private personService: PersonService){
+    
   }
 
   public ngOnInit(): void{
-
+   this.personService
+   .getPeople()
+   .subscribe(result => this.people = result)
   }
 
   public deleteClick(person: Person){
+    const index = this.people.indexOf(person);
+    if (index>-1){
+      this.people.splice(index, 1);
+    }
   }
 
   public savePeople(){
-  this.person.firstname = (<HTMLInputElement>document.getElementById("firstname")).value;
-  this.person.lastname = (<HTMLInputElement>document.getElementById("lastname")).value;
-   this.auth.setNewUserData(this.person);
+    this.personService.savePeople(this.people).subscribe(() => alert('Gespeichert!'));
   }
   starRate = 2;
   heartRate = 4;

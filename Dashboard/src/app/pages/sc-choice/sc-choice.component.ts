@@ -11,15 +11,23 @@ import { Person, PersonService } from '../datacomplete_consumer/services/person.
 })
 export class ScChoiceComponent implements OnInit {
 
-  person : Person = this.auth.person; 
+  id = 0; 
+  isSeller = false;
+  vorhanden = false; 
+  people = new Person(this.id, this.isSeller, this.vorhanden); 
 
-  constructor(public auth : AuthService){
 
-  }
+  constructor(private auth : AuthService, private personService : PersonService) {
+
+    
+
+   }
 
   ngOnInit() {
   }
  
+
+  
   weiter(){
    var e1 = <HTMLInputElement> document.getElementById('r1');
    var e2 = <HTMLInputElement> document.getElementById('r2');
@@ -29,17 +37,20 @@ export class ScChoiceComponent implements OnInit {
 
    if(ischecked1){
      alert('Händler gewählt');
-     this.person.isSeller = true;
-     this.person.vorhanden = false;  
-     this.auth.setNewUserData(this.person); 
-     this.auth.setUser(this.person);
-  }
+     this.auth.getToken(); 
+     this.people.i = this.auth.token.sub;
+     this.people.isSeller = true; 
+     this.personService.setSeller(this.people).subscribe();
+     location.reload(); 
+
+   }
    else if(ischecked2){
      alert('Käufer gewählt');
-     this.person.isSeller = false; 
-     this.person.vorhanden = false; 
-     this.auth.setNewUserData(this.person); 
-     this.auth.setUser(this.person);
+     this.auth.getToken(); 
+     this.people.i = this.auth.token.sub;
+     this.people.isSeller = false; 
+     this.personService.setSeller(this.people).subscribe();
+     location.reload(); 
      
    }
    else{

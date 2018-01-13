@@ -1,31 +1,52 @@
-import { Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
 import { JwtHelper } from 'angular2-jwt';
 import {Http} from '@angular/http';
-import * as Rx from 'rxjs/Rx';
+import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/observable/fromEvent';
 import { Person, PersonService } from '../pages/datacomplete_consumer/services/person.service';
 import { PagesComponent } from '../pages/pages.component';
-import {Observable, BehaviorSubject} from'rxjs/Rx';
 
 @Injectable()
 export class AuthService {
 
   
-constructor(private http:Http, public router : Router, public personService : PersonService) { } 
+constructor(private http:Http, public router : Router) { } 
 id : string; 
 jwtHelper: JwtHelper = new JwtHelper();
-vorhanden : boolean = false;
+exists : boolean = false;
 email : string; 
-token : any;
-person : Person;
-people : Person[] = [];
-isSeller : boolean; 
-isPersonSource = new BehaviorSubject<Person>(null);
-_currentUser : Observable<Person> = this.isPersonSource.asObservable(); 
+token : any; 
 
+
+
+public getPeopleExist(i : number): Observable<any>{
+  return this.http
+ .get('http://localhost:49873/api/users/1')
+ .map(r => r.json())
+ .map(e => e.this.exists);
+}
+
+public savePeople(people: Person): Observable<any>{
+ return this.http
+ .post('http://localhost:49873/api/users', people);
+}
+
+  public decode(authResult: any) {
+    var token = this.jwtHelper.decodeToken(authResult);
+    this.token = token;
+    this.id = token.sub;
+    this.email = token.email; 
+    
+    this.http.get('http://localhost:49873/api/users/Get/' + token.sub).subscribe(res => {});
+    return this.token.sub;
+  }
+
+public getToken(){
+  return this.token; 
+}
 
   auth0 = new auth0.WebAuth({
     clientID: 'u9ppezA7kI29KclGl7qlailQbwnwqu30',
@@ -35,6 +56,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable();
     redirectUri: 'http://localhost:8000/callback',     
     scope: 'openid email'
   });
+
 
   public login(): void {
     this.auth0.authorize();
@@ -58,7 +80,8 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable();
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-    this.decode(authResult.idToken);
+    this.decode(authResult.idToken); 
+    this.scheduleRenewal();
   }
 
   public logout(): void {
@@ -77,52 +100,47 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable();
     return new Date().getTime() < expiresAt;
   }
 
-  public decode(authResult: any) {
-    var token = this.jwtHelper.decodeToken(authResult);
-    this.id = token.sub; 
-    this.email = token.email;
-    this.getMyUsers(); 
-  }
-
-  public getMyUsers(){
-    console.log("erstmal die id " + this.id);
-    console.log("anschließend die mail " + this.email ); 
-    let first = this.personService.getPeople(); 
-    let second = this.personService.getUser(this.id);
-    Observable.forkJoin([first,second]).subscribe(results => {
-      this.people = results[0];
-      console.log(this.people);
-      this.person = results[1]; 
-      console.log(this.person);
-      if(this.people.find(x => x.i === this.person.i)){
-        console.log("user bereits vorhanden");
-      } else {
-      this.addUser(this.person);
-      };
-      this.setUser(this.person);
-      
+  public scheduleRenewal() {
+    if(!this.isAuthenticated()) return;
+    this.unscheduleRenewal();
+  
+    const expiresAt = JSON.parse(window.localStorage.getItem('expires_at'));
+  
+    const source = Observable.of(expiresAt).flatMap(
+      expiresAt => {
+  
+        const now = Date.now();
+  
+        // Use the delay in a timer to
+        // run the refresh at the proper time
+        return Observable.timer(Math.max(1, expiresAt - now));
+      });
+  
+    // Once the delay time from above is
+    // reached, get a new JWT and schedule
+    // additional refreshes
+    this.auth0.refreshSubscription = source.subscribe(() => {
+      this.renewToken();
+      this.scheduleRenewal();
     });
-  }
-
-  setUser(person: Person) {
-    this.isPersonSource.next(person);
-  }
-
-  setNewUserData(person : Person){
-    this.person = person; 
-    var index = this.people.findIndex(x => x.i === this.person.i)
-    this.people[index] = this.person; 
-    this.personService.savePeople(this.person).subscribe(() =>{ alert("daten gespeichert");
-    });
-  }
-
-  getUser() {
-    return this._currentUser;
-  }
-
-  addUser(person : Person){
-    person = new Person(this.person.i,this.person.isSeller,this.person.vorhanden,this.person.firstname,this.person.lastname,this.person.email,this.person.street);
-    this.people.push(person);
   }
   
+  public unscheduleRenewal() {
+    if(!this.auth0.refreshSubscription) return;
+    this.auth0.refreshSubscription.unsubscribe();
+  }
+
+  public renewToken() {
+    this.auth0.checkSession({}, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setSession(result);
+      }
+    });
+  }
+
+
+
+
 }

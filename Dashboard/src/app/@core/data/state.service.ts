@@ -12,7 +12,7 @@ export class StateService {
       name: 'One Column',
       icon: 'nb-layout-default',
       id: 'one-column',
-      //selected: true,
+      selected: true,
     },
     {
       name: 'Two Column',
