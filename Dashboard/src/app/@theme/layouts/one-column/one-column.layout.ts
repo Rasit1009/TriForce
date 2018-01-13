@@ -11,11 +11,7 @@ import { Component } from '@angular/core';
       </nb-layout-header>
 
       <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive>
-        <nb-sidebar-header>
-          <a href="#/pages/qrgenerate" class="btn btn-hero-success main-btn">
-            <i class="fa fa-qrcode"></i> <span>Mein LoloCODE</span>
-          </a>
-        </nb-sidebar-header>
+
         <ng-content select="nb-menu"></ng-content>
       </nb-sidebar>
 
