@@ -11,6 +11,8 @@ namespace WebApplication4.Models
         public string Selleri { get; set; }
         public string Useri { get; set; }
 
-        
+        public int Points { get; set; }
+
+
     }
 }

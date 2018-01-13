@@ -53,6 +53,111 @@ namespace WebApplication4.Controllers
             
         }
 
+
+
+        //Jana Teutenberg: Methode, die überpürft, ob der Gutschein vorhanden ist
+        [HttpGet("GetCopoun/{id}", Name = "GetCoupon")]
+        // GET: Coupon/GetCopoun/5
+        public IActionResult GetCoupon(string id)
+        {
+            
+
+
+            var Gutschein = _context.Coupon.SingleOrDefault(
+                c => c.Couponid== id);
+            if (Gutschein == null)
+            {
+               
+                return Ok(false);
+
+            }
+            else
+            {
+                
+                return Ok(true);
+            }
+
+
+
+           
+
+        }
+
+        //Jana Teutenberg: Methode, die aktuellen Punktestand zurück gibt
+        [HttpGet("GetPoints/{uid}/{sid}", Name = "GetPoints")]
+        // GET: Coupon/GetPoints9/5/5
+        public IActionResult GetPoints(string uid, string sid)
+        {
+
+
+
+            var Po = _context.Coupon.SingleOrDefault(
+                c => c.Useri == uid && c.Selleri == sid);
+            if (Po == null)
+            {
+
+                return Ok(null);
+
+            }
+            else
+            {
+                int poi = Po.Points;
+                return Ok(poi);
+            }
+
+
+
+
+
+        }
+
+        //Jana Teutenberg: Methode, die Punkte gutschreibt
+        [HttpPost("Points", Name = "Points")]
+        // Post: Coupon/Points
+        public IActionResult Points([FromBody] Punkte pu)
+        {
+
+
+
+            var Po = _context.Coupon.SingleOrDefault(
+                c => c.Selleri == pu.Selleri && c.Useri == pu.Useri);
+            if (Po == null)
+            {
+
+                Po = new Coupon ()
+                {
+
+                   Points = pu.Points,
+                   Selleri = pu.Selleri,
+                   Useri = pu.Useri,
+
+
+                };
+
+                _context.Coupon.Add(Po);
+                _context.SaveChanges();
+                return Ok();
+
+            }
+            else
+            {
+                Po.Points = Po.Points + pu.Points;
+                return Ok();
+            }
+
+
+
+
+
+        }
+
+        public class Punkte
+        {
+            public int Points { get; set; }
+            public string Selleri { get; set; }
+            public string Useri { get; set; }
+
+        }
         public class Gutschein
         {
             public string Couponid { get; set; }

@@ -20,17 +20,15 @@ namespace WebApplication4
         {
             _context = context;
         }
+
         //Jana Teutenberg: Methode, die alle Users zurück gibt
         [HttpGet]
         public IActionResult Get()
         {
 
-            
-
             return Ok(_context.Users.ToList());
-
-
         }
+       
         //Jana Teutenberg: Methode, die überpürft, ob der User vorhanden ist und ihn sonst anlegt mit einer Id
         [HttpGet("Get/{id}", Name = "GetbyId")]
         // GET: Users/Get/5
@@ -49,8 +47,7 @@ namespace WebApplication4
 
                     I = id,
                     vorhanden = true,
-                    
-     
+   
                 };
 
                 _context.Users.Add(Person);
@@ -64,13 +61,42 @@ namespace WebApplication4
                 //vorhanden = true;
                 Person.vorhanden = false;
                 _context.SaveChanges();
+
+                _context.Update(Person);
+
                 _context.Users.Update(Person);
+
                 return Ok(Person);
             }
          
             
 
            // return Ok(vorhanden);
+
+        }
+        //Jana Teutenberg: Methode, die eine Id bekommt und den Vornamen zurück gibt
+        [HttpGet("Getfirstname/{id}", Name = "GetFirstname")]
+        // GET: Users/GetFirstname
+        public IActionResult GetFirstname(string id)
+        {
+            
+
+
+            var Person = _context.Users.SingleOrDefault(
+                c => c.I == id);
+            if (Person == null)
+            {
+                return Ok(null);
+            }
+            else
+            {
+                string vorname = Person.Firstname;
+                return Ok(vorname);
+            }
+
+
+
+           
 
         }
         //Jana Teutenberg: Methode, die eine Id bekommt und weitere Informationen, die aktualisiert werden
@@ -86,11 +112,37 @@ namespace WebApplication4
 
             else
             {
-                Person.IsSeller = person.IsSeller;
-                Person.Firstname = person.Firstname;
-                Person.Lastname = person.Lastname;
-                Person.Email = person.Email;
-                Person.Street = person.Street;
+
+                if (person.IsSeller == true)
+                {
+                    Person.IsSeller = person.IsSeller;
+                    Person.Firstname = person.Firstname;
+                    Person.Lastname = person.Lastname;
+                    Person.Email = person.Email;
+                    Person.Street = person.Street;
+                    Person.PLZ = person.PLZ;
+                    Person.City = person.City;
+                    Person.Housenumber = person.Housenumber;
+                    Person.Businessname = person.Businessname;
+                    Person.Business = person.Business;
+                    Person.Text = person.Text;
+                    Person.Imagepath = person.Imagepath;
+
+                }
+                else
+                {
+                    Person.IsSeller = person.IsSeller;
+                    Person.Firstname = person.Firstname;
+                    Person.Lastname = person.Lastname;
+                    Person.Email = person.Email;
+                    Person.Street = person.Street;
+                    Person.PLZ = person.PLZ;
+                    Person.City = person.City;                
+                    Person.Birthday = person.Birthday;
+                    Person.Profession = person.Profession;
+                    Person.FamilyStatus = person.FamilyStatus;
+                    Person.Gender = person.Gender;
+                }
             }
 
 
@@ -106,9 +158,20 @@ namespace WebApplication4
             public string Firstname { get; set; }
             public string Lastname { get; set; }
             public string Street { get; set; }
-
+            public string Birthday { get; set; }
+            public string Profession { get; set; }
+            public string FamilyStatus { get; set; }
+            public string Business { get; set; }
+            public string Gender { get; set; }
+            public string Text { get; set; }
             public string Email { get; set; }
             public bool vorhanden { get; set; }
+            public string Imagepath { get; set; }
+            public int PLZ { get; set; }
+            public string Housenumber { get; set; }
+            public string City { get; set; }
+
+            public string Businessname { get; set; }
 
         }
 
@@ -165,20 +228,6 @@ namespace WebApplication4
             
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
