@@ -5,11 +5,13 @@
        <!-- Vor- und Nachname //ffried 06.12. -->
       <div class="row full-name-inputs">
         <div class="col-sm-6 input-group">
-          <input id="firstname" type="input" [value] ="person.firstname" class="form-control" placeholder="Vorname"/>
+          <input *ngIf="person.firstname" id="firstname" type="input" [value] ="person.firstname" class="form-control" placeholder="Vorname"/>
+          <input *ngIf="!person.firstname" id="firstname" type="input" class="form-control" placeholder="Vorname"/>
         </div>
         
         <div class="col-sm-6 input-group">
-          <input id="lastname" type="input" [value] ="person.lastname" class="form-control" placeholder="Nachname"/>
+          <input *ngIf="person.lastname" id="lastname" type="input" [value] ="person.lastname" class="form-control" placeholder="Nachname"/>
+          <input *ngIf="!person.lastname" id="lastname" type="input" class="form-control" placeholder="Nachname"/>     
         </div>
       </div>
 
@@ -35,18 +37,22 @@
        <!-- Adresse //ffried 06.12. -->
              <div class="row full-name-inputs">
               <div class="col-md-8 input-group">
-                <input *ngFor = "let person of people" type="text" [value]="person.adresse" class="form-control" placeholder="Adresse"/>
+                <input id ="street" *ngIf="person.street" type="text" [value]="person.street" class="form-control" placeholder="Adresse"/>
+                <input *ngIf="!person.street" id="street" type="input" class="form-control" placeholder="Straße"/>
               </div>
               <div class="col-md-4 input-group">
-                <input *ngFor = "let person of people" type="text" [value]="person.adresse" class="form-control" placeholder="Hausnummer"/>
+                <input id="housenumber" *ngIf = "person.housenumber" type="text" [value]="person.housenumber" class="form-control" placeholder="Hausnummer"/>
+                <input *ngIf="!person.housenumber" id="housenumber" type="input" class="form-control" placeholder="Hausnummer"/>     
               </div>
             </div>
               <div class="row full-name-inputs">
               <div class="col-md-6 input-group">
-                <input type="text" placeholder="Ort" class="form-control"/> 
+                <input *ngIf="person.city" id="city" type="text" placeholder="Ort" [value]="person.city" class="form-control"/> 
+                <input *ngIf="!person.city" id="city" type="input" class="form-control" placeholder="Ort"/>
               </div>            
       <div class="col-md-6 input-group">
-        <input type="text" placeholder="PLZ" class="form-control"/>
+        <input id="plz" *ngIf="person.plz" type="text" placeholder="PLZ" [value]="person.plz" class="form-control"/>
+        <input *ngIf="!person.plz" id="plz" type="input" class="form-control" placeholder="PLZ"/>
       </div>
     </div>
 
@@ -55,9 +61,12 @@
        <br>
           <div class="input-group">
               <div class="input-group">
-              <input type="number" placeholder="TT" class="form-control"/>
-              <input type="number" placeholder="MM" class="form-control"/>
-              <input type="number" placeholder="JJJJ" class="form-control"/>
+              <input *ngIf="person.day" id="day" type="number" placeholder="TT" [value]="person.day" class="form-control"/>
+              <input *ngIf="!person.day" id="day" type="number" placeholder="TT" class="form-control"/>
+              <input *ngIf="person.month" id="month" type="number" placeholder="MM" [value]="person.month" class="form-control"/>
+              <input *ngIf="!person.month" id="month" type="number" placeholder="MM" class="form-control"/>
+              <input *ngIf="person.year" id="year" type="number" placeholder="JJJJ" [value]="person.year" class="form-control"/>
+              <input *ngIf="!person.year" id="year" type="number" placeholder="JJJJ" class="form-control"/>
             </div>
           </div>            
         <!-- Beruf //ffried 06.12. -->
@@ -65,15 +74,15 @@
           </small>
         <br>
         <div class="form-group">
-            <select class="form-control">
-                <option>Schüler</option>
-                <option>Student</option>
-                <option>Angestellt</option>
-                <option>Selbstständig</option>
-                <option>Hausfrau/-mann</option>
-                <option>Pensioniert</option>
-                <option>Sonstiges</option>
-                <option>keine Angabe</option>
+            <select id="profession" class="form-control">
+                <option ng-selected="person.profession='Schüler'">Schüler</option>
+                <option ng-selected="person.profession=Student">Student</option>
+                <option ng-selected="person.profession='Angestellt'">Angestellt</option>
+                <option ng-selected="person.profession='Selbstständig'">Selbstständig</option>
+                <option ng-selected="person.profession='Hausfrau/-mann'">Hausfrau/-mann</option>
+                <option ng-selected="person.profession='Pensioniert'">Pensioniert</option>
+                <option ng-selected="person.profession='Sonstiges'">Sonstiges</option>
+                <option ng-selected="person.profession='keine Angabe'">keine Angabe</option>
             </select>
           </div>
 
@@ -83,7 +92,7 @@
           </small>
         <br>
         <div class="form-group">
-            <select class="form-control">
+            <select id="familystatus" class="form-control">
                 <option>Single</option>
                 <option>In einer Beziehung</option>
                 <option>Verheiratet</option>
@@ -97,12 +106,12 @@
        <br>
           <div class="input-group">
               <label class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" name="customRadio">
+                <input (checked)="checked()" id="r1" type="radio" class="custom-control-input" name="customRadio">
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">weiblich</span>
               </label>
               <label class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" name="customRadio" checked>
+                <input ng-checked="" id="r2" type="radio" class="custom-control-input" name="customRadio" checked>
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">männlich</span>
               </label>
@@ -117,6 +126,5 @@
       <!-- Speichern-Button //ffried 06.12. -->
       <br>
       <button type="submit" class="btn btn-danger"(click)= "savePeople()" >Speichern</button>
-
     </nb-card-body>
   </nb-card>

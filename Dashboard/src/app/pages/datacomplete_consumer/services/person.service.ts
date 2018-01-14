@@ -12,7 +12,10 @@ export class PersonService {
      return this.http
     .get('http://localhost:49873/api/users/')
     .map(r =>r.json())
-    .map(e =>e.map (c=> new Person(c.i,c.isSeller,c.vorhanden, c.firstname, c.lastname, c.email, c.street)));
+    .map(e =>e.map 
+      (c=> new Person(c.i,c.isSeller,c.vorhanden, c.firstname, c.lastname, c.email, c.street,c.plz,
+      c.city,c.housenumber,c.businessname,c.business,c.text,c.imagepath,
+      c.day,c.month,c.year,c.profession,c.familystatus,c.gender)));
   }
 
   public getUser(token : any): Observable<any>{
@@ -28,6 +31,10 @@ export class PersonService {
   }
 }
 export class Person{
-  constructor(public i, public isSeller, public vorhanden, public firstname, public lastname, public email, public street){
+  constructor(public i, public isSeller, public vorhanden, 
+    public firstname, public lastname, public email, public street,
+    public plz, public city, public housenumber, public businessname, public business,
+    public text, public imagepath, public day, public month, public year, public profession,
+    public familystatus, public gender){
   }
 }

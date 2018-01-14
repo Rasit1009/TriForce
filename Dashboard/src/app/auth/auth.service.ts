@@ -121,8 +121,56 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable();
   }
 
   addUser(person : Person){
-    person = new Person(this.person.i,this.person.isSeller,this.person.vorhanden,this.person.firstname,this.person.lastname,this.person.email,this.person.street);
+    person = 
+    new Person(this.person.i,this.person.isSeller,this.person.vorhanden,this.person.firstname,
+      this.person.lastname,this.person.email,this.person.street,this.person.plz,
+      this.person.city,this.person.housenumber,this.person.businessname,
+      this.person.business,this.person.text,this.person.imagepath,this.person.day,
+      this.person.month,this.person.year,this.person.profession,this.person.familystatus,this.person.gender);
     this.people.push(person);
+  }
+
+  refreshSubscription: any;
+
+  // ...
+  public scheduleRenewal() {
+     if(!this.isAuthenticated()) return;
+     this.unscheduleRenewal();
+
+     const expiresAt = JSON.parse(window.localStorage.getItem('expires_at'));
+
+     const source = Observable.of(expiresAt).flatMap(
+        expiresAt => {
+
+        const now = Date.now();
+
+        // Use the delay in a timer to
+        // run the refresh at the proper time
+        return Observable.timer(Math.max(1, expiresAt - now));
+    });
+
+    // Once the delay time from above is
+    // reached, get a new JWT and schedule
+    // additional refreshes
+    this.refreshSubscription = source.subscribe(() => {
+       this.auth0.renewToken();
+       this.scheduleRenewal();
+     });
+  }
+
+  public unscheduleRenewal() {
+     if(!this.refreshSubscription) return;
+     this.refreshSubscription.unsubscribe();
+  }
+
+  public renewToken() {
+    this.auth0.checkSession({}, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setSession(result);
+      }
+    });
   }
   
 }

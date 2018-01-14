@@ -13,7 +13,9 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService) {
+    this.auth.renewToken();  
+  }
 
   ngOnInit(): void {
     console.log("das kommt natürlich als erstes");   

@@ -141,7 +141,7 @@ namespace WebApplication4
                     Person.Day = person.Day;
                     Person.Month = person.Month;
                     Person.Year = person.Year;
-
+                    Person.Housenumber = person.Housenumber; 
                     Person.Profession = person.Profession;
                     Person.FamilyStatus = person.FamilyStatus;
                     Person.Gender = person.Gender;
@@ -161,9 +161,9 @@ namespace WebApplication4
             public string Firstname { get; set; }
             public string Lastname { get; set; }
             public string Street { get; set; }
-            public string Day { get; set; }
-            public string Month { get; set; }
-            public string Year { get; set; }
+            public int Day { get; set; }
+            public int Month { get; set; }
+            public int Year { get; set; }
             public string Profession { get; set; }
             public string FamilyStatus { get; set; }
             public string Business { get; set; }
