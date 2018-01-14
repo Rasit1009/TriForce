@@ -31,6 +31,7 @@ export class ScChoiceComponent implements OnInit {
      alert('Händler gewählt');
      this.person.isSeller = true;
      this.person.vorhanden = false;  
+     this.person.email = this.auth.email;
      this.auth.setNewUserData(this.person); 
      this.auth.setUser(this.person);
   }
@@ -38,6 +39,7 @@ export class ScChoiceComponent implements OnInit {
      alert('Käufer gewählt');
      this.person.isSeller = false; 
      this.person.vorhanden = false; 
+     this.person.email = this.auth.email;
      this.auth.setNewUserData(this.person); 
      this.auth.setUser(this.person);
      

@@ -28,6 +28,10 @@ export class PagesComponent implements OnInit{
   first = MENU_ITEMS_FIRST;
 
   constructor(public auth : AuthService){
+
+  }
+  
+  ngOnInit() {
     this.auth.isPersonSource.subscribe(res => {
       this.person = res;
       try {
@@ -38,10 +42,7 @@ export class PagesComponent implements OnInit{
         console.log("noch kein user da "); 
       }
     })
-  }
-
-  ngOnInit() {
-
+  
   }
 
   ngOnDestroy(){

@@ -24,7 +24,7 @@ person : Person;
 people : Person[] = [];
 isSeller : boolean; 
 isPersonSource = new BehaviorSubject<Person>(null);
-_currentUser : Observable<Person> = this.isPersonSource.asObservable(); 
+_currentUser : Observable<Person> = this.isPersonSource.asObservable().first(); 
 
 
   auth0 = new auth0.WebAuth({
@@ -47,7 +47,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable();
         this.router.navigate(['/']);
       } else if (err) {
         this.router.navigate(['/']);
-        alert(err);
+        console.log(err);
       }
     });
   }
@@ -67,6 +67,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable();
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
+    this.unscheduleRenewal(); 
     location.replace("http://localhost:4200");
   }
 
@@ -117,7 +118,11 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable();
   }
 
   getUser() {
-    return this._currentUser;
+    try {
+      return this._currentUser; 
+    } catch (error) {
+    }
+ 
   }
 
   addUser(person : Person){
@@ -153,7 +158,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable();
     // reached, get a new JWT and schedule
     // additional refreshes
     this.refreshSubscription = source.subscribe(() => {
-       this.auth0.renewToken();
+       this.renewToken();
        this.scheduleRenewal();
      });
   }
@@ -164,13 +169,19 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable();
   }
 
   public renewToken() {
-    this.auth0.checkSession({}, (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        this.setSession(result);
-      }
-    });
+    
+      this.auth0.checkSession({}, (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          try {
+            this.setSession(result);
+          } catch (error) {
+            console.log("ereignet sich hier");
+          }
+          
+        }
+      });
   }
   
 }

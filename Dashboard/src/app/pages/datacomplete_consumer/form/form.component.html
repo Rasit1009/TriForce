@@ -1,12 +1,14 @@
+<div *ngIf="person">
 <nb-card>
     <nb-card-header>Persönliche Daten</nb-card-header>
     <nb-card-body>
-
        <!-- Vor- und Nachname //ffried 06.12. -->
       <div class="row full-name-inputs">
         <div class="col-sm-6 input-group">
+         
           <input *ngIf="person.firstname" id="firstname" type="input" [value] ="person.firstname" class="form-control" placeholder="Vorname"/>
           <input *ngIf="!person.firstname" id="firstname" type="input" class="form-control" placeholder="Vorname"/>
+
         </div>
         
         <div class="col-sm-6 input-group">
@@ -128,3 +130,4 @@
       <button type="submit" class="btn btn-danger"(click)= "savePeople()" >Speichern</button>
     </nb-card-body>
   </nb-card>
+</div>

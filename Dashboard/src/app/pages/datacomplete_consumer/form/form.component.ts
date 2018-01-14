@@ -17,7 +17,14 @@ export class FormComponent implements OnInit {
   }
 
   public ngOnInit(): void{
-
+    this.auth.isPersonSource.subscribe(res => {
+      this.person = res;
+      try {
+        console.log(this.person.i);
+      } catch (error) {
+        console.log("noch kein user da "); 
+      }
+    })
   }
 
   public deleteClick(person: Person){
