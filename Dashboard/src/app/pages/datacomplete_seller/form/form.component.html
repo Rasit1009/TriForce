@@ -1,8 +1,7 @@
 <nb-card>
         <nb-card-header>Persönliche Daten</nb-card-header>
         <nb-card-body>
-
-           <!-- Name des Geschaefts //ffried 06.12. -->
+         <!-- Name des Geschaefts //ffried 06.12. -->
           <div class="input-group">
             <input type="text" placeholder="Unternehmen" class="form-control"/>
           </div>
@@ -22,9 +21,19 @@
             <input type="text" placeholder="Unternehmensadresse" class="form-control"/>
           </div>
           <div class="input-group">
-            <input type="text" placeholder="PLZ und Ort" class="form-control"/>
+            <input type="text" placeholder="Hausnummer" class="form-control"/>
           </div>
-          
+          <div class="input-group">
+            <input type="text" placeholder="PLZ" class="form-control"/>
+          </div>
+          <div class="row full-name-inputs">
+            <div class="col-sm-6 input-group">
+              <input type="text" placeholder="PLZ" class="form-control"/>
+            </div>
+            <div class="col-sm-6 input-group">
+              <input type="text" placeholder="Ort" class="form-control"/>
+            </div>
+          </div>
           <!-- Branche //ffried 06.12. -->
           <br>
           <small class="form-text">Wählen Sie Ihre Branche
@@ -57,8 +66,6 @@
       <nb-card>
           <nb-card-header>Individuelles Gutschein System</nb-card-header>
           <nb-card-body>
-
-
               <div class="row coupon-inputs">
                   <div class="col-sm-6 input-group">
                       <h4>Bei einem Umsatz pro Kunde von: </h4>
@@ -66,10 +73,7 @@
                   <div class="col-sm-6 input-group">
                     <input type="number" placeholder="€ Umsatz eingeben" class="form-control"/>
                   </div>
-
-                 
                 </div>
-
                 <div class="row coupon-inputs">
                     <div class="col-sm-6 input-group">
                         <h4>Stelle ich einen Gutschein aus in Höhe von: </h4>
@@ -78,10 +82,7 @@
                       <input type="number" placeholder="€ Gutschein eingeben" class="form-control"/>
                     </div>
                   </div>
-      
-
 <br><br>
-
               <button type="submit" class="btn btn-danger">Speichern</button><br>
           </nb-card-body>
         </nb-card>

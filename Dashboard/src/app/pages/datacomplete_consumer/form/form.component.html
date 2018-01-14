@@ -3,15 +3,13 @@
     <nb-card-body>
 
        <!-- Vor- und Nachname //ffried 06.12. -->
-       <small class="form-text">Name und Adresse</small>
-       <br>
       <div class="row full-name-inputs">
         <div class="col-sm-6 input-group">
-          <input id="firstname" type="input" [value] ="person.firstname" class="form-control"/>
+          <input id="firstname" type="input" [value] ="person.firstname" class="form-control" placeholder="Vorname"/>
         </div>
         
         <div class="col-sm-6 input-group">
-          <input id="lastname" type="input" [value] ="person.lastname" class="form-control"/>
+          <input id="lastname" type="input" [value] ="person.lastname" class="form-control" placeholder="Nachname"/>
         </div>
       </div>
 
@@ -33,16 +31,24 @@
        <button type="submit" class="btn btn-danger" (click) = "deleteClick(person)" >Löschen</button>
       </div>
       -->
-      
 
        <!-- Adresse //ffried 06.12. -->
-      <div class="input-group">
-        <input *ngFor = "let person of people" type="text" [value]="person.adresse" class="form-control"/>
+             <div class="row full-name-inputs">
+              <div class="col-md-8 input-group">
+                <input *ngFor = "let person of people" type="text" [value]="person.adresse" class="form-control" placeholder="Adresse"/>
+              </div>
+              <div class="col-md-4 input-group">
+                <input *ngFor = "let person of people" type="text" [value]="person.adresse" class="form-control" placeholder="Hausnummer"/>
+              </div>
+            </div>
+              <div class="row full-name-inputs">
+              <div class="col-md-6 input-group">
+                <input type="text" placeholder="Ort" class="form-control"/> 
+              </div>            
+      <div class="col-md-6 input-group">
+        <input type="text" placeholder="PLZ" class="form-control"/>
       </div>
-      <div class="input-group">
-        <input type="text" placeholder="PLZ und Ort" class="form-control"/>
-      </div>
-      
+    </div>
 
        <!-- Geburtsdatum //ffried 06.12. -->
        <small class="form-text">Geburtsdatum</small>
@@ -53,9 +59,7 @@
               <input type="number" placeholder="MM" class="form-control"/>
               <input type="number" placeholder="JJJJ" class="form-control"/>
             </div>
-          </div>
-      
-            
+          </div>            
         <!-- Beruf //ffried 06.12. -->
         <small class="form-text">Beruf
           </small>
