@@ -32,7 +32,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
     domain: 'lolocode.eu.auth0.com',
     responseType: 'token id_token',
     audience: 'https://lolocode.eu.auth0.com/userinfo',
-    redirectUri: 'http://loloco.azurewebsites.net/callback',     
+    redirectUri: 'http://loloco.azurewebsites.net/dash/callback',     
     scope: 'openid email'
   });
 
@@ -119,7 +119,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
 
   getUser() {
     try {
-      return this._currentUser; 
+      return this._currentUser;  
     } catch (error) {
     }
  
