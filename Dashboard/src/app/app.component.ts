@@ -32,8 +32,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     console.log("das kommt natürlich als erstes");  
     try {
-      this.auth.getUser();
-      this.auth.renewToken(); 
+     // this.auth.getUser();
+     // this.auth.renewToken(); 
     } catch (error) {
       console.log("error in token renewal");    
     }

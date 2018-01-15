@@ -103,7 +103,7 @@ namespace WebApplication4
         [HttpPost]
         public IActionResult Update([FromBody] Person person)
         {
-            var Person = _context.Users.SingleOrDefault(
+             var Person = _context.Users.SingleOrDefault(
                c => c.I == person.I);
             if (Person == null)
             {
