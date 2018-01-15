@@ -32,7 +32,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
     domain: 'lolocode.eu.auth0.com',
     responseType: 'token id_token',
     audience: 'https://lolocode.eu.auth0.com/userinfo',
-    redirectUri: 'http://localhost:8000/callback',     
+    redirectUri: 'http://loloco.azurewebsites.net/callback',     
     scope: 'openid email'
   });
 
@@ -68,7 +68,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
     localStorage.removeItem('expires_at');
     // Go back to the home route
     this.unscheduleRenewal(); 
-    location.replace("http://localhost:4200");
+    location.replace("http://loloco.azurewebsites.net");
   }
 
   public isAuthenticated(): boolean {
