@@ -143,7 +143,7 @@ namespace WebApplication4
                     Person.Year = person.Year;
                     Person.Housenumber = person.Housenumber; 
                     Person.Profession = person.Profession;
-                    Person.FamilyStatus = person.FamilyStatus;
+                    Person.Familystatus = person.Familystatus;
                     Person.Gender = person.Gender;
                 }
             }
@@ -165,7 +165,7 @@ namespace WebApplication4
             public int Month { get; set; }
             public int Year { get; set; }
             public string Profession { get; set; }
-            public string FamilyStatus { get; set; }
+            public string Familystatus { get; set; }
             public string Business { get; set; }
             public string Gender { get; set; }
             public string Text { get; set; }

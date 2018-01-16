@@ -16,7 +16,7 @@ namespace WebApplication4.Models
         public int Year { get; set; }
 
         public string Profession { get; set; }
-        public string FamilyStatus { get; set; }
+        public string Familystatus { get; set; }
         public string Gender { get; set; }
         public string Email { get; set; }
         public string Street { get; set; }

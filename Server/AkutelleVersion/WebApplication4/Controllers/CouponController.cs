@@ -14,6 +14,7 @@ namespace WebApplication4.Controllers
     public class CouponController : Controller
     {
         private readonly LolocoContext _context;
+        
 
         public CouponController(LolocoContext context)
         {
@@ -111,6 +112,39 @@ namespace WebApplication4.Controllers
 
         }
 
+
+        //Jana Teutenberg: Methode, die alle Händler des Users zurückgibt
+        [HttpGet("GetSeller", Name = "GetSeller")]
+        // GET: Coupon/GetSeller
+        public IActionResult GetSeller(string uid)
+        {
+
+
+            var Pos = new List<Coupon> { };
+            Pos = _context.Coupon.Where(u => u.Useri == uid).ToList();
+            Console.WriteLine(Pos);
+                
+
+            if (Pos == null)
+            {
+
+                return Ok(null);
+
+            }
+            else
+            {
+                
+
+                
+
+                return Ok(Pos);
+            }
+
+
+
+
+
+        }
         //Jana Teutenberg: Methode, die Punkte gutschreibt
         [HttpPost("Points", Name = "Points")]
         // Post: Coupon/Points
@@ -133,6 +167,9 @@ namespace WebApplication4.Controllers
 
 
                 };
+                //int i = 0;
+                //Sellerids[i] = Po.Selleri;
+                //i++;
 
                 _context.Coupon.Add(Po);
                 _context.SaveChanges();
