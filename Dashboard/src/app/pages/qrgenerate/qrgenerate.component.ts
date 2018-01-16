@@ -8,7 +8,7 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class QrgenerateComponent {
   elementType : 'url' | 'canvas' | 'img' = 'url';
-  value : string = this.auth.email;
+  value : string = this.auth.id;
   text1 : any; 
 
   constructor(public auth : AuthService){}

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './modal/modal.component';
+import { AuthService } from '../../auth/auth.service';
+import { Person, PersonService } from '../datacomplete_consumer/services/person.service';
+import { Points, PointService } from '../points/points.service';
 
 @Component({
   selector: 'app-seller-overview',
@@ -9,9 +12,22 @@ import { ModalComponent } from './modal/modal.component';
 })
 export class SellerOverviewComponent {
   activeValue: any;
+  seller : Points[] = [];
+  sellerList : Person[] = []; 
 
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, public auth : AuthService, public pointsService : PointService) { 
+
+    this.pointsService.getSeller(this.auth.id).subscribe(res=> {
+      console.log(res);
+    this.seller = res[0];
+    console.log(this.seller);
+    this.sellerList = this.auth.getSeller(this.seller);
+    console.log(this.sellerList);
+    });
+  
+  }
+
   
           //Hier sollen die Daten mittels SellerID aus der Datenbank ausgelesen werden, momentan Mockup
           getSellerName(sellerID : number){

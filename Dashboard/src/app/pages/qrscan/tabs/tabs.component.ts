@@ -6,7 +6,7 @@ import {NgxZxingModule} from 'ngx-zxing';
 import {FormsModule} from "@angular/forms";
 import { Alert } from 'selenium-webdriver';
 import { AuthService } from '../../../auth/auth.service';
-import { Punkte } from '../../points/points.service';
+import { Points, PointService } from '../../points/points.service';
 
 @Component({
   selector: 'ngx-tabs',
@@ -14,9 +14,9 @@ import { Punkte } from '../../points/points.service';
   templateUrl: './tabs.component.html',
 })
 export class TabsComponent {
-  
-constructor(public auth : AuthService, public point : Punkte){
+  public point : Points = new Points(null,null,null);
 
+constructor(public auth : AuthService, public pointService : PointService){
 }
 
   camStarted = false;
@@ -63,7 +63,7 @@ indb(){
     this.point.selleri = this.auth.person.i; 
     this.point.useri = this.qrResult; 
 
-    
+    this.pointService.sendPoints(this.point).subscribe(()=>alert("geht"));
 
     //this.consumerid = document.getElementById("consumerid");
     //this.consumer_id = this.qrResult;

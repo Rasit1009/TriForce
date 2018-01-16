@@ -32,11 +32,6 @@ export class FormComponent implements OnInit {
   }
 
   public savePeople(){
-    var e1 = <HTMLInputElement> document.getElementById('r1');
-    var e2 = <HTMLInputElement> document.getElementById('r2');
- 
-    var ischecked1 = e1.checked;
-    var ischecked2 = e2.checked;
 
     /*if(ischecked1){
       this.person.gender = "weiblich"
@@ -102,12 +97,12 @@ export class FormComponent implements OnInit {
     this.person.business ="";
   };
   
-  if(this.person.imagepath = (<HTMLInputElement>document.getElementById("imagepath")).value){
+/*  if(this.person.imagepath = (<HTMLInputElement>document.getElementById("imagepath")).value){
     this.person.imagepath = (<HTMLInputElement>document.getElementById("imagepath")).value
   }else{
       this.person.imagepath = "";
     };
-
+*/
    this.auth.setNewUserData(this.person);
   }
   starRate = 2;

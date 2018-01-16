@@ -45,7 +45,7 @@
           <small class="form-text">Wählen Sie Ihre Branche
             </small>
           <div class="form-group">
-              <select class="form-control">
+              <select id="business" class="form-control">
                   <option> </option>
                   <option>Gastronomie</option>
                   <option>Bar/Club</option>
@@ -61,7 +61,7 @@
           <small class="form-text">Beschreiben Sie Ihr Angebot in einem kurzen Text. Dieser Text wird für Ihre Kunden sichtbar sein.
             </small>
           <div class="input-group">
-            <textarea rows="5" placeholder="Werbetext" class="form-control"></textarea>
+            <textarea id="text" rows="5" placeholder="Werbetext" class="form-control"></textarea>
           </div>
         </nb-card-body>
       </nb-card>
@@ -89,6 +89,6 @@
                     </div>
                   </div>
 <br><br>
-              <button type="submit" class="btn btn-danger">Speichern</button><br>
+              <button (click)="savePeople()" type="submit" class="btn btn-danger">Speichern</button><br>
           </nb-card-body>
         </nb-card>

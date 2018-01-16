@@ -23,6 +23,7 @@ import { NgxZxingModule } from 'ngx-zxing';
 import { FormsModule } from "@angular/forms";
 import { PersonService, Person } from './pages/datacomplete_consumer/services/person.service';
 import { LoginComponent } from './pages/login/login.component';
+import { PointService } from './pages/points/points.service';
 
 
 
@@ -33,16 +34,14 @@ import { LoginComponent } from './pages/login/login.component';
     BrowserAnimationsModule,
     HttpModule,
     FormsModule,
-    
     AppRoutingModule,
-
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),
   ],
   bootstrap: [AppComponent],
   providers: [
-    { provide: APP_BASE_HREF, useValue: '/' },AuthService, PersonService
+    { provide: APP_BASE_HREF, useValue: '/' },AuthService, PersonService, PointService
   ],
 })
 export class AppModule {

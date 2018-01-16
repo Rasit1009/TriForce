@@ -9,6 +9,7 @@ import 'rxjs/add/observable/fromEvent';
 import { Person, PersonService } from '../pages/datacomplete_consumer/services/person.service';
 import { PagesComponent } from '../pages/pages.component';
 import {Observable, BehaviorSubject} from'rxjs/Rx';
+import { Points } from '../pages/points/points.service';
 
 @Injectable()
 export class AuthService {
@@ -22,6 +23,7 @@ email : string;
 token : any;
 person : Person;
 people : Person[] = [];
+sellerList : Person[] = [];
 isSeller : boolean; 
 isPersonSource = new BehaviorSubject<Person>(null);
 _currentUser : Observable<Person> = this.isPersonSource.asObservable().first(); 
@@ -119,11 +121,14 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
   }
 
   getUser() {
-    try {
       return this._currentUser;  
-    } catch (error) {
-    }
- 
+  }
+
+  getSeller(seller : Points[]){
+    for(var i = 0; i<seller.length; i++){
+     this.sellerList[i] = this.people.find(x=>x.i === seller[i].selleri);
+    };
+    return this.sellerList; 
   }
 
   addUser(person : Person){
