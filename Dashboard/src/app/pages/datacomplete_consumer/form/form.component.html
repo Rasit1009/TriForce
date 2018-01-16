@@ -1,19 +1,21 @@
 <div *ngIf="person">
-<nb-card>
+  <nb-card>
     <nb-card-header>Persönliche Daten</nb-card-header>
     <nb-card-body>
-       <!-- Vor- und Nachname //ffried 06.12. -->
+      <!-- Vor- und Nachname //ffried 06.12. -->
       <div class="row full-name-inputs">
         <div class="col-sm-6 input-group">
-         
-          <input *ngIf="person.firstname" id="firstname" type="input" [value] ="person.firstname" class="form-control" placeholder="Vorname"/>
-          <input *ngIf="!person.firstname" id="firstname" type="input" class="form-control" placeholder="Vorname"/>
+
+          <input *ngIf="person.firstname" id="firstname" type="input" [value]="person.firstname" class="form-control" placeholder="Vorname"
+          />
+          <input *ngIf="!person.firstname" id="firstname" type="input" class="form-control" placeholder="Vorname" />
 
         </div>
-        
+
         <div class="col-sm-6 input-group">
-          <input *ngIf="person.lastname" id="lastname" type="input" [value] ="person.lastname" class="form-control" placeholder="Nachname"/>
-          <input *ngIf="!person.lastname" id="lastname" type="input" class="form-control" placeholder="Nachname"/>     
+          <input *ngIf="person.lastname" id="lastname" type="input" [value]="person.lastname" class="form-control" placeholder="Nachname"
+          />
+          <input *ngIf="!person.lastname" id="lastname" type="input" class="form-control" placeholder="Nachname" />
         </div>
       </div>
 
@@ -36,74 +38,127 @@
       </div>
       -->
 
-       <!-- Adresse //ffried 06.12. -->
-             <div class="row full-name-inputs">
-              <div class="col-md-8 input-group">
-                <input id ="street" *ngIf="person.street" type="text" [value]="person.street" class="form-control" placeholder="Adresse"/>
-                <input *ngIf="!person.street" id="street" type="input" class="form-control" placeholder="Straße"/>
-              </div>
-              <div class="col-md-4 input-group">
-                <input id="housenumber" *ngIf = "person.housenumber" type="text" [value]="person.housenumber" class="form-control" placeholder="Hausnummer"/>
-                <input *ngIf="!person.housenumber" id="housenumber" type="input" class="form-control" placeholder="Hausnummer"/>     
-              </div>
-            </div>
-              <div class="row full-name-inputs">
-              <div class="col-md-6 input-group">
-                <input *ngIf="person.city" id="city" type="text" placeholder="Ort" [value]="person.city" class="form-control"/> 
-                <input *ngIf="!person.city" id="city" type="input" class="form-control" placeholder="Ort"/>
-              </div>            
-      <div class="col-md-6 input-group">
-        <input id="plz" *ngIf="person.plz" type="text" placeholder="PLZ" [value]="person.plz" class="form-control"/>
-        <input *ngIf="!person.plz" id="plz" type="input" class="form-control" placeholder="PLZ"/>
+      <!-- Adresse //ffried 06.12. -->
+      <div class="row full-name-inputs">
+        <div class="col-md-8 input-group">
+          <input id="street" *ngIf="person.street" type="text" [value]="person.street" class="form-control" placeholder="Adresse" />
+          <input *ngIf="!person.street" id="street" type="input" class="form-control" placeholder="Straße" />
+        </div>
+        <div class="col-md-4 input-group">
+          <input id="housenumber" *ngIf="person.housenumber" type="text" [value]="person.housenumber" class="form-control" placeholder="Hausnummer"
+          />
+          <input *ngIf="!person.housenumber" id="housenumber" type="input" class="form-control" placeholder="Hausnummer" />
+        </div>
       </div>
-    </div>
+      <div class="row full-name-inputs">
+        <div class="col-md-6 input-group">
+          <input *ngIf="person.city" id="city" type="text" placeholder="Ort" [value]="person.city" class="form-control" />
+          <input *ngIf="!person.city" id="city" type="input" class="form-control" placeholder="Ort" />
+        </div>
+        <div class="col-md-6 input-group">
+          <input id="plz" *ngIf="person.plz" type="text" placeholder="PLZ" [value]="person.plz" class="form-control" />
+          <input *ngIf="!person.plz" id="plz" type="input" class="form-control" placeholder="PLZ" />
+        </div>
+      </div>
 
-       <!-- Geburtsdatum //ffried 06.12. -->
-       <small class="form-text">Geburtsdatum</small>
-       <br>
-          <div class="input-group">
-              <div class="input-group">
-              <input *ngIf="person.day" id="day" type="number" placeholder="TT" [value]="person.day" class="form-control"/>
-              <input *ngIf="!person.day" id="day" type="number" placeholder="TT" class="form-control"/>
-              <input *ngIf="person.month" id="month" type="number" placeholder="MM" [value]="person.month" class="form-control"/>
-              <input *ngIf="!person.month" id="month" type="number" placeholder="MM" class="form-control"/>
-              <input *ngIf="person.year" id="year" type="number" placeholder="JJJJ" [value]="person.year" class="form-control"/>
-              <input *ngIf="!person.year" id="year" type="number" placeholder="JJJJ" class="form-control"/>
-            </div>
-          </div>            
-        <!-- Beruf //ffried 06.12. -->
-        <small class="form-text">Beruf
-          </small>
-        <br>
-        <div class="form-group">
-            <select id="profession" class="form-control">
-                <option ng-selected="person.profession='Schüler'">Schüler</option>
-                <option ng-selected="person.profession=Student">Student</option>
-                <option ng-selected="person.profession='Angestellt'">Angestellt</option>
-                <option ng-selected="person.profession='Selbstständig'">Selbstständig</option>
-                <option ng-selected="person.profession='Hausfrau/-mann'">Hausfrau/-mann</option>
-                <option ng-selected="person.profession='Pensioniert'">Pensioniert</option>
-                <option ng-selected="person.profession='Sonstiges'">Sonstiges</option>
-                <option ng-selected="person.profession='keine Angabe'">keine Angabe</option>
-            </select>
-          </div>
+      <!-- Geburtsdatum //ffried 06.12. -->
+      <small class="form-text">Geburtsdatum</small>
+      <br>
+      <div class="input-group">
+        <div class="input-group">
+          <input *ngIf="person.day" id="day" type="number" placeholder="TT" [value]="person.day" class="form-control" />
+          <input *ngIf="!person.day" id="day" type="number" placeholder="TT" class="form-control" />
+          <input *ngIf="person.month" id="month" type="number" placeholder="MM" [value]="person.month" class="form-control" />
+          <input *ngIf="!person.month" id="month" type="number" placeholder="MM" class="form-control" />
+          <input *ngIf="person.year" id="year" type="number" placeholder="JJJJ" [value]="person.year" class="form-control" />
+          <input *ngIf="!person.year" id="year" type="number" placeholder="JJJJ" class="form-control" />
+        </div>
+      </div>
+      <!-- Beruf //ffried 06.12. -->
+      <small class="form-text">Beruf
+      </small>
+      <br>
+      <div class="form-group">
+        <select id="profession" class="form-control">
+          <!-- Wenn Datenbankeintarg leer, also keinem der Eintraege entsprechend, dann: "Bitte wählen.." -->
+          <option *ngIf="person.profession != 'Schüler' && person.profession != 'Student' && person.profession != 'Angestellt' && person.profession != 'Selbstständig' && person.profession != 'Hausfrau/-mann' && person.profession != 'Pensioniert' && person.profession != 'keine Angabe'"
+            selected>Bitte wählen...</option>
+          <!-- Wenn Datenbankeintrag == Schüler, Schüler als selected markieren. Wenn nicht dann SChüler nur in die Dropdownliste übernehmen. -->
+          <option *ngIf="person.profession == 'Schüler'" selected>Schüler</option>
+          <option *ngIf="person.profession != 'Schüler'">Schüler</option>
 
-        
-          <!-- Familienstatus //ffried 06.12. -->
-        <small class="form-text">Familienstatus
-          </small>
-        <br>
-        <div class="form-group">
-            <select id="familystatus" class="form-control">
-                <option>Single</option>
-                <option>In einer Beziehung</option>
-                <option>Verheiratet</option>
-                <option>Sonstiges</option>
-                <option>keine Angabe</option>
-            </select>
-          </div>
+          <option *ngIf="person.profession == 'Student'" selected>Student</option>
+          <option *ngIf="person.profession != 'Student'">Student</option>
 
-          <!-- Geschlecht //ffried 06.12. -->
+          <option *ngIf="person.profession == 'Angestellt'" selected>Angestellt</option>
+          <option *ngIf="person.profession != 'Angestellt'">Angestellt</option>
+
+          <option *ngIf="person.profession == 'Selbstständig'" selected>Selbstständig</option>
+          <option *ngIf="person.profession != 'Selbstständig'">Selbstständig</option>
+
+          <option *ngIf="person.profession == 'Hausfrau/-mann'" selected>Hausfrau/-mann</option>
+          <option *ngIf="person.profession != 'Hausfrau/-mann'">Hausfrau/-mann</option>
+
+          <option *ngIf="person.profession == 'Pensioniert'" selected>Pensioniert</option>
+          <option *ngIf="person.profession != 'Pensioniert'">Pensioniert</option>
+
+          <option *ngIf="person.profession == 'keine Angabe'" selected>keine Angabe</option>
+          <option *ngIf="person.profession != 'keine Angabe'">keine Angabe</option>
+        </select>
+      </div>
+
+
+      <!-- Familienstatus //ffried 06.12. -->
+      <small class="form-text">Familienstatus
+      </small>
+      <br>
+      <div class="form-group">
+        <select id="familystatus" class="form-control">
+          <option *ngIf="person.familystatus != 'Single' && person.familystatus != 'In einer Beziehung' && person.familystatus != 'Verheiratet' && person.familystatus != 'Sonstiges' && person.familystatus != 'keine Angabe'"
+            selected>Bitte wählen...</option>
+
+          <option *ngIf="person.familystatus == 'Single'" selected>Single</option>
+          <option *ngIf="person.familystatus != 'Single'">Single</option>
+
+          <option *ngIf="person.familystatus == 'In einer Beziehung'" selected>In einer Beziehung</option>
+          <option *ngIf="person.familystatus != 'In einer Beziehung'">In einer Beziehung</option>
+
+          <option *ngIf="person.familystatus == 'Verheiratet'" selected>Verheiratet</option>
+          <option *ngIf="person.familystatus != 'Verheiratet'">Verheiratet</option>
+
+          <option *ngIf="person.familystatus == 'Sonstiges'" selected>Sonstiges</option>
+          <option *ngIf="person.familystatus != 'Sonstiges'">Sonstiges</option>
+
+          <option *ngIf="person.familystatus == 'keine Angabe'" selected>keine Angabe</option>
+          <option *ngIf="person.familystatus != 'keine Angabe'">keine Angabe</option>
+        </select>
+      </div>
+
+      <!-- Geschlecht //ffried 06.12. -->
+      <small class="form-text">Geschlecht
+      </small>
+      <br>
+      <div class="form-group">
+        <select id="gender" class="form-control">
+          <option *ngIf="person.gender != 'weiblich' && person.gender != 'männlich' && person.gender != 'Sonstige' && person.gender != 'keine Angabe'"
+            selected>Bitte wählen...</option>
+
+          <option *ngIf="person.gender == 'weiblich'" selected>weiblich</option>
+          <option *ngIf="person.gender != 'weiblich'">weiblich</option>
+
+          <option *ngIf="person.gender == 'männlich'" selected>männlich</option>
+          <option *ngIf="person.gender != 'männlich'">männlich</option>
+
+          <option *ngIf="person.gender == 'Sonstige'" selected>Sonstige</option>
+          <option *ngIf="person.gender != 'Sonstige'">Sonstige</option>
+
+          <option *ngIf="person.gender == 'keine Angabe'" selected>keine Angabe</option>
+          <option *ngIf="person.gender != 'keine Angabe'">keine Angabe</option>
+
+        </select>
+      </div>
+
+      <!-- Geschlecht //ffried 06.12. 
        <small class="form-text">Geschlecht</small>
        <br>
           <div class="input-group">
@@ -112,22 +167,24 @@
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">weiblich</span>
               </label>
+
               <label class="custom-control custom-radio">
                 <input ng-checked="" id="r2" type="radio" class="custom-control-input" name="customRadio" checked>
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">männlich</span>
               </label>
+
               <label class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input" name="customRadio">
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">keine Angabe</span>
               </label>
-            </div>
+            </div> -->
 
 
       <!-- Speichern-Button //ffried 06.12. -->
       <br>
-      <button type="submit" class="btn btn-danger"(click)= "savePeople()" >Speichern</button>
+      <button type="submit" class="btn btn-danger" (click)="savePeople()">Speichern</button>
     </nb-card-body>
   </nb-card>
 </div>
