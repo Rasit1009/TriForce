@@ -114,14 +114,17 @@ namespace WebApplication4.Controllers
 
 
         //Jana Teutenberg: Methode, die alle Händler des Users zurückgibt
-        [HttpGet("GetSeller", Name = "GetSeller")]
-        // GET: Coupon/GetSeller
+        [HttpGet("GetSeller/{uid}", Name = "GetSeller")]
+        // GET: Coupon/GetSeller/5
         public IActionResult GetSeller(string uid)
         {
 
 
-            var Pos = new List<Coupon> { };
+            var Pos = new List<Coupon> ();
             Pos = _context.Coupon.Where(u => u.Useri == uid).ToList();
+           
+
+
             Console.WriteLine(Pos);
                 
 

@@ -1,5 +1,15 @@
 <div *ngIf=person>
-  <h5 class="grid-h">Profil verwalten</h5>
+
+  <div *ngIf="completion_value == 100">
+      <h5 class="grid-h">Profil verwalten</h5>
+  </div>
+
+  <div *ngIf="completion_value != 100">
+      <h5 class="grid-h">Bitte ergänzen Sie Ihre Nutzerdaten:</h5>
+  </div>
+
+  <br>
+
   <div class="row show-grid">
     <div class="col-12 col-sm-6 col-md-8">
       <div>

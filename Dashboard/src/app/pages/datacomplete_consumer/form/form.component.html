@@ -50,14 +50,16 @@
           <input *ngIf="!person.housenumber" id="housenumber" type="input" class="form-control" placeholder="Hausnummer" />
         </div>
       </div>
+
       <div class="row full-name-inputs">
-        <div class="col-md-6 input-group">
-          <input *ngIf="person.city" id="city" type="text" placeholder="Ort" [value]="person.city" class="form-control" />
-          <input *ngIf="!person.city" id="city" type="input" class="form-control" placeholder="Ort" />
-        </div>
         <div class="col-md-6 input-group">
           <input id="plz" *ngIf="person.plz" type="text" placeholder="PLZ" [value]="person.plz" class="form-control" />
           <input *ngIf="!person.plz" id="plz" type="input" class="form-control" placeholder="PLZ" />
+        </div>
+
+        <div class="col-md-6 input-group">
+          <input *ngIf="person.city" id="city" type="text" placeholder="Ort" [value]="person.city" class="form-control" />
+          <input *ngIf="!person.city" id="city" type="input" class="form-control" placeholder="Ort" />
         </div>
       </div>
 
