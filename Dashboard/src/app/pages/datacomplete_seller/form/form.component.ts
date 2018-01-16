@@ -47,16 +47,66 @@ export class FormComponent implements OnInit {
     }
     */
 
-  this.person.firstname = (<HTMLInputElement>document.getElementById("firstname")).value;
-  this.person.lastname = (<HTMLInputElement>document.getElementById("lastname")).value;
-  this.person.businessname = (<HTMLInputElement>document.getElementById("businessname")).value; 
-  this.person.street = (<HTMLInputElement>document.getElementById("street")).value;
-  this.person.housenumber = (<HTMLInputElement>document.getElementById("housenumber")).value;
-  this.person.city =  (<HTMLInputElement>document.getElementById("city")).value;
-  this.person.plz =  (<HTMLInputElement>document.getElementById("plz")).value;
-  this.person.text = (<HTMLInputElement>document.getElementById("text")).value;
-  this.person.business = (<HTMLInputElement>document.getElementById("business")).value;
-  this.person.imagepath = (<HTMLInputElement>document.getElementById("imagepath")).value;
+  if(this.person.firstname = (<HTMLInputElement>document.getElementById("firstname")).value){
+    this.person.firstname = (<HTMLInputElement>document.getElementById("firstname")).value
+  } else{
+    this.person.firstname ="";
+  };
+  
+  if((<HTMLInputElement>document.getElementById("lastname")).value){
+    this.person.lastname = (<HTMLInputElement>document.getElementById("lastname")).value;
+  }else{
+    this.person.lastname = "";
+  };
+  
+  if(this.person.businessname = (<HTMLInputElement>document.getElementById("businessname")).value){
+    this.person.businessname = (<HTMLInputElement>document.getElementById("businessname")).value
+  }else{
+    this.person.businessname ="";
+  };
+    ; 
+  
+  if((<HTMLInputElement>document.getElementById("street")).value){
+      this.person.street = (<HTMLInputElement>document.getElementById("street")).value;
+  }else{
+      this.person.street = "";
+  };
+  
+  if((<HTMLInputElement>document.getElementById("housenumber")).value){
+    this.person.housenumber = (<HTMLInputElement>document.getElementById("housenumber")).value;
+  }else{
+    this.person.housenumber = "";
+  };
+
+  if((<HTMLInputElement>document.getElementById("city")).value){
+    this.person.city = (<HTMLInputElement>document.getElementById("city")).value;
+  }else{
+    this.person.city = "";
+  };
+
+  if((<HTMLInputElement>document.getElementById("plz")).value){
+    this.person.plz = (<HTMLInputElement>document.getElementById("plz")).value;
+  }else{
+    this.person.plz = 0;
+  };
+
+  if(this.person.text = (<HTMLInputElement>document.getElementById("text")).value){
+    this.person.text = (<HTMLInputElement>document.getElementById("text")).value
+  }else{
+    this.person.text ="";
+  };
+  
+  if(this.person.business = (<HTMLInputElement>document.getElementById("business")).value){
+    this.person.business = (<HTMLInputElement>document.getElementById("business")).value
+  }else{
+    this.person.business ="";
+  };
+  
+  if(this.person.imagepath = (<HTMLInputElement>document.getElementById("imagepath")).value){
+    this.person.imagepath = (<HTMLInputElement>document.getElementById("imagepath")).value
+  }else{
+      this.person.imagepath = "";
+    };
 
    this.auth.setNewUserData(this.person);
   }
