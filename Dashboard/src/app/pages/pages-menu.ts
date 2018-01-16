@@ -2,59 +2,58 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'Kunden-Dashboard',
+    title: 'Mein Dashboard',
     icon: 'fa fa-home',
     link: '/pages/dashboard1',
     //home: true,
   },
-  
   {
-    title: 'Konsumentendaten verwalten',
-    icon: 'fa fa-user-o',
-    link: '/pages/datacomplete_consumer',
-   // home: true,
-  },
-  {
-    title: 'LoloCODE Generieren',
+    title: 'Mein LoloCODE',
     icon: 'fa fa-qrcode',
     link: '/pages/qrgenerate',
-   // home: true,
-  },
-  {
-    title: 'Händler in deiner Nähe',
-    icon: 'fa fa-map-marker',
-    link: '/pages/sellermap',
+    // home: true,
   },
   {
     title: 'Meine Händler',
     icon: 'fa fa-shopping-bag ',
     link: '/pages/seller-overview',
   },
+  {
+    title: 'Händler in der Nähe',
+    icon: 'fa fa-map-marker',
+    link: '/pages/sellermap',
+  },
+  {
+    title: 'Daten verwalten',
+    icon: 'fa fa-user-o',
+    link: '/pages/datacomplete_consumer',
+    // home: true,
+  },
 
 ];
 
-export const MENU_ITEMS_SELLER : NbMenuItem[] = [
+export const MENU_ITEMS_SELLER: NbMenuItem[] = [
   {
-    title: 'Händler-Dashboard',
+    title: 'Mein Dashboard',
     icon: 'fa fa-home',
     link: '/pages/dashboard2',
     //home: true,
   },
-{
-  title: 'Händlerdaten verwalten',
-  icon: 'fa fa-user-o',
-  link: '/pages/datacomplete_seller',
- // home: true,
-},
-{
-  title: 'LoloCODE Scannen',
-  icon: 'fa fa-qrcode',
-  link: '/pages/qrscan',
- // home: true,
-},
+  {
+    title: 'LoloCODE Scannen',
+    icon: 'fa fa-qrcode',
+    link: '/pages/qrscan',
+    // home: true,
+  },
+  {
+    title: 'Daten verwalten',
+    icon: 'fa fa-user-o',
+    link: '/pages/datacomplete_seller',
+    // home: true,
+  },
 ];
 
-export const MENU_ITEMS_FIRST : NbMenuItem[] =[
+export const MENU_ITEMS_FIRST: NbMenuItem[] = [
   {
     title: 'Bitte Wählen Sie',
     icon: 'fa fa-question-circle-o',

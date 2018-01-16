@@ -155,7 +155,7 @@ export class SolarComponent implements AfterViewInit, OnDestroy {
                 hoverAnimation: false,
               },
               {
-                value: 28,
+                value: 100,
                 name: ' ',
                 tooltip: {
                   show: false,
