@@ -3,38 +3,44 @@
         <nb-card-body>
          <!-- Name des Geschaefts //ffried 06.12. -->
           <div class="input-group">
-            <input type="text" placeholder="Unternehmen" class="form-control"/>
+              <input id="businessname" *ngIf="person.businessname" type="text" placeholder="Unternehmen" [value]="person.businessname" class="form-control"/>
+              <input *ngIf="!person.businessname" id="businessname" type="input" class="form-control" placeholder="Unternehmen"/>
           </div>
 
            <!-- Vor- und Nachname //ffried 06.12. -->
           <div class="row full-name-inputs">
             <div class="col-sm-6 input-group">
-              <input type="text" placeholder="Vorname" class="form-control"/>
+                <input *ngIf="person.firstname" id="firstname" type="input" [value] ="person.firstname" class="form-control" placeholder="Vorname"/>
+                <input *ngIf="!person.firstname" id="firstname" type="input" class="form-control" placeholder="Vorname"/>
             </div>
             <div class="col-sm-6 input-group">
-              <input type="text" placeholder="Nachname" class="form-control"/>
+                <input *ngIf="person.lastname" id="lastname" type="input" [value] ="person.lastname" class="form-control" placeholder="Nachname"/>
+                <input *ngIf="!person.lastname" id="lastname" type="input" class="form-control" placeholder="Nachname"/> 
             </div>
           </div>
 
+          
            <!-- Adresse //ffried 06.12. -->
           <div class="input-group">
-            <input type="text" placeholder="Unternehmensadresse" class="form-control"/>
+              <input id ="street" *ngIf="person.street" type="text" [value]="person.street" class="form-control" placeholder="Unternehmensadresse"/>
+              <input *ngIf="!person.street" id="street" type="input" class="form-control" placeholder="Unternehmensadresse"/>
           </div>
           <div class="input-group">
-            <input type="text" placeholder="Hausnummer" class="form-control"/>
-          </div>
-          <div class="input-group">
-            <input type="text" placeholder="PLZ" class="form-control"/>
+              <input id="housenumber" *ngIf = "person.housenumber" type="text" [value]="person.housenumber" class="form-control" placeholder="Hausnummer"/>
+              <input *ngIf="!person.housenumber" id="housenumber" type="input" class="form-control" placeholder="Hausnummer"/>
           </div>
           <div class="row full-name-inputs">
             <div class="col-sm-6 input-group">
-              <input type="text" placeholder="PLZ" class="form-control"/>
+                <input id="plz" *ngIf="person.plz" type="text" placeholder="PLZ" [value]="person.plz" class="form-control"/>
+                <input *ngIf="!person.plz" id="plz" type="input" class="form-control" placeholder="PLZ"/>
             </div>
             <div class="col-sm-6 input-group">
-              <input type="text" placeholder="Ort" class="form-control"/>
+                <input *ngIf="person.city" id="city" type="text" placeholder="Ort" [value]="person.city" class="form-control"/> 
+                <input *ngIf="!person.city" id="city" type="input" class="form-control" placeholder="Ort"/>
             </div>
           </div>
-          <!-- Branche //ffried 06.12. -->
+          <!-- Branche //ffried 06.12. Datenbankintegration fehlt ab hier --> 
+        
           <br>
           <small class="form-text">Wählen Sie Ihre Branche
             </small>
