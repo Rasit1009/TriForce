@@ -122,6 +122,9 @@ namespace WebApplication4.Controllers
 
             var Pos = new List<Coupon> ();
             Pos = _context.Coupon.Where(u => u.Useri == uid).ToList();
+           
+
+
             Console.WriteLine(Pos);
                 
 
