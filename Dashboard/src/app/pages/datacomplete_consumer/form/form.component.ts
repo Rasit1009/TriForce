@@ -31,6 +31,8 @@ export class FormComponent implements OnInit {
   }
 
   public savePeople(){
+
+    /*
     var e1 = <HTMLInputElement> document.getElementById('r1');
     var e2 = <HTMLInputElement> document.getElementById('r2');
  
@@ -44,6 +46,7 @@ export class FormComponent implements OnInit {
     } else{
       this.person.gender="keine Angabe"
     }
+*/
 
   //this.person.i = this.auth.person.i; 
   if((<HTMLInputElement>document.getElementById("firstname")).value){
@@ -114,8 +117,25 @@ export class FormComponent implements OnInit {
   this.person.month =  (<HTMLInputElement>document.getElementById("month")).value;
   this.person.year =  (<HTMLInputElement>document.getElementById("year")).value;
   */
-  this.person.familystatus =(<HTMLInputElement>document.getElementById("familystatus")).value;
-  this.person.profession =(<HTMLInputElement>document.getElementById("profession")).value;
+
+  if((<HTMLInputElement>document.getElementById("profession")).value){
+    this.person.profession = (<HTMLInputElement>document.getElementById("profession")).value;
+  }else{
+    this.person.profession = "";
+  }
+
+  if((<HTMLInputElement>document.getElementById("familystatus")).value){
+    this.person.familystatus = (<HTMLInputElement>document.getElementById("familystatus")).value;
+  }else{
+    this.person.familystatus = "";
+  }
+
+  if((<HTMLInputElement>document.getElementById("gender")).value){
+    this.person.gender = (<HTMLInputElement>document.getElementById("gender")).value;
+  }else{
+    this.person.gender = "";
+  }
+
   console.log(this.person);
    this.auth.setNewUserData(this.person);
   }
