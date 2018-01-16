@@ -1,12 +1,19 @@
 <div *ngIf=person>
-<h5 class="grid-h">Profil verwalten</h5>
-<div class="row show-grid">
-  <div class="col-12 col-sm-6 col-md-8">
-    <div><ngx-form></ngx-form></div>
-  </div>
-  <div class="col-6 col-md-4">
-    <div><ngx-solar id="completion_value" [chartValue]="completion_value"></ngx-solar></div>
-  </div>
-</div>
-</div>
+  <h5 class="grid-h">Profil verwalten</h5>
+  <div class="row show-grid">
+    <div class="col-12 col-sm-6 col-md-8">
+      <div>
+        <ngx-form></ngx-form>
+      </div>
+    </div>
 
+   <!-- Wird nur angezeigt wenn nicht 100% -->
+      <div class="col-6 col-md-4" *ngIf="completion_value != 100">
+        <div>
+          <ngx-solar id="completion_value" [chartValue]="completion_value"></ngx-solar>
+        </div>
+      </div>
+    
+
+  </div>
+</div>
