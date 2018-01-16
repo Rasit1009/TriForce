@@ -5,7 +5,7 @@
     <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
     <div class="logo" (click)="goToHome()"><img src="assets/images/LOLOCO_Letter.png"><div> </div><span> </span></div>
   </div>
-  <ngx-theme-switcher></ngx-theme-switcher>
+  <!--<ngx-theme-switcher></ngx-theme-switcher>-->
 </div>
 
 <nb-actions
@@ -20,12 +20,14 @@
    <nb-action class="control-item" disabled icon="nb-notifications"></nb-action> -->
   <nb-action></nb-action>
   
-  <nb-action style="cursor: pointer;" (click)="logOut()"> Abmelden
-  <nb-action class="control-item" title="Abmelden" icon="nb-power" ></nb-action>
-</nb-action>
+ <nb-action title="Abmelden" icon="nb-power" (click)="logOut()"></nb-action>
 
+
+<!-- Suchfunktion
   <nb-action class="control-item">
     <nb-search type="rotate-layout" (click)="startSearch()"></nb-search>
   </nb-action>
-<nb-action> Herzlich Willkommen &nbsp; <a target="" > </a><nb-user name="{{UserName}}"></nb-user>  </nb-action>
+-->
+
+<nb-action class="welcome2"> <span class="welcome" >Herzlich Willkommen &nbsp; </span> <a target="" > </a> <nb-user name="{{UserName}}"></nb-user>  </nb-action>
 </nb-actions>

@@ -113,3 +113,14 @@
   }
 }
 
+.welcome {
+  @media (max-width: 1400px){
+  visibility: hidden !important;
+}
+}
+
+.welcome2 {
+  @media (max-width: 1100px){
+  visibility: hidden !important;
+}
+}
