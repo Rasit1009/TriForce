@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Person } from '../datacomplete_consumer/services/person.service';
 
 @Component({
   selector: 'ngx-datacomplete',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './datacomplete_seller.component.html',
 })
 export class Datacomplete_SellerComponent {
+
 }
+

@@ -32,7 +32,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
     domain: 'lolocode.eu.auth0.com',
     responseType: 'token id_token',
     audience: 'https://lolocode.eu.auth0.com/userinfo',
-    redirectUri: 'http://lolocodash.azurewebsites.net/callback',     
+    redirectUri: 'http://localhost:8000/callback',     
     scope: 'openid email'
   });
 

@@ -10,7 +10,7 @@ export class PersonService {
 
   public getPeople(): Observable<any>{
      return this.http
-    .get('http://lolocoback.azurewebsites.net/api/users/')
+    .get('http://localhost:49873/api/users/')
     .map(r =>r.json())
     .map(e =>e.map 
       (c=> new Person(c.i,c.isSeller,c.vorhanden, c.firstname, c.lastname, c.email, c.street,c.plz,
@@ -20,14 +20,14 @@ export class PersonService {
 
   public getUser(token : any): Observable<any>{
     return this.http
-    .get('http://lolocoback.azurewebsites.net/api/users/get/' + token)
+    .get('http://localhost:49873/api/users/get/' + token)
     .map(r => r.json()); 
   }
   
 
   public savePeople(people: Person): Observable<any>{
     return this.http
-    .post('http://lolocoback.azurewebsites.net/api/users', people);
+    .post('http://localhost:49873/api/users', people);
   }
 }
 export class Person{

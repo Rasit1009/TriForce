@@ -14,7 +14,7 @@ export class NavComponent implements AfterViewInit {
 
   
   changeDomain(){
-    location.replace("http://lolocodash.azurewebsites.net/login");
+    location.replace("http://localhost:8000/login");
   }
 
   ngAfterViewInit() {
