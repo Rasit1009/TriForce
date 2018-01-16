@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     try {
      // this.auth.getUser();
      // this.auth.renewToken(); 
-    } catch (error) {
+    } catch (error)  {
       console.log("error in token renewal");    
     }
   }
