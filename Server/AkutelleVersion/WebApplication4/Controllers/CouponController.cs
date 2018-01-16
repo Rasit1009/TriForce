@@ -142,6 +142,9 @@ namespace WebApplication4.Controllers
             else
             {
                 Po.Points = Po.Points + pu.Points;
+                _context.SaveChanges();
+
+                _context.Update(Po);
                 return Ok();
             }
 
