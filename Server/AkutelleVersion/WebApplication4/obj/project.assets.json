@@ -13124,7 +13124,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Rasit Güven\\.nuget\\packages\\": {},
+    "C:\\Users\\Jana T\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13133,18 +13134,20 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rasit Güven\\Dokumente\\Workspace\\TriForce\\Server\\AkutelleVersion\\WebApplication4\\WebApplication4.csproj",
+      "projectUniqueName": "C:\\Users\\Jana T\\Documents\\Semester 5\\LCD\\Triforce2\\TriForce\\Server\\AkutelleVersion\\WebApplication4\\WebApplication4.csproj",
       "projectName": "WebApplication4",
-      "projectPath": "C:\\Users\\Rasit Güven\\Dokumente\\Workspace\\TriForce\\Server\\AkutelleVersion\\WebApplication4\\WebApplication4.csproj",
-      "packagesPath": "C:\\Users\\Rasit Güven\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rasit Güven\\Dokumente\\Workspace\\TriForce\\Server\\AkutelleVersion\\WebApplication4\\obj\\",
+      "projectPath": "C:\\Users\\Jana T\\Documents\\Semester 5\\LCD\\Triforce2\\TriForce\\Server\\AkutelleVersion\\WebApplication4\\WebApplication4.csproj",
+      "packagesPath": "C:\\Users\\Jana T\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jana T\\Documents\\Semester 5\\LCD\\Triforce2\\TriForce\\Server\\AkutelleVersion\\WebApplication4\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Rasit Güven\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Jana T\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -13167,26 +13170,26 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Tools": {
+          "Microsoft.AspNetCore.All": {
             "target": "Package",
-            "version": "2.0.1"
-          },
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-            "target": "Package",
-            "version": "2.0.1"
-          },
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "2.0",
-            "autoReferenced": true
+            "version": "[2.0.3, )"
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
-            "version": "2.0.1"
+            "version": "[2.0.1, )"
           },
-          "Microsoft.AspNetCore.All": {
+          "Microsoft.EntityFrameworkCore.Tools": {
             "target": "Package",
-            "version": "2.0.3"
+            "version": "[2.0.1, )"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "[2.0.0, )",
+            "autoReferenced": true
+          },
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+            "target": "Package",
+            "version": "[2.0.1, )"
           }
         },
         "imports": [

@@ -45,17 +45,78 @@ export class FormComponent implements OnInit {
       this.person.gender="keine Angabe"
     }
 
-  this.person.firstname = (<HTMLInputElement>document.getElementById("firstname")).value;
-  this.person.lastname = (<HTMLInputElement>document.getElementById("lastname")).value; 
-  this.person.street = (<HTMLInputElement>document.getElementById("street")).value;
-  this.person.housenumber = (<HTMLInputElement>document.getElementById("housenumber")).value;
+  //this.person.i = this.auth.person.i; 
+  if((<HTMLInputElement>document.getElementById("firstname")).value){
+    this.person.firstname = (<HTMLInputElement>document.getElementById("firstname")).value;
+  } else {
+    this.person.firstname = "";
+  }
+ 
+  if((<HTMLInputElement>document.getElementById("lastname")).value){
+    this.person.lastname = (<HTMLInputElement>document.getElementById("lastname")).value;
+  }else{
+    this.person.lastname = "";
+  }
+
+  if((<HTMLInputElement>document.getElementById("street")).value){
+    this.person.street = (<HTMLInputElement>document.getElementById("street")).value;
+  }else{
+    this.person.street = "";
+  }
+
+
+  if((<HTMLInputElement>document.getElementById("housenumber")).value){
+    this.person.housenumber = (<HTMLInputElement>document.getElementById("housenumber")).value;
+  }else{
+    this.person.housenumber = "";
+  }
+
+
+  if((<HTMLInputElement>document.getElementById("city")).value){
+    this.person.city = (<HTMLInputElement>document.getElementById("city")).value;
+  }else{
+    this.person.city = "";
+  }
+
+
+  if((<HTMLInputElement>document.getElementById("plz")).value){
+    this.person.plz = (<HTMLInputElement>document.getElementById("plz")).value;
+  }else{
+    this.person.plz = 0;
+  }
+
+  if((<HTMLInputElement>document.getElementById("day")).value){
+    this.person.day = (<HTMLInputElement>document.getElementById("day")).value;
+  }else{
+    this.person.day = 0;
+  }
+
+  if((<HTMLInputElement>document.getElementById("month")).value){
+    this.person.month = (<HTMLInputElement>document.getElementById("month")).value;
+  }else{
+    this.person.month = 0;
+  }
+  if((<HTMLInputElement>document.getElementById("year")).value){
+    this.person.year = (<HTMLInputElement>document.getElementById("year")).value;
+  }else{
+    this.person.year = 0;
+  }
+
+
+
+
+ // this.person.lastname = (<HTMLInputElement>document.getElementById("lastname")).value; 
+ // this.person.street = (<HTMLInputElement>document.getElementById("street")).value;
+/*  this.person.housenumber = (<HTMLInputElement>document.getElementById("housenumber")).value;
   this.person.city =  (<HTMLInputElement>document.getElementById("city")).value;
   this.person.plz =  (<HTMLInputElement>document.getElementById("plz")).value;
   this.person.day =  (<HTMLInputElement>document.getElementById("day")).value;
   this.person.month =  (<HTMLInputElement>document.getElementById("month")).value;
   this.person.year =  (<HTMLInputElement>document.getElementById("year")).value;
+  */
   this.person.familystatus =(<HTMLInputElement>document.getElementById("familystatus")).value;
   this.person.profession =(<HTMLInputElement>document.getElementById("profession")).value;
+  console.log(this.person);
    this.auth.setNewUserData(this.person);
   }
   starRate = 2;
