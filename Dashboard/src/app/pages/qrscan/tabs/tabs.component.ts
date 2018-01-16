@@ -5,6 +5,8 @@ import {CommonModule} from '@angular/common';
 import {NgxZxingModule} from 'ngx-zxing';
 import {FormsModule} from "@angular/forms";
 import { Alert } from 'selenium-webdriver';
+import { AuthService } from '../../../auth/auth.service';
+import { Punkte } from '../../points/points.service';
 
 @Component({
   selector: 'ngx-tabs',
@@ -13,6 +15,10 @@ import { Alert } from 'selenium-webdriver';
 })
 export class TabsComponent {
   
+constructor(public auth : AuthService, public point : Punkte){
+
+}
+
   camStarted = false;
   selectedDevice = undefined;
   qrResult = "";
@@ -29,6 +35,7 @@ export class TabsComponent {
   
   handleQrCodeResult(result: string) {
     console.log("Result", result);
+    //QR CODE RESULT
     this.qrResult = result;
   }
   
@@ -52,8 +59,15 @@ indb(){
     this.amount = document.getElementById("amount");
     this.amount_id = this.amount.value;
 
-    this.consumerid = document.getElementById("consumerid");
-    this.consumer_id = this.consumerid.value;
+    this.point.points = this.amount_id;
+    this.point.selleri = this.auth.person.i; 
+    this.point.useri = this.qrResult; 
+
+    
+
+    //this.consumerid = document.getElementById("consumerid");
+    //this.consumer_id = this.qrResult;
+    //this.sellerid = this.auth.person.i;
 
 
   alert('Für den Herr/Frau Schneider wurde der Betrag ' + this.amount_id + '€ gutgeschrieben.');

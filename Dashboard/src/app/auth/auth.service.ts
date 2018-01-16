@@ -67,8 +67,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    this.unscheduleRenewal(); 
-    location.replace("http://loloco.azurewebsites.net");
+    location.replace("http://localhost:4200");
   }
 
   public isAuthenticated(): boolean {
@@ -111,8 +110,10 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
 
   setNewUserData(person : Person){
     this.person = person; 
+    console.log(this.person);
     var index = this.people.findIndex(x => x.i === this.person.i)
     this.people[index] = this.person; 
+    console.log(this.people[index]);
     this.personService.savePeople(this.person).subscribe(() =>{ alert("daten gespeichert");
     });
   }
@@ -179,7 +180,6 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
           } catch (error) {
             console.log("ereignet sich hier");
           }
-          
         }
       });
   }
