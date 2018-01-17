@@ -124,11 +124,13 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
       return this._currentUser;  
   }
 
-  getSeller(seller : Points[]){
+  getSeller(seller : any[]){
+    var index; 
     for(var i = 0; i<seller.length; i++){
-     this.sellerList[i] = this.people.find(x=>x.i === seller[i].selleri);
+    index = this.people.findIndex(x=>x.i === seller[i].selleri);
+    seller[i].selleri = this.people[index].i; 
     };
-    return this.sellerList; 
+    return seller; 
   }
 
   addUser(person : Person){
