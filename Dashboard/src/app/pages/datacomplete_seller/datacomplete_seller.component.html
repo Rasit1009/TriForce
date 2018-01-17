@@ -9,3 +9,141 @@
 </div>
 
 
+
+
+
+<nb-card>
+  <nb-card-header>Logo Upload</nb-card-header>
+  <nb-card-body>
+    <div class="container">
+      <div class="row">
+    
+          <div class="col-md-3">
+    
+              <h3>Bild auswählen</h3>
+    
+              <div ng2FileDrop
+                   [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
+                   (fileOver)="fileOverAnother($event)"
+                   [uploader]="uploader"
+                   class="well my-drop-zone">
+                  Logo hinein ziehen!
+              </div>
+    
+              <br><br>
+              Oder manuell hochladen:
+              <input type="file" ng2FileSelect [uploader]="uploader" />
+          </div>
+    
+          <div class="col-md-9" style="margin-bottom: 40px">
+    
+              <h3>Upload Warteschlange</h3>
+              <p>Bild: (wenn 1 dann korrekt) {{ uploader?.queue?.length }}</p>
+    
+              <table class="table">
+                  <thead>
+                  <tr>
+                      <th width="50%">Name</th>
+                      <th>Größe</th>
+                      <th>Fortschritt</th>
+                      <th>Status</th>
+                      <th>Aktion</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let item of uploader.queue">
+                      <td><strong>{{ item?.file?.name }}</strong></td>
+                      <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                      <td *ngIf="uploader.isHTML5">
+                          <div class="progress" style="margin-bottom: 0;">
+                              <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                          </div>
+                      </td>
+                      <td class="text-center">
+                          <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                          <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                          <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                      </td>
+                      <td nowrap>
+                          <button type="button" class="btn btn-success btn-xs"
+                                  (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                              <span class="glyphicon glyphicon-upload"></span> Hochladen
+                          </button>
+                          <button type="button" class="btn btn-warning btn-xs"
+                                  (click)="item.cancel()" [disabled]="!item.isUploading">
+                              <span class="glyphicon glyphicon-ban-circle"></span> Abbrechen
+                          </button>
+                          <button type="button" class="btn btn-danger btn-xs"
+                                  (click)="item.remove()">
+                              <span class="glyphicon glyphicon-trash"></span> Entfernen
+                          </button>
+                      </td>
+                  </tr>
+                  </tbody>
+              </table>
+    
+              <div>
+                  <div>
+                      Progressbar:
+                      <div class="progress" style="">
+                          <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                      </div>
+                  </div>
+          <!--        <button type="button" class="btn btn-success btn-s"
+                          (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                      <span class="glyphicon glyphicon-upload"></span> Upload all
+                  </button>
+                  <button type="button" class="btn btn-warning btn-s"
+                          (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                      <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                  </button>
+                  <button type="button" class="btn btn-danger btn-s"
+                          (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                      <span class="glyphicon glyphicon-trash"></span> Remove all
+                  </button> -->
+              </div>
+    
+          </div>
+    
+      </div>
+    
+    </div>
+
+</nb-card-body>
+</nb-card>
+
+
+    
+
+    
+    <nb-card>
+        <nb-card-header>Logo Link eintragen</nb-card-header>
+        <nb-card-body>
+            <div class="row coupon-inputs">
+                <div class="col-sm-6 input-group">
+                    <h4>Bild Web-URL eintragen:</h4>
+                </div>
+
+                <div class="col-sm-6 input-group">
+                    <h4>Folgendes Bild wurde ausgewählt</h4>
+                </div>
+                
+
+              </div>
+              <div class="row coupon-inputs">
+                <div class="col-sm-6 input-group">
+                    <input type="text1" id="linkbox" placeholder="http://www.deinewebsite/deinlogo.jpg" class="form-control"/>
+                  </div>
+                  
+                  <div class="col-sm-6 input-group">
+                    <img src="{{bildurl}}" alt="Es konnte kein Bild unter diesem Link gefunden werden." height="100" width="100">
+                  </div>
+                </div>
+<br>
+            <button (click)="saveUrl()" type="submit" class="btn btn-danger">Hochladen</button><br>
+        </nb-card-body>
+      </nb-card>
+    
+
+
+
