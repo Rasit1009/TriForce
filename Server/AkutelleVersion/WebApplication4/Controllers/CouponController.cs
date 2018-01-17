@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication4.Daten;
 using WebApplication4.Models;
+using WebApplication4.Controllers;
+using static WebApplication4.Controllers.CouponSystemController;
 
 namespace WebApplication4.Controllers
 {
@@ -15,6 +17,7 @@ namespace WebApplication4.Controllers
     {
         private readonly LolocoContext _context;
         
+
 
         public CouponController(LolocoContext context)
         {
@@ -94,6 +97,29 @@ namespace WebApplication4.Controllers
 
 
         }
+
+        //Jana Teutenberg: Methode, die für eine Liste von Händlern, die System Infos zurück gibt
+        [HttpPost("GetSystem", Name = "GetSystem")]
+        // GET: Coupon/GetSystem
+        public IActionResult GetSystem([FromBody] Coupon[] Liste )
+        {
+            var Li = new List<CouponSystem>();
+            for (int i = 0; i< Liste.Length; i++){
+
+                Li[i] = _context.CouponSystem.SingleOrDefault(
+                c => c.Selleri == Liste[i].Selleri);
+
+            }
+            if (Li == null)
+            {
+                return Ok(null);
+            }
+            else
+            {
+                return Ok(Li);
+            }
+           
+        }
         //Jana Teutenberg: Methode, die Punkte gutschreibt
         [HttpPost("Points", Name = "Points")]
         // Post: Coupon/Points
@@ -128,6 +154,38 @@ namespace WebApplication4.Controllers
                 _context.SaveChanges();
 
                 _context.Update(Po);
+                return Ok();
+            }
+
+
+
+
+
+        }
+
+        //Jana Teutenberg: Methode, die Punkte löscht, sobald Gutschein eingelöst wird
+        [HttpPost("Delete", Name = "Delete")]
+        // Post: Coupon/Delete
+        public IActionResult Delte([FromBody] Punkte pu)
+        {
+
+
+
+            var Po = _context.Coupon.SingleOrDefault(
+                c => c.Selleri == pu.Selleri && c.Useri == pu.Useri);
+            if (Po == null)
+            {
+
+              
+                return Ok(null);
+
+            }
+            else
+            {
+                _context.Remove(Po);
+                _context.SaveChanges();
+
+                
                 return Ok();
             }
 

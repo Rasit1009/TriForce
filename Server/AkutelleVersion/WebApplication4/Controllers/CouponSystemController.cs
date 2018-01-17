@@ -82,6 +82,9 @@ namespace WebApplication4.Controllers
                 return Ok(Gutscheinart);
             }
         }
+
+
+        
         public class Gutscheinart
         {
             
