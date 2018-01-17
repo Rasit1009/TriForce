@@ -1,0 +1,27 @@
+<nb-card>
+    <nb-card-header>Logo Link eintragen</nb-card-header>
+    <nb-card-body>
+        <div class="row coupon-inputs">
+            <div class="col-sm-6 input-group">
+                <h4>Bild Web-URL eintragen:</h4>
+            </div>
+
+            <div class="col-sm-6 input-group">
+                <h4>Folgendes Bild wurde ausgewählt</h4>
+            </div>
+            
+
+          </div>
+          <div class="row coupon-inputs">
+            <div class="col-sm-6 input-group">
+                <input type="text1" id="linkbox" placeholder="http://www.deinewebsite/deinlogo.jpg" class="form-control"/>
+              </div>
+              
+              <div class="col-sm-6 input-group">
+                <img src="{{bildurl}}" alt="Es konnte kein Bild unter diesem Link gefunden werden." height="100" width="100">
+              </div>
+            </div>
+<br>
+        <button (click)="saveUrl()" type="submit" class="btn btn-danger">Hochladen</button><br>
+    </nb-card-body>
+  </nb-card>

@@ -11,6 +11,7 @@ import { SellermapComponent } from './sellermap/sellermap.component';
 import { SellerOverviewComponent } from './seller-overview/seller-overview.component';
 import { ScChoiceComponent } from './sc-choice/sc-choice.component';
 import { Dashboard2Component } from './dashboard2/dashboard2.component';
+import { CouponsettingComponent } from './couponsetting/couponsetting.component';
 
 const routes: Routes = [{
   path: '',
@@ -42,6 +43,9 @@ const routes: Routes = [{
   },{
     path: 'sc-choice',
     component: ScChoiceComponent,
+  },{
+    path: 'couponsetting',
+    component: CouponsettingComponent,
   }, {
     path: 'ui-features',
     loadChildren: './ui-features/ui-features.module#UiFeaturesModule',

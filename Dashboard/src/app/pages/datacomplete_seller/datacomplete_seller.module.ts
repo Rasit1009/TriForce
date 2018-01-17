@@ -9,6 +9,7 @@ import { Datacomplete_SellerComponent } from './datacomplete_seller.component';
 import { SolarComponent } from './solar/solar.component';
 import { FormComponent } from './form/form.component';
 import { ChangeEmail } from './changeemail/changeemail.component';
+import { LogoUrlComponent } from './logo-url/logo-url.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { ChangeEmail } from './changeemail/changeemail.component';
     SolarComponent,
     FormComponent,
     ChangeEmail,
+    LogoUrlComponent,
   ]
 })
 export class Datacomplete_SellerModule { }
