@@ -42,7 +42,7 @@ export class FormComponent implements OnInit {
     }
     */
 
-  if(this.person.firstname = (<HTMLInputElement>document.getElementById("firstname")).value){
+  if((<HTMLInputElement>document.getElementById("firstname")).value){
     this.person.firstname = (<HTMLInputElement>document.getElementById("firstname")).value
   } else{
     this.person.firstname ="";
@@ -54,7 +54,7 @@ export class FormComponent implements OnInit {
     this.person.lastname = "";
   };
   
-  if(this.person.businessname = (<HTMLInputElement>document.getElementById("businessname")).value){
+  if((<HTMLInputElement>document.getElementById("businessname")).value){
     this.person.businessname = (<HTMLInputElement>document.getElementById("businessname")).value
   }else{
     this.person.businessname ="";
@@ -85,13 +85,13 @@ export class FormComponent implements OnInit {
     this.person.plz = 0;
   };
 
-  if(this.person.text = (<HTMLInputElement>document.getElementById("text")).value){
+  if((<HTMLInputElement>document.getElementById("text")).value){
     this.person.text = (<HTMLInputElement>document.getElementById("text")).value
   }else{
     this.person.text ="";
   };
   
-  if(this.person.business = (<HTMLInputElement>document.getElementById("business")).value && (<HTMLInputElement>document.getElementById("business")).value != "Branche..."){
+  if((<HTMLInputElement>document.getElementById("business")).value && (<HTMLInputElement>document.getElementById("business")).value != "Branche..."){
     this.person.business = (<HTMLInputElement>document.getElementById("business")).value
   }else{
     this.person.business ="";
