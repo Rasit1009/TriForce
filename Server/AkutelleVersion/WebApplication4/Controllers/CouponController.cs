@@ -28,72 +28,11 @@ namespace WebApplication4.Controllers
             return Ok(_context.Coupon.ToList());
         }
 
-        //Jana Teutenberg: Methode, die den Gutscheinstring, Consumerid und Sellerid bekommt
-        [HttpPost]
-        public IActionResult Update([FromBody] Gutschein gutschein)
-        {
-            var Gutschein = _context.Coupon.SingleOrDefault(c => c.Couponid == gutschein.Couponid);
-
-            if (Gutschein == null)
-            {
-                Gutschein = new Coupon()
-                {
-                    Couponid = gutschein.Couponid,
-                    Selleri = gutschein.Selleri,
-                    Useri = gutschein.Useri,
-                };
-
-                _context.Coupon.Add(Gutschein);
-                _context.SaveChanges();
-
-                return Ok();
-
-            }
-
-            else
-            {
-                return BadRequest();
-            }
-
-
-           
-
-            
-        }
-
-
-
-        //Jana Teutenberg: Methode, die überpürft, ob der Gutschein vorhanden ist
-        [HttpGet("GetCopoun/{id}", Name = "GetCoupon")]
-        // GET: Coupon/GetCopoun/5
-        public IActionResult GetCoupon(string id)
-        {
-            
-
-
-            var Gutschein = _context.Coupon.SingleOrDefault(
-                c => c.Couponid== id);
-            if (Gutschein == null)
-            {
-               
-                return Ok(false);
-
-            }
-            else
-            {
-                
-                return Ok(true);
-            }
-
-
-
-           
-
-        }
+      
 
         //Jana Teutenberg: Methode, die aktuellen Punktestand zurück gibt
         [HttpGet("GetPoints/{uid}/{sid}", Name = "GetPoints")]
-        // GET: Coupon/GetPoints9/5/5
+        // GET: Coupon/GetPoints/5/5
         public IActionResult GetPoints(string uid, string sid)
         {
 
@@ -177,10 +116,7 @@ namespace WebApplication4.Controllers
 
 
                 };
-                //int i = 0;
-                //Sellerids[i] = Po.Selleri;
-                //i++;
-
+               
                 _context.Coupon.Add(Po);
                 _context.SaveChanges();
                 return Ok();
@@ -208,13 +144,6 @@ namespace WebApplication4.Controllers
             public string Useri { get; set; }
 
         }
-        public class Gutschein
-        {
-            public string Couponid { get; set; }
-            public string Selleri { get; set; }
-            public string Useri { get; set; }
-            
-
-        }
+        
     }
 }

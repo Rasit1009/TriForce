@@ -10,16 +10,16 @@ namespace WebApplication4.Daten
         {
         }
         
-
-
+        
 
         public DbSet<Consumer> Consumers { get; set; }
 
         public DbSet<User> Users{ get; set; }
 
         public DbSet<Coupon> Coupon { get; set; }
+        public DbSet<Credit> Credit { get; set; }
         public DbSet<Action> Action { get; set; }
-
+        public DbSet<CouponSystem> CouponSystem { get; set; }
 
 
 
@@ -31,6 +31,8 @@ namespace WebApplication4.Daten
             modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Coupon>().ToTable("Coupon");
             modelBuilder.Entity<Action>().ToTable("Action");
+            modelBuilder.Entity<CouponSystem>().ToTable("CouponSystem");
+            modelBuilder.Entity<Credit>().ToTable("Credit");
 
 
 
