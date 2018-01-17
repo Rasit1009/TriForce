@@ -14,6 +14,7 @@ import { SellerOverviewModule } from './seller-overview/seller-overview.module';
 import { ScChoiceModule } from './sc-choice/sc-choice.module';
 import { TestComponent } from './test/test.component';
 import { Dashboard2Module } from './dashboard2/dashboard2.module';
+import { CouponsettingModule } from './couponsetting/couponsetting.module';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -33,6 +34,7 @@ const PAGES_COMPONENTS = [
     SellermapModule,
     SellerOverviewModule,
     ScChoiceModule,
+    CouponsettingModule
   ],
   declarations: [
     ...PAGES_COMPONENTS,
