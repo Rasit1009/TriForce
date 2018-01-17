@@ -3,90 +3,90 @@
       <nb-card-header>Deine Händler</nb-card-header>
       <nb-card-body>
     <ul id="rig">
-      <li>
-          <a class="rig-cell" (click)="showLargeModal(1)">
-              <img class="rig-img" src="../../../assets/images/seller/1.png">
+      <li *ngFor="let seller of seller" (click)="showLargeModal(seller)">
+          <a class="rig-cell">
+             <img class="rig-img" src="../../../assets/images/seller/1.png">
               <span class="rig-overlay"></span>
-              <span class="rig-text"><!--Text here--></span>
+              <span class="rig-text"></span>
           </a>
       </li>
-      <li>
+    <!--  <li>
           <a class="rig-cell" (click)="showLargeModal(2)">
               <img class="rig-img" src="../../../assets/images/seller/2.png">
               <span class="rig-overlay"></span>
-              <span class="rig-text"><!--Text here--></span>
+              <span class="rig-text"><!--Text here</span>
           </a>
       </li>
       <li>
           <a class="rig-cell" (click)="showLargeModal(3)">
               <img class="rig-img" src="../../../assets/images/seller/3.png">
               <span class="rig-overlay"></span>
-              <span class="rig-text"><!--Text here--></span>
+              <span class="rig-text"><!--Text here</span>
           </a>
       </li>
       <li>
           <a class="rig-cell" (click)="showLargeModal(4)">
               <img class="rig-img" src="../../../assets/images/seller/4.png">
               <span class="rig-overlay"></span>
-              <span class="rig-text"><!--Text here--></span>
+              <span class="rig-text"><!--Text here</span>
           </a>
       </li>
       <li>
           <a class="rig-cell" (click)="showLargeModal(5)">
               <img class="rig-img" src="../../../assets/images/seller/5.png">
               <span class="rig-overlay"></span>
-              <span class="rig-text"><!--Text here--></span>
+              <span class="rig-text"><!--Text here</span>
           </a>
       </li>
       <li>
           <a class="rig-cell" (click)="showLargeModal(6)">
               <img class="rig-img" src="../../../assets/images/seller/6.png">
               <span class="rig-overlay"></span>
-              <span class="rig-text"><!--Text here--></span>
+              <span class="rig-text"><!--Text here</span>
           </a>
       </li>
       <li>
           <a class="rig-cell" (click)="showLargeModal(7)">
               <img class="rig-img" src="../../../assets/images/seller/7.png">
               <span class="rig-overlay"></span>
-              <span class="rig-text"><!--Text here--></span>
+              <span class="rig-text"><!--Text here</span>
           </a>
       </li>
       <li>
           <a class="rig-cell" (click)="showLargeModal(8)">
               <img class="rig-img" src="../../../assets/images/seller/8.png">
               <span class="rig-overlay"></span>
-              <span class="rig-text"><!--Text here--></span>
+              <span class="rig-text"><!--Text here</span>
           </a>
       </li>
       <li>
           <a class="rig-cell" (click)="showLargeModal(9)">
               <img class="rig-img" src="../../../assets/images/seller/9.png">
               <span class="rig-overlay"></span>
-              <span class="rig-text"><!--Text here--></span>
+              <span class="rig-text"><!--Text here</span>
           </a>
       </li>
       <li>
           <a class="rig-cell" (click)="showLargeModal(10)">
               <img class="rig-img" src="../../../assets/images/seller/10.png">
               <span class="rig-overlay"></span>
-              <span class="rig-text"><!--Text here--></span>
+              <span class="rig-text"><!--Text here-</span>
           </a>
       </li>
       <li>
           <a class="rig-cell" (click)="showLargeModal(11)">
               <img class="rig-img" src="../../../assets/images/seller/11.png">
               <span class="rig-overlay"></span>
-              <span class="rig-text"><!--Text here--></span>
+              <span class="rig-text"><!--Text here</span>
           </a>
       </li>
       <li>
           <a class="rig-cell" (click)="showLargeModal(12)">
               <img class="rig-img" src="../../../assets/images/seller/12.png">
               <span class="rig-overlay"></span>
-              <span class="rig-text"><!--Text here--></span>
+              <span class="rig-text"><!--Text here</span>
           </a>
-      </li>
+      </li> -->
   </ul>
 
 </nb-card-body>

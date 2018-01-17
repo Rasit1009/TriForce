@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication4.Daten;
 using WebApplication4.Models;
+using WebApplication4.Controllers;
+using static WebApplication4.Controllers.CouponSystemController;
 
 namespace WebApplication4.Controllers
 {
@@ -15,6 +17,7 @@ namespace WebApplication4.Controllers
     {
         private readonly LolocoContext _context;
         
+
 
         public CouponController(LolocoContext context)
         {
@@ -28,72 +31,11 @@ namespace WebApplication4.Controllers
             return Ok(_context.Coupon.ToList());
         }
 
-        //Jana Teutenberg: Methode, die den Gutscheinstring, Consumerid und Sellerid bekommt
-        [HttpPost]
-        public IActionResult Update([FromBody] Gutschein gutschein)
-        {
-            var Gutschein = _context.Coupon.SingleOrDefault(c => c.Couponid == gutschein.Couponid);
-
-            if (Gutschein == null)
-            {
-                Gutschein = new Coupon()
-                {
-                    Couponid = gutschein.Couponid,
-                    Selleri = gutschein.Selleri,
-                    Useri = gutschein.Useri,
-                };
-
-                _context.Coupon.Add(Gutschein);
-                _context.SaveChanges();
-
-                return Ok();
-
-            }
-
-            else
-            {
-                return BadRequest();
-            }
-
-
-           
-
-            
-        }
-
-
-
-        //Jana Teutenberg: Methode, die überpürft, ob der Gutschein vorhanden ist
-        [HttpGet("GetCopoun/{id}", Name = "GetCoupon")]
-        // GET: Coupon/GetCopoun/5
-        public IActionResult GetCoupon(string id)
-        {
-            
-
-
-            var Gutschein = _context.Coupon.SingleOrDefault(
-                c => c.Couponid== id);
-            if (Gutschein == null)
-            {
-               
-                return Ok(false);
-
-            }
-            else
-            {
-                
-                return Ok(true);
-            }
-
-
-
-           
-
-        }
+      
 
         //Jana Teutenberg: Methode, die aktuellen Punktestand zurück gibt
         [HttpGet("GetPoints/{uid}/{sid}", Name = "GetPoints")]
-        // GET: Coupon/GetPoints9/5/5
+        // GET: Coupon/GetPoints/5/5
         public IActionResult GetPoints(string uid, string sid)
         {
 
@@ -155,6 +97,29 @@ namespace WebApplication4.Controllers
 
 
         }
+
+        //Jana Teutenberg: Methode, die für eine Liste von Händlern, die System Infos zurück gibt
+        [HttpPost("GetSystem", Name = "GetSystem")]
+        // GET: Coupon/GetSystem
+        public IActionResult GetSystem([FromBody] Coupon[] Liste )
+        {
+            var Li = new List<CouponSystem>();
+            for (int i = 0; i< Liste.Length; i++){
+
+                Li[i] = _context.CouponSystem.SingleOrDefault(
+                c => c.Selleri == Liste[i].Selleri);
+
+            }
+            if (Li == null)
+            {
+                return Ok(null);
+            }
+            else
+            {
+                return Ok(Li);
+            }
+           
+        }
         //Jana Teutenberg: Methode, die Punkte gutschreibt
         [HttpPost("Points", Name = "Points")]
         // Post: Coupon/Points
@@ -177,10 +142,7 @@ namespace WebApplication4.Controllers
 
 
                 };
-                //int i = 0;
-                //Sellerids[i] = Po.Selleri;
-                //i++;
-
+               
                 _context.Coupon.Add(Po);
                 _context.SaveChanges();
                 return Ok();
@@ -201,6 +163,38 @@ namespace WebApplication4.Controllers
 
         }
 
+        //Jana Teutenberg: Methode, die Punkte löscht, sobald Gutschein eingelöst wird
+        [HttpPost("Delete", Name = "Delete")]
+        // Post: Coupon/Delete
+        public IActionResult Delte([FromBody] Punkte pu)
+        {
+
+
+
+            var Po = _context.Coupon.SingleOrDefault(
+                c => c.Selleri == pu.Selleri && c.Useri == pu.Useri);
+            if (Po == null)
+            {
+
+              
+                return Ok(null);
+
+            }
+            else
+            {
+                _context.Remove(Po);
+                _context.SaveChanges();
+
+                
+                return Ok();
+            }
+
+
+
+
+
+        }
+
         public class Punkte
         {
             public int Points { get; set; }
@@ -208,13 +202,6 @@ namespace WebApplication4.Controllers
             public string Useri { get; set; }
 
         }
-        public class Gutschein
-        {
-            public string Couponid { get; set; }
-            public string Selleri { get; set; }
-            public string Useri { get; set; }
-            
-
-        }
+        
     }
 }
