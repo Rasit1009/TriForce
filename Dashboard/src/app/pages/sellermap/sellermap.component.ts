@@ -124,12 +124,6 @@ setData(){
   }
   
   markers: marker[] = [
-    {
-      lat: this.positionlat,
-      lng: this.positionlng,
-		  label: '',
-      draggable: false
-	  },
 	  {
 		  lat: 50.997292,
 		  lng: 6.905840,
