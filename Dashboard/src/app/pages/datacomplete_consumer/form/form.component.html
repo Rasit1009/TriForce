@@ -41,7 +41,7 @@
       <!-- Adresse //ffried 06.12. -->
       <div class="row full-name-inputs">
         <div class="col-md-8 input-group">
-          <input id="street" *ngIf="person.street" type="text" [value]="person.street" class="form-control" placeholder="Adresse" />
+          <input id="street" *ngIf="person.street" type="text" [value]="person.street" class="form-control" placeholder="Straße" />
           <input *ngIf="!person.street" id="street" type="input" class="form-control" placeholder="Straße" />
         </div>
         <div class="col-md-4 input-group">
@@ -82,30 +82,30 @@
       <br>
       <div class="form-group">
         <select id="profession" class="form-control">
-          <!-- Wenn Datenbankeintarg leer, also keinem der Eintraege entsprechend, dann: "Bitte wählen.." -->
-          <option *ngIf="person.profession != 'Schüler' && person.profession != 'Student' && person.profession != 'Angestellt' && person.profession != 'Selbstständig' && person.profession != 'Hausfrau/-mann' && person.profession != 'Pensioniert' && person.profession != 'keine Angabe'"
-            selected>Bitte wählen...</option>
-          <!-- Wenn Datenbankeintrag == Schüler, Schüler als selected markieren. Wenn nicht dann SChüler nur in die Dropdownliste übernehmen. -->
-          <option *ngIf="person.profession == 'Schüler'" selected>Schüler</option>
-          <option *ngIf="person.profession != 'Schüler'">Schüler</option>
+            <!-- Wenn Datenbankeintarg leer, also keinem der Eintraege entsprechend, dann: "Bitte wählen.." -->
+            <option *ngIf="person.profession != 'Schüler' && person.profession != 'Student' && person.profession != 'Angestellt' && person.profession != 'Selbstständig' && person.profession != 'Hausfrau/-mann' && person.profession != 'Pensioniert' && person.profession != 'keine Angabe'"
+              selected>Bitte wählen...</option>
+            <!-- Wenn Datenbankeintrag == Schüler, Schüler als selected markieren. Wenn nicht dann SChüler nur in die Dropdownliste übernehmen. -->
+            <option *ngIf="person.profession == 'Schüler'" selected>Schüler</option>
+            <option *ngIf="person.profession != 'Schüler'">Schüler</option>
 
-          <option *ngIf="person.profession == 'Student'" selected>Student</option>
-          <option *ngIf="person.profession != 'Student'">Student</option>
+            <option *ngIf="person.profession == 'Student'" selected>Student</option>
+            <option *ngIf="person.profession != 'Student'">Student</option>
 
-          <option *ngIf="person.profession == 'Angestellt'" selected>Angestellt</option>
-          <option *ngIf="person.profession != 'Angestellt'">Angestellt</option>
+            <option *ngIf="person.profession == 'Angestellt'" selected>Angestellt</option>
+            <option *ngIf="person.profession != 'Angestellt'">Angestellt</option>
 
-          <option *ngIf="person.profession == 'Selbstständig'" selected>Selbstständig</option>
-          <option *ngIf="person.profession != 'Selbstständig'">Selbstständig</option>
+            <option *ngIf="person.profession == 'Selbstständig'" selected>Selbstständig</option>
+            <option *ngIf="person.profession != 'Selbstständig'">Selbstständig</option>
 
-          <option *ngIf="person.profession == 'Hausfrau/-mann'" selected>Hausfrau/-mann</option>
-          <option *ngIf="person.profession != 'Hausfrau/-mann'">Hausfrau/-mann</option>
+            <option *ngIf="person.profession == 'Hausfrau/-mann'" selected>Hausfrau/-mann</option>
+            <option *ngIf="person.profession != 'Hausfrau/-mann'">Hausfrau/-mann</option>
 
-          <option *ngIf="person.profession == 'Pensioniert'" selected>Pensioniert</option>
-          <option *ngIf="person.profession != 'Pensioniert'">Pensioniert</option>
+            <option *ngIf="person.profession == 'Pensioniert'" selected>Pensioniert</option>
+            <option *ngIf="person.profession != 'Pensioniert'">Pensioniert</option>
 
-          <option *ngIf="person.profession == 'keine Angabe'" selected>keine Angabe</option>
-          <option *ngIf="person.profession != 'keine Angabe'">keine Angabe</option>
+            <option *ngIf="person.profession == 'keine Angabe'" selected>keine Angabe</option>
+            <option *ngIf="person.profession != 'keine Angabe'">keine Angabe</option>
         </select>
       </div>
 

@@ -1,94 +1,163 @@
 <nb-card>
-        <nb-card-header>Persönliche Daten</nb-card-header>
-        <nb-card-body>
-         <!-- Name des Geschaefts //ffried 06.12. -->
-          <div class="input-group">
-              <input id="businessname" *ngIf="person.businessname" type="text" placeholder="Unternehmen" [value]="person.businessname" class="form-control"/>
-              <input *ngIf="!person.businessname" id="businessname" type="input" class="form-control" placeholder="Unternehmen"/>
-          </div>
+    <nb-card-header>Persönliche Daten</nb-card-header>
+    <nb-card-body>
+        <!-- Name des Geschaefts //ffried 06.12. -->
+        <div class="input-group">
+            <input id="businessname" *ngIf="person.businessname" type="text" placeholder="Name des Geschäfts / Unternehmen" [value]="person.businessname"
+                class="form-control" />
+            <input *ngIf="!person.businessname" id="businessname" type="input" class="form-control" placeholder="Name des Geschäfts / Unternehmen"
+            />
+        </div>
 
-           <!-- Vor- und Nachname //ffried 06.12. -->
-          <div class="row full-name-inputs">
+        <!-- Vor- und Nachname //ffried 06.12. -->
+        <div class="row full-name-inputs">
             <div class="col-sm-6 input-group">
-                <input *ngIf="person.firstname" id="firstname" type="input" [value] ="person.firstname" class="form-control" placeholder="Vorname"/>
-                <input *ngIf="!person.firstname" id="firstname" type="input" class="form-control" placeholder="Vorname"/>
+                <input *ngIf="person.firstname" id="firstname" type="input" [value]="person.firstname" class="form-control" placeholder="Vorname"
+                />
+                <input *ngIf="!person.firstname" id="firstname" type="input" class="form-control" placeholder="Vorname" />
             </div>
             <div class="col-sm-6 input-group">
-                <input *ngIf="person.lastname" id="lastname" type="input" [value] ="person.lastname" class="form-control" placeholder="Nachname"/>
-                <input *ngIf="!person.lastname" id="lastname" type="input" class="form-control" placeholder="Nachname"/> 
+                <input *ngIf="person.lastname" id="lastname" type="input" [value]="person.lastname" class="form-control" placeholder="Nachname"
+                />
+                <input *ngIf="!person.lastname" id="lastname" type="input" class="form-control" placeholder="Nachname" />
             </div>
-          </div>
+        </div>
 
-          
-           <!-- Adresse //ffried 06.12. -->
-          <div class="input-group">
-              <input id ="street" *ngIf="person.street" type="text" [value]="person.street" class="form-control" placeholder="Unternehmensadresse"/>
-              <input *ngIf="!person.street" id="street" type="input" class="form-control" placeholder="Unternehmensadresse"/>
-          </div>
-          <div class="input-group">
-              <input id="housenumber" *ngIf = "person.housenumber" type="text" [value]="person.housenumber" class="form-control" placeholder="Hausnummer"/>
-              <input *ngIf="!person.housenumber" id="housenumber" type="input" class="form-control" placeholder="Hausnummer"/>
-          </div>
-          <div class="row full-name-inputs">
+
+        <!-- Adresse //ffried 06.12. -->
+        <div class="input-group">
+            <input id="street" *ngIf="person.street" type="text" [value]="person.street" class="form-control" placeholder="Unternehmensadresse"
+            />
+            <input *ngIf="!person.street" id="street" type="input" class="form-control" placeholder="Unternehmensadresse" />
+        </div>
+        <div class="input-group">
+            <input id="housenumber" *ngIf="person.housenumber" type="text" [value]="person.housenumber" class="form-control" placeholder="Hausnummer"
+            />
+            <input *ngIf="!person.housenumber" id="housenumber" type="input" class="form-control" placeholder="Hausnummer" />
+        </div>
+        <div class="row full-name-inputs">
             <div class="col-sm-6 input-group">
-                <input id="plz" *ngIf="person.plz" type="text" placeholder="PLZ" [value]="person.plz" class="form-control"/>
-                <input *ngIf="!person.plz" id="plz" type="input" class="form-control" placeholder="PLZ"/>
+                <input id="plz" *ngIf="person.plz" type="text" placeholder="PLZ" [value]="person.plz" class="form-control" />
+                <input *ngIf="!person.plz" id="plz" type="input" class="form-control" placeholder="PLZ" />
             </div>
             <div class="col-sm-6 input-group">
-                <input *ngIf="person.city" id="city" type="text" placeholder="Ort" [value]="person.city" class="form-control"/> 
-                <input *ngIf="!person.city" id="city" type="input" class="form-control" placeholder="Ort"/>
+                <input *ngIf="person.city" id="city" type="text" placeholder="Ort" [value]="person.city" class="form-control" />
+                <input *ngIf="!person.city" id="city" type="input" class="form-control" placeholder="Ort" />
             </div>
-          </div>
-          <!-- Branche //ffried 06.12. Datenbankintegration fehlt ab hier --> 
+        </div>
+
+
+        <!-- Branche //ffried 06.12.  -->
+
+        <br>
+        <div class="form-group">
+            <select id="business" class="form-control">
+                <!-- Wenn Datenbankeintarg leer, also keinem der Eintraege entsprechend, dann: "Bitte wählen.." -->
+                <option *ngIf="person.business != 'Gastronomie' && person.business != 'Bar/Club' && person.business != 'Lebensmittel' && person.business != 'Fachgeschäft' && person.business != 'Dienstleister' && person.business != 'Hotel/Unterkunft' && person.business != 'Sonstige'"
+                    selected>Branche...</option>
+                <!-- Wenn Datenbankeintrag == Schüler, Schüler als selected markieren. Wenn nicht dann SChüler nur in die Dropdownliste übernehmen. -->
+                <option *ngIf="person.business == 'Gastronomie'" selected>Gastronomie</option>
+                <option *ngIf="person.business != 'Gastronomie'">Gastronomie</option>
+
+                <option *ngIf="person.business == 'Bar/Club'" selected>Bar/Club</option>
+                <option *ngIf="person.business != 'Bar/Club'">Bar/Club</option>
+
+                <option *ngIf="person.business == 'Lebensmittel'" selected>Lebensmittel</option>
+                <option *ngIf="person.business != 'Lebensmittel'">Lebensmittel</option>
+
+                <option *ngIf="person.business == 'Fachgeschäft'" selected>Fachgeschäft</option>
+                <option *ngIf="person.business != 'Fachgeschäft'">Fachgeschäft</option>
+
+                <option *ngIf="person.business == 'Dienstleister'" selected>Dienstleister</option>
+                <option *ngIf="person.business != 'Dienstleister'">Dienstleister</option>
+
+                <option *ngIf="person.business == 'Hotel/Unterkunft'" selected>Hotel/Unterkunft</option>
+                <option *ngIf="person.business != 'Hotel/Unterkunft'">Hotel/Unterkunft</option>
+
+                <option *ngIf="person.business == 'Sonstige'" selected>Sonstige</option>
+                <option *ngIf="person.business != 'Sonstige'">Sonstige</option>
+            </select>
+        </div>
+
+        <!-- Werbetext //ffried 06.12. -->
+        <br>
+        <small class="form-text">Beschreiben Sie Ihr Angebot in einem kurzen Werbetext. Dieser Text wird für Ihre Kunden sichtbar sein.
+        </small>
+        <br>
+        <div class="input-group">
+            <textarea id="text" *ngIf="person.text" rows="5" [value]="person.text" class="form-control"></textarea>
+            <textarea id="text" *ngIf="!person.text" rows="5" placeholder="Werbetext..." class="form-control"></textarea>
+        </div>
+
+        <br>
+        <button (click)="savePeople()" type="submit" class="btn btn-danger">Speichern</button>
+        <br>
         
-          <br>
-          <small class="form-text">Wählen Sie Ihre Branche
-            </small>
-          <div class="form-group">
-              <select id="business" class="form-control">
-                  <option> </option>
-                  <option>Gastronomie</option>
-                  <option>Bar/Club</option>
-                  <option>Lebensmittel</option>
-                  <option>Fachgeschäft</option>
-                  <option>Dienstleister</option>
-                  <option>Hotel/Unterkunft</option>
-                  <option>Sonstige</option>
-              </select>
+    </nb-card-body>
+</nb-card>
+
+
+
+<!-- Noch nicht an Datenbank angebunden-->
+<nb-card>
+    <nb-card-header>Ihr individuelles Gutscheinsystem</nb-card-header>
+    <nb-card-body>
+        <span>Mit Loloco können Ihre Kunden Treuepunkte sammeln, diese Punkte nennen wir LoloCOINs. <b>Pro 1€ Umsatz in Ihrem Geschäft
+            erhält Ihr Kunde 1 LoloCOIN.</b>  Nachkommastellen beim Umsatz werden nicht berücksichtigt, und es wird abgerundet.
+            (Beispiel: Für einen Einkauf in Höhe von 3,79€ erhält der Kunde 3 LoloCOINs.)</span>
+        <br>
+        <br>
+        <br>
+
+
+        <h4>Benötigte Punkte festlegen: </h4>
+
+        <span>Anzahl der LoloCOINs, die ein Kunde sammeln muss um einen Gutschein zu erhalten: </span>
+        <br>
+        <br>
+        <div class="input-group">
+
+            <input id="coupon_value" type="input" class="form-control" placeholder="Anzahl benötigter LoloCOINs eingeben..." />
+        </div>
+        <br>
+
+        <h4>Gutschein definieren: </h4>
+        <span>Wenn der Kunde genug LoloCOINs gesammelt hat, erhält er den folgenden Gutschein: </span>
+        <br>
+        <br>
+
+        <span>
+            <b>Bezeichnung des Gutscheins: </b>
+        </span>
+        <span class="form-text">z.B.: "5€ Rabatt auf den nächsten Einkauf", "1 kostenloser Haarschnitt"
+        </span>
+        <div class="input-group">
+
+            <input id="coupon_value" type="input" class="form-control" placeholder="Bezeichnung eingeben..." />
+        </div>
+        <span>
+                <b>Details zum Gutschein: </b>
+            </span>
+            <span class="form-text">z.B.: "Mindesteinkaufswert: 10€", "inklusive Waschen und Föhnen."
+            </span>
+            <div class="input-group">
+    
+                <input id="coupon_value" type="input" class="form-control" placeholder="Bezeichnung eingeben..." />
             </div>
 
-          <!-- Werbetext //ffried 06.12. -->
-          <small class="form-text">Beschreiben Sie Ihr Angebot in einem kurzen Text. Dieser Text wird für Ihre Kunden sichtbar sein.
-            </small>
-          <div class="input-group">
-            <textarea id="text" rows="5" placeholder="Werbetext" class="form-control"></textarea>
-          </div>
-        </nb-card-body>
-      </nb-card>
-
-
-
-
-      <nb-card>
-          <nb-card-header>Individuelles Gutschein System</nb-card-header>
-          <nb-card-body>
-              <div class="row coupon-inputs">
-                  <div class="col-sm-6 input-group">
-                      <h4>Bei einem Umsatz pro Kunde von: </h4>
-                  </div>
-                  <div class="col-sm-6 input-group">
-                    <input type="number" placeholder="€ Umsatz eingeben" class="form-control"/>
-                  </div>
+            <span>
+                    <b>Finanzieller Gegenwert: </b>
+                </span>
+                <span class="form-text">Geben Sie hier den finanziellen Gegenwert des Gutscheins in EUR ein:
+                </span>
+                <div class="input-group">
+        
+                    <input id="coupon_value" type="input" class="form-control" placeholder="Bezeichnung eingeben..." />
                 </div>
-                <div class="row coupon-inputs">
-                    <div class="col-sm-6 input-group">
-                        <h4>Stelle ich einen Gutschein aus in Höhe von: </h4>
-                    </div>
-                    <div class="col-sm-6 input-group">
-                      <input type="number" placeholder="€ Gutschein eingeben" class="form-control"/>
-                    </div>
-                  </div>
-<br><br>
-              <button (click)="savePeople()" type="submit" class="btn btn-danger">Speichern</button><br>
-          </nb-card-body>
-        </nb-card>
+
+
+        <br>
+        <button type="submit" class="btn btn-danger">Speichern</button>
+        <br>
+    </nb-card-body>
+</nb-card>

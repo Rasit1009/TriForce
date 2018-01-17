@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Person } from '../datacomplete_consumer/services/person.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'ngx-datacomplete',

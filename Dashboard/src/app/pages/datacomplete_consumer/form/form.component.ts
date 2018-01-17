@@ -118,19 +118,19 @@ export class FormComponent implements OnInit {
   this.person.year =  (<HTMLInputElement>document.getElementById("year")).value;
   */
 
-  if((<HTMLInputElement>document.getElementById("profession")).value){
+  if((<HTMLInputElement>document.getElementById("profession")).value && (<HTMLInputElement>document.getElementById("profession")).value != "Bitte wählen..."){
     this.person.profession = (<HTMLInputElement>document.getElementById("profession")).value;
   }else{
     this.person.profession = "";
   }
 
-  if((<HTMLInputElement>document.getElementById("familystatus")).value){
+  if((<HTMLInputElement>document.getElementById("familystatus")).value && (<HTMLInputElement>document.getElementById("familystatus")).value != "Bitte wählen..."){
     this.person.familystatus = (<HTMLInputElement>document.getElementById("familystatus")).value;
   }else{
     this.person.familystatus = "";
   }
 
-  if((<HTMLInputElement>document.getElementById("gender")).value){
+  if((<HTMLInputElement>document.getElementById("gender")).value && (<HTMLInputElement>document.getElementById("gender")).value != "Bitte wählen..."){
     this.person.gender = (<HTMLInputElement>document.getElementById("gender")).value;
   }else{
     this.person.gender = "";

@@ -91,7 +91,7 @@ export class FormComponent implements OnInit {
     this.person.text ="";
   };
   
-  if(this.person.business = (<HTMLInputElement>document.getElementById("business")).value){
+  if(this.person.business = (<HTMLInputElement>document.getElementById("business")).value && (<HTMLInputElement>document.getElementById("business")).value != "Branche..."){
     this.person.business = (<HTMLInputElement>document.getElementById("business")).value
   }else{
     this.person.business ="";
