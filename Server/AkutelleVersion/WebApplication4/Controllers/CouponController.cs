@@ -21,6 +21,13 @@ namespace WebApplication4.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+
+            return Ok(_context.Coupon.ToList());
+        }
+
         //Jana Teutenberg: Methode, die den Gutscheinstring, Consumerid und Sellerid bekommt
         [HttpPost]
         public IActionResult Update([FromBody] Gutschein gutschein)
