@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../auth/auth.service';
 import { Person } from '../../datacomplete_consumer/services/person.service';
+import { Datacomplete_SellerComponent } from '../datacomplete_seller.component';
 
 @Component({
   selector: 'app-logo-url',
@@ -21,7 +22,7 @@ export class LogoUrlComponent implements OnInit {
 
   person: Person = this.auth.person;
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, public toast: Datacomplete_SellerComponent) {
 
   }
 
@@ -39,6 +40,8 @@ export class LogoUrlComponent implements OnInit {
 
 
   public savePeople() {
+
+    this.toast.showToast('success', 'Bild aktualisiert und gespeichert', '');
 
     if ((<HTMLInputElement>document.getElementById("imagepath")).value) {
       this.person.imagepath = (<HTMLInputElement>document.getElementById("imagepath")).value
