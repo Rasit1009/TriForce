@@ -60,7 +60,7 @@ namespace WebApplication4.Controllers
         }
 
         //Jana Teutenberg: Methode, die überpürft, ob der für diesen Händler ein System vorhanden ist und gibt das zurück
-        [HttpGet("Get/{id}", Name = "GetbyId")]
+        [HttpGet("Get/{id}", Name = "GetId")]
         // GET: CouponSystem/Get/5
         public IActionResult GetbyId(string id)
         {

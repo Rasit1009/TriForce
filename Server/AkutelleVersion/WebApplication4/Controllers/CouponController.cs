@@ -164,9 +164,9 @@ namespace WebApplication4.Controllers
         }
 
         //Jana Teutenberg: Methode, die Punkte löscht, sobald Gutschein eingelöst wird
-        [HttpPost("Delete", Name = "Delete")]
+        [HttpPost("Delete", Name = "DeletePoints")]
         // Post: Coupon/Delete
-        public IActionResult Delte([FromBody] Punkte pu)
+        public IActionResult Delete([FromBody] Punkte pu)
         {
 
 
