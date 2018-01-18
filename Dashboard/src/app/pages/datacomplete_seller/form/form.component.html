@@ -39,7 +39,7 @@
         
               <div class="row full-name-inputs">
                 <div class="col-md-6 input-group">
-                  <input id="plz" *ngIf="person.plz" type="text" placeholder="PLZ" [value]="person.plz" class="form-control" />
+                  <input id="plz" *ngIf="person.plz" type="number" placeholder="PLZ" [value]="person.plz" class="form-control" />
                   <input *ngIf="!person.plz" id="plz" type="input" class="form-control" placeholder="PLZ" />
                 </div>
         

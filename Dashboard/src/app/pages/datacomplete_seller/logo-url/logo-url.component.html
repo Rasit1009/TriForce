@@ -2,9 +2,10 @@
     <nb-card-header>Logo</nb-card-header>
     <nb-card-body>
 
-        <!--Linkfeld-->
-        <span>Bild-URL eingeben: </span>
-        <br>
+        
+                      
+        <!--Linkfeld und popover-->
+        <div>Bild-URL eingeben&nbsp;&nbsp;&nbsp;<span class="qs">? <span class="popover above">LOLOCO speichert dein Logo nicht selbst, sondern ruft es unter der angegebenen Bild-URL aus dem Internet ab. Um dein Logo hier anzuzeigen lade es auf einer Internetseite hoch, und verlinke die Datei hier. <br><br>Anforderungen an das Bild: <br>- 500x500 Pixel <br>- Logo mittig platziert, mit min. 50px Abstand zu den Bildrändern <br>- Hintergrund transparent/weiss </span></span></div>
         <br>
         <input *ngIf="person.imagepath" id="imagepath" type="input" [value]="person.imagepath" class="form-control" />
         <input *ngIf="!person.imagepath" id="imagepath" type="input" class="form-control" placeholder="http://www.deinewebsite/deinlogo.jpg"

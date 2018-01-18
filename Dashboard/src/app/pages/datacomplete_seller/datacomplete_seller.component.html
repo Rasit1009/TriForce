@@ -1,21 +1,37 @@
-<h5 class="grid-h">Profil verwalten</h5>
-<div class="row show-grid">
-  <div class="col-md-8">
-    <div><ngx-form></ngx-form></div>
-  </div>
-  <div class="col-md-4">
-        <div><app-logo-url></app-logo-url></div>
+<div *ngIf=person>
 
-       <!-- Wird nur angezeigt wenn nicht 100% -->
-        <div *ngIf="completion_value != 100"><ngx-solar id="completion_value" [chartValue]="completion_value"></ngx-solar></div>
-    
-  </div>
-</div>
+    <div *ngIf="completion_value == 100">
+        <h5 class="grid-h">Profil verwalten</h5>
+    </div>
+
+    <div *ngIf="completion_value != 100">
+        <h5 class="grid-h">Bitte ergänzen Sie Ihre Nutzerdaten:</h5>
+    </div>
 
 
+    <div class="row show-grid">
+        <div class="col-md-8">
+            <div>
+                <ngx-form></ngx-form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div>
+                <app-logo-url></app-logo-url>
+            </div>
+
+            <!-- Wird nur angezeigt wenn nicht 100% -->
+            <div *ngIf="completion_value != 100">
+                <ngx-solar id="completion_value" [chartValue]="completion_value"></ngx-solar>
+            </div>
+
+        </div>
+    </div>
 
 
-<!-- Image UPLOAD von Malte
+
+
+    <!-- Image UPLOAD von Malte
 
 <nb-card>
   <nb-card-header>Logo Upload</nb-card-header>
@@ -105,7 +121,8 @@
                   <button type="button" class="btn btn-danger btn-s"
                           (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
                       <span class="glyphicon glyphicon-trash"></span> Remove all
-                  </button> -->  <!--
+                  </button> -->
+    <!--
               </div>
     
           </div>
@@ -118,7 +135,5 @@
 </nb-card>
 
 -->
-    
 
-
-
+</div>
