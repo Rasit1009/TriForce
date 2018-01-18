@@ -51,6 +51,8 @@ consumer_id: string;
 amount: any;
 sellerid: any;
 consumerid: any;
+textvalue: any;
+textvalue_id: string;
 
 indb(){
 
@@ -59,9 +61,12 @@ indb(){
     this.amount = document.getElementById("amount");
     this.amount_id = this.amount.value;
 
+    this.textvalue = document.getElementById("consumerid");
+    this.textvalue_id = this.textvalue.value;
     this.point.points = this.amount_id;
     this.point.selleri = this.auth.person.i; 
     this.point.useri = this.qrResult; 
+    this.point.useri = this.textvalue_id;
 
     this.pointService.sendPoints(this.point).subscribe();
 

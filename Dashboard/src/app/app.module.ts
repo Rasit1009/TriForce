@@ -25,6 +25,7 @@ import { PersonService, Person } from './pages/datacomplete_consumer/services/pe
 import { LoginComponent } from './pages/login/login.component';
 import { PointService } from './pages/points/points.service';
 import { CouponService } from './pages/coupon/coupon.service';
+import {CreditService} from './pages/points/credit.service';
 
 
 
@@ -42,7 +43,7 @@ import { CouponService } from './pages/coupon/coupon.service';
   ],
   bootstrap: [AppComponent],
   providers: [
-    { provide: APP_BASE_HREF, useValue: '/' },AuthService, PersonService, PointService, CouponService
+    { provide: APP_BASE_HREF, useValue: '/' },AuthService, PersonService, PointService,CreditService, CouponService
   ],
 })
 export class AppModule {
