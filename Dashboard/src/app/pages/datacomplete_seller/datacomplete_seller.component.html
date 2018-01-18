@@ -5,7 +5,9 @@
   </div>
   <div class="col-md-4">
         <div><app-logo-url></app-logo-url></div>
-    <div><ngx-solar [chartValue]="72"></ngx-solar></div>
+
+       <!-- Wird nur angezeigt wenn nicht 100% -->
+        <div *ngIf="completion_value != 100"><ngx-solar id="completion_value" [chartValue]="completion_value"></ngx-solar></div>
     
   </div>
 </div>
