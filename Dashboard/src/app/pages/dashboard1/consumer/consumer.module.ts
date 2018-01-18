@@ -11,6 +11,7 @@ import { WeatherComponent } from './weather/weather.component';
 import { TrafficComponent } from './traffic/traffic.component';
 import { TrafficChartComponent } from './traffic/traffic-chart.component';
 import { ModalModule } from './modal/modal.module';
+import { ToasterModule } from 'angular2-toaster';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ModalModule } from './modal/modal.module';
     ThemeModule,
     AngularEchartsModule,
     ModalModule,
+    ToasterModule
   ],
   declarations: [
     ConsumerComponent,
