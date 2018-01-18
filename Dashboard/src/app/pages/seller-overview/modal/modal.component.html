@@ -14,7 +14,31 @@
       <nb-card-body>
         <span>{{modalCouponDetail}} </span>
         <span>{{modalCoupontext}}</span>
-        <ngx-solar [chartValue]="(modalCollectedpoints)"></ngx-solar>
+        
+
+
+      <div echarts [options]="option" class="echart">
+      </div>
+      <div class="info">
+          
+        <!-- Noch nicht ausreichend Punkte gesammelt-->
+       <div class="value" *ngIf="!remainingScans() == 0">Noch {{ remainingScans() }} Punkte bis zum nächsten Gutschein!</div>
+
+        <!-- Ausreichend Punkte gesammelt-->
+        <div *ngIf="remainingScans() == 0">
+        <div class="details">Ausreichend Punkte gesammelt</div>
+        <br>
+        <button class="btn btn-md btn-primary" >Gutschein anzeigen</button>
+        <br>
+        </div>
+
+        <div class="details"><span>&nbsp;</span>&nbsp;</div>
+          
+      </div>
+      
+
+
+      
       </nb-card-body>
 
     </nb-card>
