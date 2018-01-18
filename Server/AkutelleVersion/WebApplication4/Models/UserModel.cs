@@ -24,7 +24,7 @@ namespace WebApplication4.Models
         public string Business { get; set; }
         public string Text { get; set; }
 
-        public string PLZ { get; set; }
+        public int PLZ { get; set; }
         public string Housenumber { get; set; }
         public string Imagepath { get; set; }
         public string Businessname { get; set; }
