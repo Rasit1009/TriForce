@@ -3,12 +3,14 @@
       <nb-card-header>Deine Händler</nb-card-header>
       <nb-card-body>
     <ul id="rig">
-      <li *ngFor="let seller of seller" (click)="showLargeModal(seller)">
+      <li *ngFor="let s of seller; let i=index; let last=last" (click)="showLargeModal(s)">
+          <div *ngIf="seller.length>=i">
           <a class="rig-cell">
-             <img class="rig-img" src="../../../assets/images/seller/1.png">
+             <img id="image" class="rig-img" [src]="getSellerPic(s)">
               <span class="rig-overlay"></span>
               <span class="rig-text"></span>
-          </a>
+            </a>
+        </div>
       </li>
     <!--  <li>
           <a class="rig-cell" (click)="showLargeModal(2)">

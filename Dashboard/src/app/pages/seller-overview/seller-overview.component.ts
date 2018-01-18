@@ -13,20 +13,23 @@ export class SellerOverviewComponent{
   activeValue: any;
   seller : Points[] = [];
   text : string; 
+  test="hallo"; 
   sellerID : number; 
+  index : number = 0; 
 
   constructor(private modalService: NgbModal, public auth : AuthService, public pointsService : PointService) { 
-
     this.pointsService.getSeller(this.auth.id).subscribe(res=> {
     console.log(res);
     this.seller = res;
     console.log(this.seller);
     });
   }
-        getSellerNameByID(user : Points){
-
-          return this.text; 
+        getSellerPic(seller : Points){
+              this.test = this.auth.people.find(x=>x.i ===seller.selleri).imagepath;
+              return this.test; 
         }
+
+      
 
         getSellerTextByID(user : Points){
           var text : string; 

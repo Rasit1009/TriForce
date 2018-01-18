@@ -54,7 +54,8 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
     });
   }
 
-  private setSession(authResult): void {
+  public setSession(authResult): void {
+    console.log(authResult);
     // Set the time that the access token will expire at
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
     localStorage.setItem('access_token', authResult.accessToken);
@@ -185,7 +186,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
           try {
             this.setSession(result);
           } catch (error) {
-            console.log("ereignet sich hier");
+
           }
         }
       });

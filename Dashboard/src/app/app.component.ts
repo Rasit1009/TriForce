@@ -13,12 +13,18 @@ import { AfterViewInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_h
   selector: 'ngx-app',
   template: '<router-outlet></router-outlet>',
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent{
 
 
   person : Person = this.auth.person;
 
   constructor(private auth: AuthService) {
+    try {
+      this.auth.decode(localStorage.getItem('id_token')); 
+    } catch (error) {
+      console.log("olmadi ya");
+    }
+    
     this.auth.isPersonSource.subscribe(res => {
       this.person = res;
       try {
@@ -26,20 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
       } catch (error) {
         console.log("noch kein user da "); 
       }
-    }) 
-  }
+    });
 
-  ngOnInit(): void {
-    console.log("das kommt natürlich als erstes");  
-    try {
-     // this.auth.getUser();
-     // this.auth.renewToken(); 
-    } catch (error)  {
-      console.log("error in token renewal");    
-    }
-  }
-
-  ngOnDestroy(){
-    this.auth.isPersonSource.unsubscribe(); 
   }
 }
