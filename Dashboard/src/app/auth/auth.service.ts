@@ -70,7 +70,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    location.replace("http://localhost:4200");
+    location.replace("http://localhost:8000/login");
   }
 
   public isAuthenticated(): boolean {
