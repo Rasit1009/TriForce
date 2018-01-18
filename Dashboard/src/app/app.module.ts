@@ -24,6 +24,7 @@ import { FormsModule } from "@angular/forms";
 import { PersonService, Person } from './pages/datacomplete_consumer/services/person.service';
 import { LoginComponent } from './pages/login/login.component';
 import { PointService } from './pages/points/points.service';
+import { CouponService } from './pages/coupon/coupon.service';
 
 
 
@@ -41,7 +42,7 @@ import { PointService } from './pages/points/points.service';
   ],
   bootstrap: [AppComponent],
   providers: [
-    { provide: APP_BASE_HREF, useValue: '/' },AuthService, PersonService, PointService
+    { provide: APP_BASE_HREF, useValue: '/' },AuthService, PersonService, PointService, CouponService
   ],
 })
 export class AppModule {

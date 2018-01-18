@@ -22,7 +22,6 @@ export class AppComponent{
     try {
       this.auth.decode(localStorage.getItem('id_token')); 
     } catch (error) {
-      console.log("olmadi ya");
     }
     
     this.auth.isPersonSource.subscribe(res => {

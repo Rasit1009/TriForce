@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import {Observable} from'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import { AuthService } from "../../auth/auth.service";
+import { CouponSystem } from "../coupon/coupon.service";
 
 
 @Injectable()
@@ -22,6 +23,14 @@ public getSeller(id : any): Observable<any[]>{
        .map(r =>r.json())
        .map(e =>e.map 
          (c=> new Points(c.useri,c.selleri,c.points)));
+}
+
+public getSystem(seller : Points[]): Observable<CouponSystem[]>{
+    return this.http
+    .post('http://localhost:49873/api/coupon/getSystem/', seller)
+    .map(r =>r.json())
+    .map(e =>e.map 
+      (c=> new CouponSystem(c.CouponSystemid,c.selleri,c.coupontext,c.coupondetail,c.moneyvalue,c.number)));
 }
 
 }

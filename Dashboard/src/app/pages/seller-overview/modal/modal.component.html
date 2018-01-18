@@ -1,15 +1,25 @@
-    <div class="modal-header">
-        <span>{{ modalSellername }}</span>
-        <button class="close" aria-label="Close" (click)="closeModal()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        {{ modalSellertext }}
-        <br>
-        <br>
-        <div><ngx-solar [chartValue]= "(modalCollectedpoints)*10"></ngx-solar></div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-md btn-primary" (click)="closeModal()">Schließen</button>
-      </div>
+<div class="modal-header">
+  <span>{{ modalSellername }}</span>
+  <button class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  {{ modalSellertext }}
+  <br>
+  <br>
+  <div>
+    <nb-card size="xsmall" class="solar-card">
+      <nb-card-header>Meine Punkte</nb-card-header>
+      <nb-card-body>
+        <span>{{modalCouponDetail}} </span>
+        <span>{{modalCoupontext}}</span>
+        <ngx-solar [chartValue]="(modalCollectedpoints)"></ngx-solar>
+      </nb-card-body>
+
+    </nb-card>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-md btn-primary" (click)="closeModal()">Schließen</button>
+</div>

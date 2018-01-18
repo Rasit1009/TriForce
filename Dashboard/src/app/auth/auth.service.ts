@@ -10,6 +10,7 @@ import { Person, PersonService } from '../pages/datacomplete_consumer/services/p
 import { PagesComponent } from '../pages/pages.component';
 import {Observable, BehaviorSubject} from'rxjs/Rx';
 import { Points } from '../pages/points/points.service';
+import { Coupon } from '../pages/coupon/coupon.service';
 
 @Injectable()
 export class AuthService {
