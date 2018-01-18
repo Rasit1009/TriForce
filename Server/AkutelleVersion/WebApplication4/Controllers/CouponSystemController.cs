@@ -72,7 +72,7 @@ namespace WebApplication4.Controllers
 
 
 
-                return Ok(null);
+                return Ok(Gutscheinart);
 
             }
             else

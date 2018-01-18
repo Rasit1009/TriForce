@@ -13,37 +13,61 @@ export class CouponsettingComponent implements OnInit {
   person : Person = this.auth.person; 
   coupon : Coupon = new Coupon(null,null,null,null,null);
   
+  
   constructor(public auth : AuthService, public couponService : CouponService) {
-
-    this.auth.isPersonSource.subscribe(res => {
-      this.person = res;
-      try {
-        console.log(this.person.i);
-      } catch (error) {
-        console.log("noch kein user da "); 
-      }
-    });
-
-    this.couponService.getCoupon(this.person.i).subscribe(res => {
-    this.coupon = res; 
-    });
+    console.log(this.person);
+        this.couponService.getCoupon(this.person.i).subscribe(res => {
+          if(res){
+            this.coupon = res;
+            console.log(this.coupon); 
+          }
+          });
    }
    public ngOnInit(): void{
   }
 
   saveCoupon(){
-    
-    this.coupon.selleri = this.auth.person.i;
+      alert(this.person.i);
+       this.coupon.selleri = this.person.i;
+       if(!this.coupon){
+        this.coupon.selleri = this.person.i;
+      
+     if((<HTMLInputElement>document.getElementById("value")).value){
+      this.coupon.number = (<HTMLInputElement>document.getElementById("value")).value;
+    } else {
+      this.coupon.number = ""; 
+    }
 
+    if((<HTMLInputElement>document.getElementById("text")).value){
+      this.coupon.coupontext = (<HTMLInputElement>document.getElementById("text")).value;
+    }else{
+      this.coupon.coupontext = "";
+    }
+
+    if((<HTMLInputElement>document.getElementById("detail")).value){
+      this.coupon.coupondetail = (<HTMLInputElement>document.getElementById("detail")).value;
+    }else{
+      this.coupon.coupondetail = "";
+    }
+
+    if((<HTMLInputElement>document.getElementById("value")).value){
+      this.coupon.moneyvalue = (<HTMLInputElement>document.getElementById("moneyvalue")).value;
+    }else{
+      this.coupon.moneyvalue = "";
+    }
+  } else if(this.coupon){
+    this.coupon.selleri = this.person.i;
     if((<HTMLInputElement>document.getElementById("coupon_value")).value){
       this.coupon.number = (<HTMLInputElement>document.getElementById("coupon_value")).value;
-    }else{
-      this.coupon.number = "";
+    }else {
+      this.coupon.number = ""; 
     }
 
     if((<HTMLInputElement>document.getElementById("coupon_text")).value){
       this.coupon.coupontext = (<HTMLInputElement>document.getElementById("coupon_text")).value;
-    }else{
+    }else
+    
+    {
       this.coupon.coupontext = "";
     }
 
@@ -58,8 +82,10 @@ export class CouponsettingComponent implements OnInit {
     }else{
       this.coupon.moneyvalue = "";
     }
-
-    this.couponService.sendSystem(this.coupon).subscribe();
   }
+
+    this.couponService.sendSystem(this.coupon).subscribe(()=>alert("geht klar"));
+  }
+
 
 }
