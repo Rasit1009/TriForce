@@ -18,17 +18,27 @@ export class CouponsettingComponent implements OnInit {
 
   
   constructor(public auth : AuthService, public couponService : CouponService, private toasterService: ToasterService) {
+
+
+    this.auth.isPersonSource.subscribe(res => {
+      this.person = res;
+      try {
+        console.log(this.person.i);
+      } catch (error) {
+        console.log("noch kein user da "); 
+      }
+    });
+
     this.couponService.getCoupon(this.person.i).subscribe(res => {
     this.coupon = res; 
    // if(!this.coupon.moneyvalue )
     });
    }
-
-  ngOnInit() {
-    
+   public ngOnInit(): void{
   }
 
   saveCoupon(){
+    
     this.coupon.selleri = this.auth.person.i;
 
     if((<HTMLInputElement>document.getElementById("coupon_value")).value){

@@ -103,22 +103,39 @@ namespace WebApplication4.Controllers
         // GET: Coupon/GetSystem
         public IActionResult GetSystem([FromBody] Punkte[] Liste )
         {
+            
+
             var Li = new List<CouponSystem>();
-            for (int i = 0; i< 1; i++){
+            var cou = new CouponSystem();
+        
+            if(Liste.Length != 0) { 
+               
+        //    for (int i = 0; i< Liste.Length; i++){
 
-                Li[i] = _context.CouponSystem.SingleOrDefault(
-                c => c.Selleri == Liste[i].Selleri);
+                    //  Li[i] = _context.CouponSystem.SingleOrDefault(
+                    //  c => c.Selleri == Liste[i].Selleri);
+                    //Li[i] = Liste[i];
 
-            }
-            if (Li == null)
+
+        //            }
+
+            foreach(Punkte p in Liste)
+                {
+                 cou = _context.CouponSystem.SingleOrDefault(
+                      c => c.Selleri == p.Selleri);
+                    Li.Add(cou);
+                }
+                if (Li == null)
             {
-                return Ok(null);
+                return Ok(Li);
             }
             else
             {
                 return Ok(Li);
             }
-           
+            } else {
+                return Ok(Li);
+            }
         }
         //Jana Teutenberg: Methode, die Punkte gutschreibt
         [HttpPost("Points", Name = "Points")]

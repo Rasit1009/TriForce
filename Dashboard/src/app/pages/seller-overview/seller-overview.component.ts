@@ -14,11 +14,12 @@ import {Observable, BehaviorSubject} from'rxjs/Rx';
 })
 export class SellerOverviewComponent{
   activeValue: any;
-  seller : Points[] = [];
+  seller : Points[];
   text : string; 
   test="hallo"; 
   sellerID : number; 
   index : number = 0; 
+  missingPoints : number = 0; 
   coupon : Coupon[] = []; 
   couponSystem : CouponSystem[] = []; 
   isPersonSource = new BehaviorSubject<Points[]>(null);
@@ -29,47 +30,18 @@ export class SellerOverviewComponent{
 
 
   constructor(private modalService: NgbModal, public auth : AuthService, public pointsService : PointService) { 
-
-    /**let first = this.personService.getPeople(); 
-    let second = this.personService.getUser(this.id);
-    Observable.forkJoin([first,second]).subscribe(results => {
-      this.people = results[0];
-      console.log(this.people);
-      this.person = results[1]; 
-      console.log(this.person);
-      if(this.people.find(x => x.i === this.person.i)){
-        console.log("user bereits vorhanden");
-      } else {
-      this.addUser(this.person);
-      };
-      this.setUser(this.person); 
-      
-    }); */
-
-  /**  let first = this.pointsService.getSeller(this.auth.id);
-    let second = this.pointsService.getSystem(this.seller);
-    Observable.forkJoin([first,second]).subscribe(results => {
-      console.log(results);
-      this.seller = results[0];
-      this.couponSystem = results[1];
-    }); */
     this.pointsService.getSeller(this.auth.id).subscribe(res=> {
     this.seller = res;
-    alert("das soll zuerst sein");
     this.setUser(this.seller);
     });
 
-
-    this.isPersonSource.subscribe(res => {
-      alert("dann erst hierhin");
-      //this.seller = res; 
+    this.isPersonSource.subscribe(res => {   
       try {
+        console.log("einmal nur der hier");
         this.pointsService.getSystem(this.seller).subscribe(res=>{
           this.couponSystem = res; 
-          console.log(this.couponSystem);
         });
       } catch (error) {
-        console.log("noch kein user da "); 
       }
     });
   }
@@ -107,6 +79,14 @@ export class SellerOverviewComponent{
             return sellerID; 
           }
 
+          getMissingPoints(sellerID : number){
+            return sellerID; 
+          }
+
+          returnMissingPoints(){
+            return this.missingPoints;
+          }
+
 
     showLargeModal(sellerID : Points) {
       console.log(sellerID);
@@ -120,6 +100,8 @@ export class SellerOverviewComponent{
       var currentPoints = sellerID.points/maxPoints*100;
       var couponText = this.couponSystem.find(x=>x.selleri ===sellerID.selleri).coupontext;
       var couponDetail = this.couponSystem.find(x=>x.selleri === sellerID.selleri).coupondetail;
+      var missingPoints = maxPoints - currentPoints; 
+      this.missingPoints = missingPoints; 
       try {
         const activeModal = this.modalService.open(ModalComponent, { size: 'lg', container: 'nb-layout' });
          activeModal.componentInstance.modalSellername = this.getSellerName(businessname); //Name mit SellerID aus Datenbank auslesen
@@ -128,6 +110,7 @@ export class SellerOverviewComponent{
          //activeModal.componentInstance.modal
          activeModal.componentInstance.modalCouponDetail = this.getCouponDetail(couponDetail);
          activeModal.componentInstance.modalCoupontext = this.getCouponText(couponText);
+         activeModal.componentInstance.modalMissingPoints = this.getMissingPoints(missingPoints);
 
       } catch (error) {
         
