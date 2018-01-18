@@ -10,12 +10,14 @@ import { SolarComponent } from './solar/solar.component';
 import { FormComponent } from './form/form.component';
 import { ChangeEmail } from './changeemail/changeemail.component';
 import { LogoUrlComponent } from './logo-url/logo-url.component';
+import { ToasterModule } from 'angular2-toaster';
 
 @NgModule({
   imports: [
     ThemeModule,
     AngularEchartsModule,
     FileUploadModule,
+    ToasterModule
   ],
   declarations: [
     Datacomplete_SellerComponent,
