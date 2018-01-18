@@ -67,7 +67,13 @@ export class Datacomplete_SellerComponent {
       }
     });
 
-    this.initToasts();
+    if(this.completion_value == 100){
+      setTimeout(() => { this.showToast('sucess', 'Vollständig', 'Ihre Daten sind vollständig. Sie können diese jederzeit ändern und aktualisieren');}, 1000);
+    } if(this.completion_value != 100){
+      setTimeout(() => { this.showToast('info', 'Unvollständig', 'Bitte vervollständigen Sie Ihre Daten für eine bessere Kundenbindung');}, 1000);
+    }
+
+   // this.initToasts();
   }
 
  /* Bilduploader 

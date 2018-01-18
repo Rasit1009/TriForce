@@ -1,69 +1,126 @@
-<!-- Noch nicht an Datenbank angebunden-->
+<!-- Noch nicht an Datenbank angebunden.. doch ;)-->
 <nb-card>
     <nb-card-header>Ihr individuelles Gutscheinsystem</nb-card-header>
     <nb-card-body>
-        <span>Mit Loloco können Ihre Kunden Treuepunkte sammeln, diese Punkte nennen wir LoloCOINs. <b>Pro 1€ Umsatz in Ihrem Geschäft
-            erhält Ihr Kunde 1 LoloCOIN.</b>  Nachkommastellen beim Umsatz werden nicht berücksichtigt, und es wird abgerundet.
-            (Beispiel: Für einen Einkauf in Höhe von 3,79€ erhält der Kunde 3 LoloCOINs.)</span>
-        <br>
-        <br>
-        <br>
+        <div *ngIf="coupon">
+            <span>Mit Loloco können Ihre Kunden Treuepunkte sammeln, diese Punkte nennen wir LoloCOINs.
+                <b>Pro 1€ Umsatz in Ihrem Geschäft erhält Ihr Kunde 1 LoloCOIN.</b> Nachkommastellen beim Umsatz werden nicht
+                berücksichtigt, und es wird abgerundet. (Beispiel: Für einen Einkauf in Höhe von 3,79€ erhält der Kunde 3
+                LoloCOINs.)</span>
+            <br>
+            <br>
+            <br>
 
 
-        <h4>Benötigte Punkte festlegen: </h4>
+            <h4>Benötigte Punkte festlegen: </h4>
 
-        <span>Anzahl der LoloCOINs, die ein Kunde sammeln muss um einen Gutschein zu erhalten: </span>
-        <br>
-        <br>
-        <div class="input-group">
+            <span>Anzahl der LoloCOINs, die ein Kunde sammeln muss um einen Gutschein zu erhalten: </span>
+            <br>
+            <br>
+            <div class="input-group">
 
-            <input *ngIf="coupon.number" id="coupon_value" type="number" class="form-control" [value]="coupon.number"/>
-            <input *ngIf="!coupon.number" id="coupon_value" type="number" class="form-control" placeholder="Anzahl benötigter LoloCOINs eingeben..." />
-        </div>
-        <br>
-        <br>
+                <input *ngIf="coupon.number" id="coupon_value" type="number" class="form-control" [value]="coupon.number" />
+            </div>
+            <br>
+            <br>
 
-        <h4>Gutschein definieren: </h4>
-        <span>Wenn der Kunde genug LoloCOINs gesammelt hat, erhält er den folgenden Gutschein: </span>
-        <br>
-        <br>
+            <h4>Gutschein definieren: </h4>
+            <span>Wenn der Kunde genug LoloCOINs gesammelt hat, erhält er den folgenden Gutschein: </span>
+            <br>
+            <br>
 
-        <span>
-            <b>Bezeichnung des Gutscheins: </b>
-        </span>
-        <span class="form-text">z.B.: "5€ Rabatt auf den nächsten Einkauf", "1 kostenloser Haarschnitt"
-        </span>
-        <div class="input-group">
+            <span>
+                <b>Bezeichnung des Gutscheins: </b>
+            </span>
+            <span class="form-text">z.B.: "5€ Rabatt auf den nächsten Einkauf", "1 kostenloser Haarschnitt"
+            </span>
+            <div class="input-group">
 
-            <input *ngIf="coupon.coupontext" id="coupon_text" type="input" class="form-control" [value]="coupon.coupontext"/>
-            <input *ngIf="!coupon.coupontext" id="coupon_text" type="input" class="form-control" placeholder="Bezeichnung eingeben..." />
-        </div>
-        <br>
-        <span>
+                <input *ngIf="coupon.coupontext" id="coupon_text" type="input" class="form-control" [value]="coupon.coupontext" />
+            </div>
+            <br>
+            <span>
                 <b>Details zum Gutschein: </b>
             </span>
             <span class="form-text">z.B.: "Mindesteinkaufswert: 10€", "inklusive Waschen und Föhnen."
             </span>
             <div class="input-group">
-    
-                <input *ngIf="coupon.coupondetail" id="coupon_detail" type="input" class="form-control" [value]="coupon.coupondetail"/>
-                <input *ngIf="!coupon.coupondetail" id="coupon_detail" type="input" class="form-control" placeholder="Details eingeben..." />
+
+                <input *ngIf="coupon.coupondetail" id="coupon_detail" type="input" class="form-control" [value]="coupon.coupondetail" />
             </div>
 
             <br>
             <span>
-                    <b>Finanzieller Gegenwert: </b>
-                </span>
-                <span class="form-text">Geben Sie hier den finanziellen Gegenwert des Gutscheins in EUR ein:
-                </span>
-                <div class="input-group">
-        
-                    <input *ngIf="coupon.moneyvalue" id="coupon_moneyvalue" type="number" class="form-control" [value]="coupon.moneyvalue" />
-                    <input *ngIf="!coupon.moneyvalue" id="coupon_moneyvalue" type="number" class="form-control" placeholder="Betrag eingeben..." />
-                </div>
-        <br>
-        <br>
+                <b>Finanzieller Gegenwert: </b>
+            </span>
+            <span class="form-text">Geben Sie hier den finanziellen Gegenwert des Gutscheins in EUR ein:
+            </span>
+            <div class="input-group">
+
+                <input *ngIf="coupon.moneyvalue" id="coupon_moneyvalue" type="number" class="form-control" [value]="coupon.moneyvalue" />
+            </div>
+        </div>
+        <div *ngIf="!coupon">
+            <span>Mit Loloco können Ihre Kunden Treuepunkte sammeln, diese Punkte nennen wir LoloCOINs.
+                <b>Pro 1€ Umsatz in Ihrem Geschäft erhält Ihr Kunde 1 LoloCOIN.</b> Nachkommastellen beim Umsatz werden nicht
+                berücksichtigt, und es wird abgerundet. (Beispiel: Für einen Einkauf in Höhe von 3,79€ erhält der Kunde 3
+                LoloCOINs.)</span>
+            <br>
+            <br>
+            <br>
+
+
+            <h4>Benötigte Punkte festlegen: </h4>
+
+            <span>Anzahl der LoloCOINs, die ein Kunde sammeln muss um einen Gutschein zu erhalten: </span>
+            <br>
+            <br>
+            <div class="input-group">
+
+                <input id="coupon_value" type="number" class="form-control" placeholder="Anzahl benötigter LoloCOINs eingeben..." />
+            </div>
+            <br>
+            <br>
+
+            <h4>Gutschein definieren: </h4>
+            <span>Wenn der Kunde genug LoloCOINs gesammelt hat, erhält er den folgenden Gutschein: </span>
+            <br>
+            <br>
+
+            <span>
+                <b>Bezeichnung des Gutscheins: </b>
+            </span>
+            <span class="form-text">z.B.: "5€ Rabatt auf den nächsten Einkauf", "1 kostenloser Haarschnitt"
+            </span>
+            <div class="input-group">
+
+                <input id="coupon_text" type="input" class="form-control" placeholder="Bezeichnung eingeben..." />
+            </div>
+            <br>
+            <span>
+                <b>Details zum Gutschein: </b>
+            </span>
+            <span class="form-text">z.B.: "Mindesteinkaufswert: 10€", "inklusive Waschen und Föhnen."
+            </span>
+            <div class="input-group">
+
+                <input id="coupon_detail" type="input" class="form-control" placeholder="Details eingeben..." />
+            </div>
+
+            <br>
+            <span>
+                <b>Finanzieller Gegenwert: </b>
+            </span>
+            <span class="form-text">Geben Sie hier den finanziellen Gegenwert des Gutscheins in EUR ein:
+            </span>
+            <div class="input-group">
+                <input id="coupon_moneyvalue" type="number" class="form-control" placeholder="Betrag eingeben..." />
+            </div>
+            <br>
+            <br>
+        </div>
         <button (click)="saveCoupon()" type="submit" class="btn btn-danger">Speichern</button>
         <br>
     </nb-card-body>
 </nb-card>
+<toaster-container [toasterconfig]="config"></toaster-container>
