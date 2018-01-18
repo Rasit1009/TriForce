@@ -172,7 +172,7 @@ namespace WebApplication4
             public string Email { get; set; }
             public bool vorhanden { get; set; }
             public string Imagepath { get; set; }
-            public int PLZ { get; set; }
+            public string PLZ { get; set; }
             public string Housenumber { get; set; }
             public string City { get; set; }
 
