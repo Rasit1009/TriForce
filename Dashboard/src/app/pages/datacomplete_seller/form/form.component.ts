@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Person } from "../../datacomplete_consumer/services/person.service";
 import { AuthService } from "../../../auth/auth.service";
+import { Datacomplete_SellerComponent } from "../datacomplete_seller.component";
 
 
 @Component({
@@ -12,8 +13,9 @@ export class FormComponent implements OnInit {
 
   
   person : Person = this.auth.person;
+  constructor(public auth : AuthService, public toast: Datacomplete_SellerComponent){
 
-  constructor(public auth : AuthService){
+      //this.toast.showToast('default', 'test', 'test');
 
   }
 
@@ -41,6 +43,11 @@ export class FormComponent implements OnInit {
       this.person.gender="keine Angabe"
     }
     */
+
+    //Toastimplementierung
+    this.toast.clearToasts();
+    this.toast.showToast('success', 'Daten aktualisiert und gespeichert', '');
+    
 
   if((<HTMLInputElement>document.getElementById("firstname")).value){
     this.person.firstname = (<HTMLInputElement>document.getElementById("firstname")).value
