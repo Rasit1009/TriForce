@@ -118,8 +118,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
     var index = this.people.findIndex(x => x.i === this.person.i)
     this.people[index] = this.person; 
     console.log(this.people[index]);
-    this.personService.savePeople(this.person).subscribe(() =>{
-    });
+    this.personService.savePeople(this.person).subscribe(() =>alert("geht"));
   }
 
   getUser() {

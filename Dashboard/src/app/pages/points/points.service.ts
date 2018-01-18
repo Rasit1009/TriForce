@@ -8,7 +8,7 @@ import { CouponSystem } from "../coupon/coupon.service";
 
 @Injectable()
 export class PointService {
-
+couponDefault : CouponSystem[] = []; 
     constructor(private http: Http) { }
 
 
@@ -26,11 +26,14 @@ public getSeller(id : any): Observable<any[]>{
 }
 
 public getSystem(seller : Points[]): Observable<CouponSystem[]>{
+    if(seller){
     return this.http
     .post('http://localhost:49873/api/coupon/getSystem/', seller)
     .map(r =>r.json())
     .map(e =>e.map 
       (c=> new CouponSystem(c.CouponSystemid,c.selleri,c.coupontext,c.coupondetail,c.moneyvalue,c.number)));
+    } else { 
+    }
 }
 
 }
