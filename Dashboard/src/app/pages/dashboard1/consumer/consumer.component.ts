@@ -19,6 +19,7 @@ export class ConsumerComponent {
   seller : Points[] = [];
   text : string; 
   sellerID : number; 
+  test="hallo"; 
 
   constructor(private modalService: NgbModal, public auth : AuthService, public pointsService : PointService, private toasterService: ToasterService) { 
 
@@ -31,6 +32,11 @@ export class ConsumerComponent {
     
     this.initToasts();
   }
+
+  getSellerPic(seller : Points){
+    this.test = this.auth.people.find(x=>x.i ===seller.selleri).imagepath;
+    return this.test; 
+}
         getSellerNameByID(user : Points){
 
           return this.text; 

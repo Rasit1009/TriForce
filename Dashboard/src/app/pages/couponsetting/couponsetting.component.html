@@ -17,7 +17,8 @@
         <br>
         <div class="input-group">
 
-            <input id="coupon_value" type="number" class="form-control" placeholder="Anzahl benötigter LoloCOINs eingeben..." />
+            <input *ngIf="coupon.number" id="coupon_value" type="number" class="form-control" [value]="coupon.number"/>
+            <input *ngIf="!coupon.number" id="coupon_value" type="number" class="form-control" placeholder="Anzahl benötigter LoloCOINs eingeben..." />
         </div>
         <br>
         <br>
@@ -34,7 +35,8 @@
         </span>
         <div class="input-group">
 
-            <input id="coupon_value" type="input" class="form-control" placeholder="Bezeichnung eingeben..." />
+            <input *ngIf="coupon.coupontext" id="coupon_text" type="input" class="form-control" [value]="coupon.coupontext"/>
+            <input *ngIf="!coupon.coupontext" id="coupon_text" type="input" class="form-control" placeholder="Bezeichnung eingeben..." />
         </div>
         <br>
         <span>
@@ -44,7 +46,8 @@
             </span>
             <div class="input-group">
     
-                <input id="coupon_value" type="input" class="form-control" placeholder="Details eingeben..." />
+                <input *ngIf="coupon.coupondetail" id="coupon_detail" type="input" class="form-control" [value]="coupon.coupondetail"/>
+                <input *ngIf="!coupon.coupondetail" id="coupon_detail" type="input" class="form-control" placeholder="Details eingeben..." />
             </div>
 
             <br>
@@ -55,13 +58,12 @@
                 </span>
                 <div class="input-group">
         
-                    <input id="coupon_value" type="number" class="form-control" placeholder="Betrag eingeben..." />
+                    <input *ngIf="coupon.moneyvalue" id="coupon_moneyvalue" type="number" class="form-control" [value]="coupon.moneyvalue" />
+                    <input *ngIf="!coupon.moneyvalue" id="coupon_moneyvalue" type="number" class="form-control" placeholder="Betrag eingeben..." />
                 </div>
-
-
         <br>
         <br>
-        <button type="submit" class="btn btn-danger">Speichern</button>
+        <button (click)="saveCoupon()" type="submit" class="btn btn-danger">Speichern</button>
         <br>
     </nb-card-body>
 </nb-card>

@@ -136,7 +136,6 @@ export class FormComponent implements OnInit {
     this.person.gender = "";
   }
 
-  console.log(this.person);
    this.auth.setNewUserData(this.person);
   }
   starRate = 2;

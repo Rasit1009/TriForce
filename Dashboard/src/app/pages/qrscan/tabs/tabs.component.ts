@@ -63,14 +63,12 @@ indb(){
     this.point.selleri = this.auth.person.i; 
     this.point.useri = this.qrResult; 
 
-    this.pointService.sendPoints(this.point).subscribe(()=>alert("geht"));
+    this.pointService.sendPoints(this.point).subscribe();
 
     //this.consumerid = document.getElementById("consumerid");
     //this.consumer_id = this.qrResult;
     //this.sellerid = this.auth.person.i;
 
-
-  alert('Für den Herr/Frau Schneider wurde der Betrag ' + this.amount_id + '€ gutgeschrieben.');
 }
 
 

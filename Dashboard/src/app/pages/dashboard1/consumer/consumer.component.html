@@ -34,16 +34,16 @@
             </a>
         </li> -->
         
-        <li *ngFor="let seller of seller" (click)="showLargeModal(seller)">
-              <div *ngIf="getPoints(seller)">
+        <li *ngFor="let s of seller; let i=index; let last=last" (click)="showLargeModal(s)">
+              <div *ngIf="getPoints(seller) || seller.length>=i ">
+         
             <a class="rig-cell">
-                   
-                       <img class="rig-img" src="../../../assets/images/seller/1.png">
+                       <img class="rig-img" [src]="getSellerPic(s)">
                         <span class="rig-overlay"></span>
                         <span class="rig-text"></span>
-                
             </a>
-              </div>        
+              </div>  
+  
         </li>
     
        
