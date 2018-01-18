@@ -12,7 +12,6 @@ namespace WebApplication4.Models
         public string Coupontext { get; set; }
         public string Coupondetail { get; set; }
         public float Moneyvalue { get; set; }
-
         public int Number { get; set; }
     }
 }

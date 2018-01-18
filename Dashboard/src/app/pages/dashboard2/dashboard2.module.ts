@@ -29,13 +29,15 @@ import { EchartsAreaStackComponent } from './echarts/echarts-area-stack.componen
 import { EchartsBarAnimationComponent } from './echarts/echarts-bar-animation.component';
 import { EchartsRadarComponent } from './echarts/echarts-radar.component';
 import { EchartsComponent } from './echarts/echarts.component';
+import { ToasterModule } from 'angular2-toaster';
 
 @NgModule({
   imports: [
     ThemeModule,
     AngularEchartsModule,
     NgxChartsModule,
-    ChartModule
+    ChartModule,
+    ToasterModule
   ],
   declarations: [
     Dashboard2Component,

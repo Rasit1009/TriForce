@@ -15,7 +15,6 @@ export class LogoUrlComponent implements OnInit {
   saveUrl() {
     this.text1 = document.getElementById("linkbox");
     this.bildurl = this.text1.value;
-    alert('Dein Bild wurde erfolgreich hinzugefügt!');
 
   }
 
