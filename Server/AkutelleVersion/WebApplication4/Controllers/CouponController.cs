@@ -99,12 +99,12 @@ namespace WebApplication4.Controllers
         }
 
         //Jana Teutenberg: Methode, die für eine Liste von Händlern, die System Infos zurück gibt
-        [HttpGet("GetSystem", Name = "GetSystem")]
+        [HttpPost("GetSystem", Name = "GetSystem")]
         // GET: Coupon/GetSystem
         public IActionResult GetSystem([FromBody] Punkte[] Liste )
         {
             var Li = new List<CouponSystem>();
-            for (int i = 0; i< Liste.Length; i++){
+            for (int i = 0; i< 1; i++){
 
                 Li[i] = _context.CouponSystem.SingleOrDefault(
                 c => c.Selleri == Liste[i].Selleri);
