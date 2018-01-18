@@ -16,7 +16,17 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 export class Datacomplete_SellerComponent {
 
-  bildurl: string = "http://www.grafikwerk-shop.de/WebRoot/Store25/Shops/64704216/5494/30D3/9D92/A49D/4981/C0A8/2BB8/BFD7/Bierdeckel_deinlogo.jpg";
+  person : Person  = this.auth.person; 
+
+  constructor(public auth : AuthService){
+    if(this.auth.person.imagepath){
+      this.bildurl = this.auth.person.imagepath; 
+    } else {
+      this.bildurl =  "http://www.grafikwerk-shop.de/WebRoot/Store25/Shops/64704216/5494/30D3/9D92/A49D/4981/C0A8/2BB8/BFD7/Bierdeckel_deinlogo.jpg";
+    }
+  }
+
+  bildurl: string;
   text1: any;
 
   public uploader:FileUploader = new FileUploader({url: URL});
@@ -34,6 +44,8 @@ export class Datacomplete_SellerComponent {
   saveUrl(){
       this.text1 = document.getElementById("linkbox");
       this.bildurl = this.text1.value;
+      this.person.imagepath = this.bildurl; 
+      this.auth.setNewUserData(this.person);
       alert('Dein Bild wurde erfolgreich heinzugefügt!');
     
     }
