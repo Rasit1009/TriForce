@@ -28,3 +28,245 @@
     }
   }
   /*-----------------TOAST CSS END---------------------------*/
+
+
+body {
+    background-color: #e3fbff;
+  }
+  /* Just to center things */
+  .center {
+    margin: 100px auto;
+    width: 30px;
+  }
+  
+  /* The element to hover over */
+  .qs1 {
+    background-color: #009fe3;
+    border-radius: 16px;
+    color: #e3fbff;
+    cursor: default;
+    display: inline-block;
+    font-family: 'Helvetica',sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    text-align: center;
+    width: 30px;
+    
+    .popover {
+      background-color: white;// rgba(0,0,0,0.8);
+      border-radius: 5px;
+      bottom: 42px;
+      box-shadow: 0 0 8px #009fe3; // rgba(0,0,0,0.4);
+      color: #2a2a2a;
+      display: none;
+      font-size: 14px;
+      font-family: 'Helvetica',sans-serif;
+      //Position des Popover
+      left: -140px;
+      top: 40px;
+      padding: 7px 10px;
+      position: absolute;
+      
+      //Größe des Popover
+      height: 122px;
+      width: 300px;
+      z-index: 1;
+
+    }
+    
+    &:hover {
+        .popover {
+          display: block;
+          -webkit-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          -moz-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          -ms-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          
+        }
+      }
+  }
+
+
+
+
+
+  .qs2 {
+    background-color: #009fe3;
+    border-radius: 16px;
+    color: #e3fbff;
+    cursor: default;
+    display: inline-block;
+    font-family: 'Helvetica',sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    text-align: center;
+    width: 30px;
+    
+    .popover {
+      background-color: white;// rgba(0,0,0,0.8);
+      border-radius: 5px;
+      bottom: 42px;
+      box-shadow: 0 0 8px #009fe3; // rgba(0,0,0,0.4);
+      color: #2a2a2a;
+      display: none;
+      font-size: 14px;
+      font-family: 'Helvetica',sans-serif;
+      //Position des Popover
+      left: -180px;
+      top: 40px;
+      padding: 7px 10px;
+      position: absolute;
+      
+      //Größe des Popover
+      height: 225px;
+      width: 350px;
+      z-index: 1;
+
+    }
+    
+    &:hover {
+        .popover {
+          display: block;
+          -webkit-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          -moz-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          -ms-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          
+        }
+      }
+  }
+
+
+
+
+  /* The element to hover over */
+  .qs3 {
+    background-color: #009fe3;
+    border-radius: 16px;
+    color: #e3fbff;
+    cursor: default;
+    display: inline-block;
+    font-family: 'Helvetica',sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    text-align: center;
+    width: 30px;
+    
+    .popover {
+      background-color: white;// rgba(0,0,0,0.8);
+      border-radius: 5px;
+      bottom: 42px;
+      box-shadow: 0 0 8px #009fe3; // rgba(0,0,0,0.4);
+      color: #2a2a2a;
+      display: none;
+      font-size: 14px;
+      font-family: 'Helvetica',sans-serif;
+      //Position des Popover
+      left: -140px;
+      top: 40px;
+      padding: 7px 10px;
+      position: absolute;
+      
+      //Größe des Popover
+      height: 142px;
+      width: 350px;
+      z-index: 1;
+
+    }
+    
+    &:hover {
+        .popover {
+          display: block;
+          -webkit-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          -moz-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          -ms-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          
+        }
+      }
+  }
+
+
+
+   /* The element to hover over */
+   .qs4 {
+    background-color: #009fe3;
+    border-radius: 16px;
+    color: #e3fbff;
+    cursor: default;
+    display: inline-block;
+    font-family: 'Helvetica',sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    text-align: center;
+    width: 30px;
+    
+    .popover {
+      background-color: white;// rgba(0,0,0,0.8);
+      border-radius: 5px;
+      bottom: 42px;
+      box-shadow: 0 0 8px #009fe3; // rgba(0,0,0,0.4);
+      color: #2a2a2a;
+      display: none;
+      font-size: 14px;
+      font-family: 'Helvetica',sans-serif;
+      //Position des Popover
+      left: -140px;
+      top: 40px;
+      padding: 7px 10px;
+      position: absolute;
+      
+      //Größe des Popover
+      height: 162px;
+      width: 350px;
+      z-index: 1;
+
+    }
+    
+    &:hover {
+        .popover {
+          display: block;
+          -webkit-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          -moz-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          -ms-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          
+        }
+      }
+  }
+
+
+
+  
+  @-webkit-keyframes fade-in {
+      from   { opacity: 0; }
+      to { opacity: 1; }
+  }
+  @-moz-keyframes fade-in {
+      from   { opacity: 0; }
+      to { opacity: 1; }
+  }
+  @-ms-keyframes fade-in {
+      from   { opacity: 0; }
+      to { opacity: 1; }
+  }
+  @-webkit-keyframes move-up {
+      from   { bottom: 30px; }
+      to { bottom: 42px; }
+  }
+  @-moz-keyframes move-up {
+      from   { bottom: 30px; }
+      to { bottom: 42px; }
+  }
+  @-ms-keyframes move-up {
+      from   { bottom: 30px; }
+      to { bottom: 42px; }
+  }
