@@ -25,7 +25,7 @@ export class IconsComponent {
       'nb-rainy', 'nb-roller-shades', 'nb-search', 'nb-shuffle', 'nb-skip-backward',
       'nb-skip-backward-outline', 'nb-skip-forward', 'nb-skip-forward-outline', 'nb-snowy-circled',
       'nb-square', 'nb-square-outline', 'nb-star', 'nb-sunny', 'nb-sunny-circled', 'nb-tables', 'nb-title',
-      'nb-trash', 'nb-volume-high', 'nb-volume-mute', 'fa fa-qrcode', "fa fa-user-o", "fa fa-home", "fa fa-map-marker", "fa fa-question-circle-o", "fa fa-shopping-bag", 'ion-log-out'],
+      'nb-trash', 'nb-volume-high', 'nb-volume-mute', 'fa fa-qrcode', "fa fa-user-o", "fa fa-home", "fa fa-map-marker", "fa fa-question-circle-o", "fa fa-shopping-bag", 'ion-log-out','fa fa-money'],
 
     ionicons: [
       'ion-ionic', 'ion-arrow-right-b', 'ion-arrow-down-b', 'ion-arrow-left-b', 'ion-arrow-up-c', 'ion-arrow-right-c',

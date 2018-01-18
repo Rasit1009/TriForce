@@ -1,0 +1,46 @@
+<nb-card>
+    <nb-card-header>Logo</nb-card-header>
+    <nb-card-body>
+
+        <!--Linkfeld-->
+        <span>Bild-URL eingeben: </span>
+        <br>
+        <br>
+        <input *ngIf="person.imagepath" id="imagepath" type="input" [value]="person.imagepath" class="form-control" />
+        <input *ngIf="!person.imagepath" id="imagepath" type="input" class="form-control" placeholder="http://www.deinewebsite/deinlogo.jpg"
+        />
+        <br>
+        <br>
+        <span>Ihr Logo: </span>
+        <br> <br>
+        <img *ngIf="person.imagepath" class="rig-img" src="{{person.imagepath}}" alt="Es konnte kein Bild unter diesem Link gefunden werden." >
+        <img *ngIf="!person.imagepath" class="rig-img" src="http://berlin.pm-camp.org/wp-content/uploads/2016/03/hier-koennte-ihr-logo-stehen-350x140.png" alt="Es konnte kein Bild unter diesem Link gefunden werden." >
+        <br>
+        <br>
+
+
+        <!-- <div class="row coupon-inputs">
+            <div>
+                <h4>Bild Web-URL eintragen:</h4>
+            </div>
+
+            <div>
+                <h4>Folgendes Bild wurde ausgewählt</h4>
+            </div>
+            
+
+          </div>
+          <div class="row coupon-inputs">
+            <div>
+                <input type="text1" id="linkbox" placeholder="http://www.deinewebsite/deinlogo.jpg" class="form-control"/>
+              </div>
+              
+              <div>
+                <img src="{{bildurl}}" alt="Es konnte kein Bild unter diesem Link gefunden werden." height="100" width="100">
+              </div>
+            </div>
+<br> -->
+        <button (click)="savePeople()" type="submit" class="btn btn-danger">Speichern</button>
+        <br>
+    </nb-card-body>
+</nb-card>

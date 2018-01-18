@@ -51,6 +51,12 @@ export const MENU_ITEMS_SELLER: NbMenuItem[] = [
     link: '/pages/datacomplete_seller',
     // home: true,
   },
+  {
+    title: 'Gutschein verwalten',
+    icon: 'fa fa-money',
+    link: '/pages/couponsetting',
+    // home: true,
+  },
 ];
 
 export const MENU_ITEMS_FIRST: NbMenuItem[] = [

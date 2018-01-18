@@ -24,7 +24,7 @@
 
 
 
-  <agm-marker 
+<agm-marker 
   [latitude]="this.positionlat "
   [longitude]="this.positionlng"
   [label]="test"
@@ -54,11 +54,15 @@
 
 -->
   
-  <agm-circle [latitude]="lat" [longitude]="lng" 
-      [radius]="200"
-      [fillColor]="'red'"
+  <agm-circle [latitude]="this.positionlat" [longitude]="this.positionlng" 
+      [radius]="100"
+      [fillColor]="'blue'"
       [circleDraggable]="false"
       [editable]="false">
+
+      <agm-info-window>
+        <strong>Mein Standort</strong>
+      </agm-info-window>
   </agm-circle>
 
 </agm-map>
