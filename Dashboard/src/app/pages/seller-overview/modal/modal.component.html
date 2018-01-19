@@ -28,7 +28,7 @@
         <div *ngIf="remainingScans() == 0">
         <div class="details">Ausreichend Punkte gesammelt</div>
         <br>
-        <button class="btn btn-md btn-primary" >Gutschein anzeigen</button>
+        <button class="btn btn-md btn-primary" (click)="CreateCredit()">Gutschein anzeigen</button>
         <br>
         </div>
 
