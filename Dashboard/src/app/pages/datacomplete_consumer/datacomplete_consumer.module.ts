@@ -7,11 +7,13 @@ import { SolarComponent } from './solar/solar.component';
 import { FormComponent } from './form/form.component';
 import { ChangeEmail } from './changeemail/changeemail.component';
 import { HttpModule } from '@angular/http';
+import { ToasterModule } from 'angular2-toaster';
 
 @NgModule({
   imports: [
     ThemeModule,
     AngularEchartsModule,
+    ToasterModule
   ],
   declarations: [
     Datacomplete_ConsumerComponent,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Person, PersonService } from '../services/person.service';
 import { AuthService } from '../../../auth/auth.service';
+import { Datacomplete_ConsumerComponent } from '../datacomplete_consumer.component';
 
 @Component({
   selector: 'ngx-form',
@@ -12,7 +13,7 @@ export class FormComponent implements OnInit {
   
   person : Person = this.auth.person;
 
-  constructor(public auth : AuthService){
+  constructor(public auth : AuthService, public toastm: Datacomplete_ConsumerComponent){
 
   }
 
@@ -47,6 +48,8 @@ export class FormComponent implements OnInit {
       this.person.gender="keine Angabe"
     }
 */
+this.toastm.clearToasts();
+this.toastm.showToast('success', 'Daten aktualisiert und gespeichert', '');
 
   //this.person.i = this.auth.person.i; 
   if((<HTMLInputElement>document.getElementById("firstname")).value){
