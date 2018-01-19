@@ -56,7 +56,11 @@ namespace WebApplication4.Controllers
 
 
         
-
+        public class IdCredit
+        {
+            public string Selleri { get; set; }
+            public string Useri { get; set; }
+        }
         public class Gutschein
         {
             public string Creditid { get; set; }

@@ -5,6 +5,7 @@ import { AuthService } from '../../auth/auth.service';
 import { Person, PersonService } from '../datacomplete_consumer/services/person.service';
 import { Points, PointService } from '../points/points.service';
 import { CouponSystem, Coupon } from '../coupon/coupon.service';
+import { CreditService, Credit } from '../points/credit.service';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import {Observable, BehaviorSubject} from'rxjs/Rx';
 @Component({
@@ -24,16 +25,20 @@ export class SellerOverviewComponent{
   couponSystem : CouponSystem[] = []; 
   isPersonSource = new BehaviorSubject<Points[]>(null);
   _currentSellerList : Observable<Points[]> = this.isPersonSource.asObservable().first(); 
+  public credit : Credit = new Credit(null,null, null);
+  creditid: string;
 
 
 
 
 
-  constructor(private modalService: NgbModal, public auth : AuthService, public pointsService : PointService) { 
+  constructor(private modalService: NgbModal, public auth : AuthService, public pointsService : PointService, public creditService: CreditService) { 
     this.pointsService.getSeller(this.auth.id).subscribe(res=> {
     this.seller = res;
     this.setUser(this.seller);
     });
+
+    
 
     this.isPersonSource.subscribe(res => {   
       try {
@@ -64,6 +69,9 @@ export class SellerOverviewComponent{
           //Hier sollen die Daten mittels SellerID aus der Datenbank ausgelesen werden, momentan Mockup
           getSellerName(sellerID : string){
            return sellerID; 
+          }
+          getCredit(creditid: string){
+            return creditid;
           }
           getSellerText(sellerID : string){
             return sellerID; 
@@ -111,14 +119,21 @@ export class SellerOverviewComponent{
          activeModal.componentInstance.modalCouponDetail = this.getCouponDetail(couponDetail);
          activeModal.componentInstance.modalCoupontext = this.getCouponText(couponText);
          activeModal.componentInstance.modalMissingPoints = this.getMissingPoints(missingPoints);
+         //activeModal.componentInstance.modalCredit = this.getCredit(this.creditid);
 
       } catch (error) {
         
       }
      
     }
-    
+    //Methode, die wenn der Button Gutschein anzeigen gelickt wird, die Userid und Sellerid postet, damit ein Gutschein in der Datenbank erzeugt wird
+CreateCredit(){
+//selleri wird noch nicht richtig ausgelesen
 
+  this.credit.selleri = this.seller.find(x=>x.selleri === this.credit.selleri);
+  this.credit.useri = this.auth.id;
+  this.creditService.sendCredit(this.credit).subscribe(res=>{this.creditid= res});
+}
     getModalValue(){
       return this.activeValue;
     }

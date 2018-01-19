@@ -34,3 +34,4 @@ export class Credit{
 
 constructor(public creditid, public selleri, public useri){}
 }
+
