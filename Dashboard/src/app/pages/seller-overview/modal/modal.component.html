@@ -14,21 +14,21 @@
       <nb-card-body>
         <span>{{modalCouponDetail}} </span>
         <span>{{modalCoupontext}}</span>
-        
-
-
+        <span>{{modalCredit}}</span> 
       <div echarts [options]="option" class="echart">
       </div>
       <div class="info">
-          
+          <ngx-qrcode [qrc-element-type]="elementType" [qrc-value] = "qr">
+            </ngx-qrcode>
         <!-- Noch nicht ausreichend Punkte gesammelt-->
-       <div class="value" *ngIf="!remainingScans() == 0">Noch {{ remainingScans() }} Punkte bis zum nächsten Gutschein!</div>
+       <div class="value" *ngIf="!remainingScans() == 0">Noch {{ modalMissingPoints}} Punkte bis zum nächsten Gutschein!</div>
 
         <!-- Ausreichend Punkte gesammelt-->
         <div *ngIf="remainingScans() == 0">
         <div class="details">Ausreichend Punkte gesammelt</div>
         <br>
         <button class="btn btn-md btn-primary" (click)="CreateCredit()">Gutschein anzeigen</button>
+        
         <br>
         </div>
 

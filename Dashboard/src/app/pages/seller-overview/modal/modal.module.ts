@@ -6,6 +6,7 @@ import { ThemeModule } from '../../../@theme/theme.module';
 import { SolarComponent} from './solar/solar.component'
 import { ModalComponent } from './modal.component';
 import { SellerOverviewComponent } from '../seller-overview.component';
+import { NgxQRCodeModule } from 'ngx-qrcode-coupon';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { SellerOverviewComponent } from '../seller-overview.component';
     CommonModule,
     ThemeModule,
     AngularEchartsModule,
+    NgxQRCodeModule,
     
   ],
   declarations: [

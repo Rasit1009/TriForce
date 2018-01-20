@@ -3,6 +3,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {SellerOverviewComponent} from '../seller-overview.component';
 import { AfterViewInit, Input, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { QrgenerateComponent } from '../../qrgenerate/qrgenerate.component';
 
 
 declare const echarts: any;
@@ -19,15 +20,19 @@ export class ModalComponent implements AfterViewInit, OnDestroy {
   
 
 
-constructor(private activeModal: NgbActiveModal, private theme: NbThemeService){}
+constructor(private activeModal: NgbActiveModal, private theme: NbThemeService){
+
+}
 
 
   closeModal() {
     this.activeModal.close();
   } 
 
+  elementType : 'url' | 'canvas' | 'img' = 'url'; 
+  public value ; 
+  public qr; 
 
-  private value = 0;
 
   //Gibt verbleibende Scans zum Erstellen eines Gutscheins
  remainingScans(){

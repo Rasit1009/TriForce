@@ -19,5 +19,9 @@ export class QrgenerateComponent {
     this.value = this.text1.value;
   }
 
+  setNewQr(value : string){
+    this.value = value; 
+  }
+
   
 }

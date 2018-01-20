@@ -15,6 +15,7 @@ export class CreditService {
 public sendCredit(credit : Credit): Observable<any>{
 return this.http
 .post('http://localhost:49873/api/credit', credit);
+
 }
 
 /*public getSeller(id : any): Observable<any[]>{
