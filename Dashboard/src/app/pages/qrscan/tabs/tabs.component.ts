@@ -84,7 +84,7 @@ this.geklickt()
 datenkorrekteingegeben: boolean = true;
 geklickt(){
   if (this.datenkorrekteingegeben){
-    alert("Daten korrekt eingegeben und Umsatz wurde verbucht")
+    alert("Dateneingabe korrekt!")
     window.location.reload();
   } if (!this.datenkorrekteingegeben){
     alert("Daten falsch eingegeben, bitte überprüfe deine Eingaben.")
