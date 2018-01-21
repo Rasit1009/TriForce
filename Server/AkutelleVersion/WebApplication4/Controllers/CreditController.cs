@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication4.Daten;
 using WebApplication4.Models;
+using WebApplication4.Controllers;
 
 namespace WebApplication4.Controllers
 {
@@ -53,14 +54,45 @@ namespace WebApplication4.Controllers
 
         }
 
+        //Jana Teutenberg: Methode, die den eine Creditid bekommt und diesen Gutschein und seine Punkte löscht
+        [HttpGet("Cash/{creditid}", Name = "Cash")]
+        // Api/credit/cash/id
+        public IActionResult Cash(string creditid)
+        {
+            var Gutschein = _context.Credit.SingleOrDefault(c => c.Creditid == creditid);
+
+            if (Gutschein == null)
+            {
+                return Ok(false);
+
+            }
+
+            else
+            {
+                string useri;
+                string selleri;
+                useri = Gutschein.Useri;
+                selleri = Gutschein.Selleri;
+
+                var Guti = _context.Coupon.SingleOrDefault(h => h.Selleri == selleri && h.Useri == useri);
+                Guti.Points = 0;
+
+                _context.Remove(Gutschein);
+                _context.Update(Guti);
+                _context.SaveChanges();
+                
+                return Ok(true);
+            }
+
+
+
+
+
+        }
+
 
 
         
-        public class IdCredit
-        {
-            public string Selleri { get; set; }
-            public string Useri { get; set; }
-        }
         public class Gutschein
         {
             public string Creditid { get; set; }
@@ -69,7 +101,7 @@ namespace WebApplication4.Controllers
 
 
         }
-
+        
        
     }
 }
