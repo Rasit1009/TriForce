@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { ModalComponent } from './modal/modal.component';
+import { ModalComponent } from './modal.component';
 
 @Component({
   selector: 'ngx-qrscan',
@@ -9,6 +9,7 @@ import { ModalComponent } from './modal/modal.component';
   templateUrl: './qrscan.component.html',
 })
 export class QrscanComponent {
+  
 
   constructor(private modalService: NgbModal) { }
 
@@ -22,4 +23,6 @@ export class QrscanComponent {
 
     activeModal.componentInstance.modalHeader = 'Erfolgreich Gescannt';
   }
+
+
 }
