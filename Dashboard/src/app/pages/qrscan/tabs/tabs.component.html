@@ -22,7 +22,7 @@
     <div class="col-sm-4 right">
             <span><strong >Umsatz manuell eingeben:</strong></span>
 
-            <br>
+
             <br>
             <div class="input-group col-sm-12">
                     
@@ -40,8 +40,20 @@
                   <button class="btn btn-danger" (click)="indb()">
                       Einkauf Gutschreiben
                   </button>
+          </div> <br>
+          <div id="strich">            
+            </div><br><br>
+            <span><strong >Gutscheincode manuell eingeben:</strong></span>
+            <br>
+            <div class="input-group col-sm-12">
+              <input id="amount" type="text" class="form-control" placeholder="Gutscheincode eingeben..." value="{{test}}">
 
+            </div><br>
+            <div class="input-group col-sm-8">
 
+                  <button class="btn btn-danger" (click)="indb()">
+                      Gutschein Einlösen
+                  </button>
           </div>
     </div>
 </div>
