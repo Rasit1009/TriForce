@@ -20,12 +20,18 @@ export class ConsumerComponent {
   text : string; 
   sellerID : number; 
   test="hallo"; 
+  gespart = 0; 
 
   constructor(private modalService: NgbModal, public auth : AuthService, public pointsService : PointService, private toasterService: ToasterService) { 
 
     this.pointsService.getSeller(this.auth.id).subscribe(res=> {
     console.log(res);
     this.seller = res;
+    console.log(this.seller[0].points);
+    console.log(this.seller[1].points);
+    for(var i = 0; i<this.seller.length;i++){
+      this.gespart = this.gespart + this.seller[i].points;
+    }
     console.log(this.seller);
     });
 

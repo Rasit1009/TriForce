@@ -39,8 +39,9 @@ constructor(public auth : AuthService, public pointService : PointService, publi
   handleQrCodeResult(result: string) {
     console.log("Result", result);
     //QR CODE RESULT
-    this.scanni.showSmallModal();
+    console.log(result);
     this.qrResult = result;
+    this.scanni.showSmallModal(result);
   }
   
   onChange(selectedValue: string){
@@ -72,13 +73,7 @@ indb(){
     this.point.useri = this.qrResult; 
     this.point.useri = this.textvalue_id;
 
-    if (this.textvalue.indexOf("auth") >= 0 || this.textvalue.indexOf("google") >= 0 
-    || this.textvalue.indexOf("facebook") >= 0){
-    //if ob gutschein oder id
-    this.pointService.sendPoints(this.point).subscribe();
-  } else {
-    this.pointService.cashCoupon(this.textvalue);
-  }
+
     //this.consumerid = document.getElementById("consumerid");
     //this.consumer_id = this.qrResult;
     //this.sellerid = this.auth.person.i;
