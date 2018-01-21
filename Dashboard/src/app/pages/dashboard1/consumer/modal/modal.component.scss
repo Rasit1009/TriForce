@@ -12,8 +12,22 @@
     padding: $padding;
     }
 
+    .solar-card{
+      max-height: 150px !important;
+    }
+
+    .echart{
+      max-height: 120px !important;
+    }
+
     .coupondetail{
       color: #706f6f !important;
+    }
+
+    .codeManual{
+      text-align: center;
+      color: #bababa !important;
+      font-size: 8px;
     }
   
     .coupontext{  
@@ -25,25 +39,33 @@
     text-align: center;
   }
 
-  .qrcode{
-    display:block;
-    width: 100%;
-    height: auto;
-    border:none;
-    transform:scale(1);
-    transition:all 1s;
+  .codeManual1{
+    text-align: center;
+    margin-left: -75px;
+    margin-top: -20px;
+    color: #bababa !important;
+    font-size: 12px;
+  }
+  .codeManual2{
+    text-align: center;
+    margin-top: -30px;
+    color: #bababa !important;
+    font-size: 12px;
   }
 
   .maxw992{
     @media(max-width: 991px){
       display: none;
     }
+
+
   }
 
   .minw992{
     @media(min-width: 992px){
       display: none;
     }
+
   }
 
   .echart {
@@ -54,14 +76,14 @@
 
   .info {
     margin-left: 45%;
-    padding-top: 1.5rem;
+    padding-top: 1.7rem;
     color: nb-theme(color-fg);
   }
 
   .value {
     position: center;
     font-family: nb-theme(font-secondary);
-    font-size: 1.5rem;
+    font-size: 1.15em !important;
     font-weight: nb-theme(font-weight-bold);
     color: nb-theme(color-fg-heading);
   }
