@@ -28,3 +28,55 @@
   border-bottom: 3px solid darkgrey;
   width: 100%;
 }
+
+
+  /* The element to hover over */
+  .qs1 {
+    background-color: #009fe3;
+    border-radius: 16px;
+    color: #e3fbff;
+    cursor: default;
+    display: inline-block;
+    font-family: 'Helvetica',sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    text-align: center;
+    width: 30px;
+    
+    .popover {
+      background-color: white;// rgba(0,0,0,0.8);
+      border-radius: 5px;
+      bottom: 42px;
+      box-shadow: 0 0 8px #009fe3; // rgba(0,0,0,0.4);
+      color: #2a2a2a;
+      display: none;
+      font-size: 14px;
+      font-family: 'Helvetica',sans-serif;
+      //Position des Popover
+      left: -140px;
+      top: 40px;
+      padding: 7px 10px;
+      position: absolute;
+      
+      //Größe des Popover
+      height: 100px;
+      width: 300px;
+      z-index: 9999;
+
+    }
+    
+    &:hover {
+        .popover {
+          display: block;
+          -webkit-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          -moz-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          -ms-animation: fade-in .3s linear 1, move-up .3s linear 1;
+          
+        }
+      }
+  }
+
+
