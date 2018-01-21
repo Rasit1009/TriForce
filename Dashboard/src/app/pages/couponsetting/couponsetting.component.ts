@@ -33,9 +33,10 @@ export class CouponsettingComponent implements OnInit {
   saveCoupon(){
       alert(this.person.i);
        this.coupon.selleri = this.person.i;
-       if(!this.coupon){
+    
+         alert("Coupon noch leer");
         this.coupon.selleri = this.person.i;
-      
+        
      if((<HTMLInputElement>document.getElementById("value")).value){
       this.coupon.number = (<HTMLInputElement>document.getElementById("value")).value;
     } else {
@@ -59,7 +60,8 @@ export class CouponsettingComponent implements OnInit {
     }else{
       this.coupon.moneyvalue = "";
     }
-  } else if(this.coupon){
+ /* } else if(this.coupon){
+    alert("Coupon was drin");
     this.coupon.selleri = this.person.i;
     if((<HTMLInputElement>document.getElementById("coupon_value")).value){
       this.coupon.number = (<HTMLInputElement>document.getElementById("coupon_value")).value;
@@ -86,7 +88,7 @@ export class CouponsettingComponent implements OnInit {
     }else{
       this.coupon.moneyvalue = "";
     }
-  }
+  } */
 
     this.couponService.sendSystem(this.coupon).subscribe(()=>alert("geht klar"));
   }
