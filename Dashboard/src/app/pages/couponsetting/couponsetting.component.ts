@@ -38,10 +38,7 @@ export class CouponsettingComponent implements OnInit {
   }
 
   saveCoupon(){
-      alert(this.person.i);
        this.coupon.selleri = this.person.i;
-    
-         alert("Coupon noch leer");
         this.coupon.selleri = this.person.i;
         
      if((<HTMLInputElement>document.getElementById("value")).value){

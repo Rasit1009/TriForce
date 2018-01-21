@@ -18,10 +18,7 @@ export class ModalComponent {
   constructor(private activeModal: NgbActiveModal, public pointservice : PointService) { }
 
   closeModal() {
-    alert(this.consumerid);
-    
     if(this.consumerid.indexOf("auth") >= 0){
-      alert("sind im if");
       this.points.points = (<HTMLInputElement>document.getElementById("umsatz")).value;
       this.points.useri = this.consumerid; 
       this.points.selleri = this.sellerid; 
