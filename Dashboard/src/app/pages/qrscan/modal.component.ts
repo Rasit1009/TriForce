@@ -9,7 +9,7 @@ export class ModalComponent {
 
   modalHeader: string;
   modalContent = `Der LoloCODE wurde erfolgreich gescannt. Bitte geben Sie nun den Kaufbetrag ein, um deinem Kunden LoloCOINs gutzuschreiben: `;
-  umsatz = "";
+  umsatz = '';
 
   constructor(private activeModal: NgbActiveModal) { }
 

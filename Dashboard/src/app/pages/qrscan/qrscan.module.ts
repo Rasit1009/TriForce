@@ -11,7 +11,7 @@ import { NgxZxingModule } from 'ngx-zxing';
 // Needed as well
 import { FormsModule } from "@angular/forms";
 import { TabsModule } from './tabs/tabs.module';
-import { ModalComponent } from './modal/modal.component';
+import { ModalComponent } from './modal.component';
 
 @NgModule({
   imports: [
@@ -28,6 +28,8 @@ import { ModalComponent } from './modal/modal.component';
   ],
   entryComponents: [
     ModalComponent,
-  ],
+  ], providers: [
+    QrscanComponent
+  ]
 })
 export class QrscanModule { }
