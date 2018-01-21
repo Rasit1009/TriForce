@@ -19,14 +19,21 @@ export class CouponsettingComponent implements OnInit {
   
   
   constructor(public auth : AuthService, public couponService : CouponService) {
-    console.log(this.person);
+
+    this.auth.isPersonSource.subscribe(res => {
+      this.person = res;
+      try {
         this.couponService.getCoupon(this.person.i).subscribe(res => {
           if(res){
             this.coupon = res;
             console.log(this.coupon); 
           }
-          });
-   }
+        })
+      } catch (error) {
+        console.log("noch kein user da "); 
+      }
+    })
+  }
    public ngOnInit(): void{
   }
 

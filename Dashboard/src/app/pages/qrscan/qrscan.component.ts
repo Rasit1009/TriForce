@@ -5,6 +5,7 @@ import { ModalComponent } from './modal.component';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 
 import 'style-loader!angular2-toaster/toaster.css';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'ngx-qrscan',
@@ -14,7 +15,7 @@ import 'style-loader!angular2-toaster/toaster.css';
 export class QrscanComponent {
   
 
-  constructor(private modalService: NgbModal, public toasterService: ToasterService) { 
+  constructor(private modalService: NgbModal, public toasterService: ToasterService, public auth: AuthService) { 
 
 
     this.initToasts();
@@ -26,12 +27,13 @@ export class QrscanComponent {
 
     activeModal.componentInstance.modalHeader = 'Large Modal';
   }
-  showSmallModal() {
+  showSmallModal(consumer_id) {
     const activeModal = this.modalService.open(ModalComponent, { size: 'sm', container: 'nb-layout' });
 
     activeModal.componentInstance.modalHeader = 'Erfolgreich Gescannt';
-
-
+    activeModal.componentInstance.consumerid = consumer_id; 
+    activeModal.componentInstance.sellerid = this.auth.id; 
+    
   }
 
     //---------------------------------------------TOAST START----------------------------------------------------

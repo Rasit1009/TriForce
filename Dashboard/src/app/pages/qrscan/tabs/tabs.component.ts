@@ -39,8 +39,9 @@ constructor(public auth : AuthService, public pointService : PointService, publi
   handleQrCodeResult(result: string) {
     console.log("Result", result);
     //QR CODE RESULT
-    this.scanni.showSmallModal();
+    console.log(result);
     this.qrResult = result;
+    this.scanni.showSmallModal(result);
   }
   
   onChange(selectedValue: string){
@@ -72,7 +73,6 @@ this.geklickt()
     this.point.useri = this.qrResult; 
     this.point.useri = this.textvalue_id;
 
-    this.pointService.sendPoints(this.point).subscribe();
 
     //this.consumerid = document.getElementById("consumerid");
     //this.consumer_id = this.qrResult;
