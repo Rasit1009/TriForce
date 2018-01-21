@@ -17,7 +17,7 @@ import { QrscanComponent } from '../qrscan.component';
 export class TabsComponent {
   public point : Points = new Points(null,null,null);
 
-constructor(public auth : AuthService, public pointService : PointService, public scanni: QrscanComponent){
+constructor(public auth : AuthService, public pointService : PointService, public scanni: QrscanComponent, public toastparty: QrscanComponent){
 
 }
 
@@ -84,8 +84,11 @@ this.geklickt()
 datenkorrekteingegeben: boolean = true;
 geklickt(){
   if (this.datenkorrekteingegeben){
-    alert("Dateneingabe korrekt!")
-    window.location.reload();
+    //this.toastparty.showToast('success','lala','k');
+    alert('Aktion erfolgreich');
+    setTimeout(() => { window.location.reload();}, 0);
+    
+    
   } if (!this.datenkorrekteingegeben){
     alert("Daten falsch eingegeben, bitte überprüfe deine Eingaben.")
   }

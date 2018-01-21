@@ -238,7 +238,7 @@ ersteanmeldung: boolean = true;
 
   config: ToasterConfig;
 
-  position = 'toast-top-right';
+  position = 'toast-bottom-right';
   animationType = 'flyleft';
   title = 'HI there!';
   content = `I'm cool toaster!`;
