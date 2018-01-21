@@ -1,42 +1,47 @@
-<div>
-    <span>Kamera wählen: &nbsp;</span>
+<div class="row">
+    <div class="col-sm-6">
+            <span>Kamera wählen: &nbsp;</span>
 
-    <select (change)="onChange($event.target.value)">
-      <option *ngFor="let device of availableDevices" value="{{device.deviceId}}">{{device.label}}</option>
-    </select>
-
-    <br>
-    <br>
-
-   
-      <ngx-zxing 
-          [start]="camStarted"
-          [device]="selectedDevice"
-          (onCamsFound)="displayCameras($event)"
-          (onScan)="handleQrCodeResult($event)"
-          
-      ></ngx-zxing>
-    
-
-      <br>
-
-      <span>Dein gescannter LoloCODE: &nbsp;<strong id="result">{{qrResult}}</strong></span>
-
-      <br>
-      <br>
-      <div class="input-group">
-        <input id="consumerid" type="text" class="form-control" placeholder="LOLOCO ID eingeben..." value="{{qrResult}}" >
+            <select (change)="onChange($event.target.value)">
+              <option *ngFor="let device of availableDevices" value="{{device.deviceId}}">{{device.label}}</option>
+            </select>
         
+            <br>
+            <br>
+        
+           
+              <ngx-zxing 
+                  [start]="camStarted"
+                  [device]="selectedDevice"
+                  (onCamsFound)="displayCameras($event)"
+                  (onScan)="handleQrCodeResult($event)"
+              ></ngx-zxing>
+            
+              <span>Dein gescannter LoloCODE: &nbsp;<strong id="result">{{qrResult}}</strong></span>
     </div>
+    <div class="col-sm-4 right">
+            <span><strong >Umsatz manuell eingeben:</strong></span>
 
-    <div class="input-group">
-        <input id="amount" type="number" class="form-control" placeholder="Betrag/Menge eingeben...">
-        <span class="input-group-btn">
-            <button class="btn btn-danger" (click)="indb()">
-                Einkauf Gutschreiben
-            </button>
-            <p></p>
-        </span>
+            <br>
+            <br>
+            <div class="input-group col-sm-12">
+                    <div class="input-group col-sm-3"><input type="text" class="form-control" value="{{auth0}}" readonly="readonly" ></div>
+                    <div class="input-group col-sm-9"><input id="consumerid" type="text" class="form-control" placeholder="LOLOCO ID eingeben..." value="{{qrResult}}" ></div>
+             
+              
+          </div>
+      
+          <div class="input-group col-sm-12">
+              <input id="amount" type="number" class="form-control" placeholder="Betrag/Menge eingeben...">
+
+            </div><br>
+            <div class="input-group col-sm-8">
+
+                  <button class="btn btn-danger" (click)="indb()">
+                      Einkauf Gutschreiben
+                  </button>
+
+
+          </div>
     </div>
-
 </div>
