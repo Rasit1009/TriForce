@@ -4,13 +4,13 @@
       <nb-card-body>
     <ul id="rig">
       <li *ngFor="let s of seller; let i=index; let last=last" (click)="showLargeModal(s)">
-          <div *ngIf="seller.length>=i">
+          <div *ngIf="seller.length>=i" > 
           <a class="rig-cell">
              <img id="image" class="rig-img" [src]="getSellerPic(s)">
               <span class="rig-overlay"></span>
               <span class="rig-text"></span>
             </a>
-        </div>
+        </div> 
       </li>
     <!--  <li>
           <a class="rig-cell" (click)="showLargeModal(2)">

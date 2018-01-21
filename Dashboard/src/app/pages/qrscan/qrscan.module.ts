@@ -12,6 +12,7 @@ import { NgxZxingModule } from 'ngx-zxing';
 import { FormsModule } from "@angular/forms";
 import { TabsModule } from './tabs/tabs.module';
 import { ModalComponent } from './modal.component';
+import { ToasterModule } from 'angular2-toaster';
 
 @NgModule({
   imports: [
@@ -20,6 +21,8 @@ import { ModalComponent } from './modal.component';
     AngularEchartsModule,
     FormsModule,
     NgxZxingModule.forRoot(),
+    ToasterModule
+    
   ],
   declarations: [
     TabsComponent,

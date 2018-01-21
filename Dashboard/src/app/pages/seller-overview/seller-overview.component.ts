@@ -119,7 +119,7 @@ export class SellerOverviewComponent {
     var couponDetail = this.couponSystem.find(x => x.selleri === sellerID.selleri).coupondetail;
     var missingPoints = maxPoints - sellerID.points;
     this.missingPoints = missingPoints;
-    if(this.missingPoints == 0){
+    if(this.missingPoints <= 0){
     this.CreateCredit();
   }
     try {
@@ -137,11 +137,9 @@ export class SellerOverviewComponent {
       
       //subscription bis Observable des Credits zurückkommt, damit credit nie leer ist
       this.isCreditSource.subscribe(res=> {
-        
         if(this.creditid){
-          console.log("kommt das nicht als zweites?");
           try {
-            if(this.missingPoints == 0){
+            if(missingPoints <= 0){
         activeModal.componentInstance.modalCredit = this.getCredit(this.creditid);
         activeModal.componentInstance.qr = this.creditid; 
       }

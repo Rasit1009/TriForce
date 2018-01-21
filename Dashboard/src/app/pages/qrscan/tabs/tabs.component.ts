@@ -17,7 +17,7 @@ import { QrscanComponent } from '../qrscan.component';
 export class TabsComponent {
   public point : Points = new Points(null,null,null);
 
-constructor(public auth : AuthService, public pointService : PointService, public scanni: QrscanComponent){
+constructor(public auth : AuthService, public pointService : PointService, public scanni: QrscanComponent, public toastparty: QrscanComponent){
 
 }
 
@@ -39,8 +39,9 @@ constructor(public auth : AuthService, public pointService : PointService, publi
   handleQrCodeResult(result: string) {
     console.log("Result", result);
     //QR CODE RESULT
-    this.scanni.showSmallModal();
+    console.log(result);
     this.qrResult = result;
+    this.scanni.showSmallModal(result);
   }
   
   onChange(selectedValue: string){
@@ -72,7 +73,6 @@ this.geklickt()
     this.point.useri = this.qrResult; 
     this.point.useri = this.textvalue_id;
 
-    this.pointService.sendPoints(this.point).subscribe();
 
     //this.consumerid = document.getElementById("consumerid");
     //this.consumer_id = this.qrResult;
@@ -84,8 +84,11 @@ this.geklickt()
 datenkorrekteingegeben: boolean = true;
 geklickt(){
   if (this.datenkorrekteingegeben){
-    alert("Daten korrekt eingegeben und Umsatz wurde verbucht")
-    window.location.reload();
+    //this.toastparty.showToast('success','lala','k');
+    alert('Aktion erfolgreich');
+    setTimeout(() => { window.location.reload();}, 0);
+    
+    
   } if (!this.datenkorrekteingegeben){
     alert("Daten falsch eingegeben, bitte überprüfe deine Eingaben.")
   }

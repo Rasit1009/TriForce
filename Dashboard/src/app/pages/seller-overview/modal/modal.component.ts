@@ -38,7 +38,15 @@ constructor(private activeModal: NgbActiveModal, private theme: NbThemeService){
 
   //Gibt verbleibende Scans zum Erstellen eines Gutscheins
  remainingScans(){
-   return this.remaining;
+
+  if(this.remaining > 0){
+    return 1; 
+
+  } else if (this.remaining <= 0){
+    
+    return 0; 
+  }
+   
  }
 
  test(){

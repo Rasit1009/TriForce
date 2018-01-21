@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col md-1">
     <nb-card>
-      <nb-card-header>Insgesamt Gespart</nb-card-header>
+      <nb-card-header>Bisher gesammelte LoloCOINs</nb-card-header>
+      <div>Gespar:</div>
       <nb-card-body>
-        <div>Insgesamt durch LOLOCO gespart:</div>
         <br>
-        <h1>213,86 €</h1>
+        <h1>{{gesammelt}} €</h1>
         <br>
 
       </nb-card-body>
@@ -22,7 +22,7 @@
 
 
     <nb-card class="col md-1">
-        <nb-card-header>Verfügbare Gutscheine</nb-card-header>
+        <nb-card-header>Zuletzt besuchte Händler</nb-card-header>
         <nb-card-body>
       <ul id="rig">
         
@@ -34,16 +34,12 @@
             </a>
         </li> -->
         
-        <li *ngFor="let s of seller; let i=index; let last=last" (click)="showLargeModal(s)">
-              <div *ngIf="getPoints(seller) || seller.length>=i ">
-         
+        <li *ngFor="let s of seller; let i=index; let last=last" (click)="showLargeModal(s)">        
             <a class="rig-cell">
                        <img class="rig-img" [src]="getSellerPic(s)">
                         <span class="rig-overlay"></span>
                         <span class="rig-text"></span>
-            </a>
-              </div>  
-  
+            </a>  
         </li>
     
        

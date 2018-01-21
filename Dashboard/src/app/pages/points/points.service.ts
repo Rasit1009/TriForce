@@ -36,6 +36,12 @@ public getSystem(seller : Points[]): Observable<CouponSystem[]>{
     }
 }
 
+public cashCoupon(id : any): Observable<any>{
+    return this.http
+          .get('http://localhost:49873/api/credit/cash/' + id)
+          .map(r =>r.json());
+   }
+
 }
 
 
