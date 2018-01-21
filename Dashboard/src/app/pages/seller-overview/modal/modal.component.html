@@ -9,68 +9,105 @@
   <br>
   <br>
   <div>
-    <nb-card size="xsmall" class="solar-card">
-      <nb-card-header>Meine Gutschein</nb-card-header>
+    <nb-card>
+      <nb-card-header>Mein Gutschein</nb-card-header>
       <nb-card-body>
 
-          <!-- Gutscheinbezeichnung-->
-          <span>{{modalCoupontext}}</span>
-          
-          <!-- Gutscheindetails-->
-          <span>{{modalCouponDetail}} </span>
-          
-          <!-- Gutscheincodestring
+        <!-- Breite >= 992px &&  QR-Code angezeigt-->
+        <div class="maxw992">
+
+        <div class="row show-grid">
+          <div class="col-12 col-sm-6 col-md-8">
+            <div class="coupontextleft">
+
+            <br><br>
+            <!-- Gutscheinbezeichnung-->
+            <h5>{{modalCoupontext}}</h5>
+            <!-- Gutscheindetails-->
+            <h6 class="coupondetail">{{modalCouponDetail}} </h6>
+            <br>
+            <!-- Gutscheincodestring
           <span>{{modalCredit}}</span> -->
-          
-
-
-        <!--1. Fall: Noch nicht ausreichend Punkte gesammelt -->
-        <div *ngIf="!remainingScans() == 0">
-
-          <!-- Solar-Anzeige -->
-          <div echarts [options]="option" class="echart"></div>
-
-          <!-- Verbleibend zu sammelnde Punkte-->
-          <div class="value" >Noch {{ modalMissingPoints}} Punkte bis zum nächsten Gutschein!</div>
-
-        </div>
-
-
-        
-        <!--2. Fall: Ausreichend Punkte gesammelt -->
-        <div *ngIf="remainingScans() == 0">
-
-            <!--QR-CODE -->                      
-            <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="qr"></ngx-qrcode>
-
-        </div>
-
-
-        <!--
-
-
-        <div class="info">
-          <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="qr"></ngx-qrcode>
-
-          
-
-          
-          <div >
-            <div class="details">Ausreichend Punkte gesammelt</div>
-            <br>
-            <button class="btn btn-md btn-primary" (click)="CreateCredit()">Gutschein anzeigen</button>
-
-            <br>
           </div>
 
-          <div class="details">
-            <span>&nbsp;</span>&nbsp;</div>
+          </div>
 
+          <div class="col-6 col-md-4">
+
+          <!-- 1. Fall: Noch nicht ausreichend Punkte gesammelt -->
+          <div *ngIf="!remainingScans() == 0">
+
+            <!-- Solar-Anzeige -->
+            <div echarts [options]="option" class="echart"></div>
+
+            <!-- Verbleibend zu sammelnde Punkte-->
+            <div class="info">
+              <div class="value">Noch {{ modalMissingPoints}} Punkte bis zum nächsten Gutschein!</div>
+            </div>
+          </div>
+
+
+          <!--2. Fall: Ausreichend Punkte gesammelt -->
+          <div *ngIf="remainingScans() == 0">
+            <!--QR-CODE -->
+            <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="qr"></ngx-qrcode>
+          </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+       <!-- Breite < 992px &&  QR-Code angezeigt-->
+       <div class="minw992">
+
+          
+              <div class="coupontext">
+  
+              <br>
+              <!-- Gutscheinbezeichnung-->
+              <h5>{{modalCoupontext}}</h5>
+              <!-- Gutscheindetails-->
+              <h6 class="coupondetail">{{modalCouponDetail}} </h6>
+              <br>
+              <!-- Gutscheincodestring
+            <span>{{modalCredit}}</span> -->
+            </div>
+  
+            
+  
+            
+  
+            <!-- 1. Fall: Noch nicht ausreichend Punkte gesammelt -->
+            <div *ngIf="!remainingScans() == 0">
+  
+              <!-- Solar-Anzeige -->
+              <div echarts [options]="option" class="echart"></div>
+  
+              <!-- Verbleibend zu sammelnde Punkte-->
+              <div class="info">
+                <div class="value">Noch {{modalMissingPoints}} Punkte bis zum nächsten Gutschein!</div>
+              </div>
+            </div>
+  
+  
+            <!--2. Fall: Ausreichend Punkte gesammelt -->
+            <div *ngIf="remainingScans() == 0" class="qrcode">
+              <!--QR-CODE -->
+              <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="qr"></ngx-qrcode>
+            </div>
+  
+            
+          
         </div>
 
 
-      -->
 
+
+    
       </nb-card-body>
 
     </nb-card>

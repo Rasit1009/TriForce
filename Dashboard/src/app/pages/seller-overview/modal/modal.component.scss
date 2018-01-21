@@ -6,9 +6,44 @@
 
   $padding: 1rem;
 
+
   nb-card-body {
     overflow: hidden;
     padding: $padding;
+    }
+
+    .coupondetail{
+      color: #706f6f !important;
+    }
+  
+    .coupontext{  
+      text-align: center;
+    }
+
+  .coupontextleft{
+    max-width: 400px;
+    text-align: center;
+  }
+
+  .qrcode{
+    display:block;
+    width: 100%;
+    height: auto;
+    border:none;
+    transform:scale(1);
+    transition:all 1s;
+  }
+
+  .maxw992{
+    @media(max-width: 991px){
+      display: none;
+    }
+  }
+
+  .minw992{
+    @media(min-width: 992px){
+      display: none;
+    }
   }
 
   .echart {
