@@ -17,7 +17,7 @@ import { QrscanComponent } from '../qrscan.component';
 export class TabsComponent {
   public point : Points = new Points(null,null,null);
 
-constructor(public auth : AuthService, public pointService : PointService){
+constructor(public auth : AuthService, public pointService : PointService, public scanni: QrscanComponent){
 
 }
 
@@ -39,6 +39,7 @@ constructor(public auth : AuthService, public pointService : PointService){
   handleQrCodeResult(result: string) {
     console.log("Result", result);
     //QR CODE RESULT
+    this.scanni.showSmallModal();
     this.qrResult = result;
   }
   
