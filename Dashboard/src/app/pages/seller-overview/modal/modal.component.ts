@@ -30,13 +30,15 @@ constructor(private activeModal: NgbActiveModal, private theme: NbThemeService){
   } 
 
   elementType : 'url' | 'canvas' | 'img' = 'url'; 
-  public value ; 
+  public value; 
   public qr; 
+  public remaining; 
+  
 
 
   //Gibt verbleibende Scans zum Erstellen eines Gutscheins
  remainingScans(){
-   return 10-(this.value/10);
+   return this.remaining;
  }
 
  test(){
