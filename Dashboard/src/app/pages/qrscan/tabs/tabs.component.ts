@@ -59,7 +59,7 @@ textvalue: any;
 textvalue_id: string;
 
 indb(){
-
+this.geklickt()
 
 
     this.amount = document.getElementById("amount");
@@ -81,6 +81,16 @@ indb(){
 }
 
 
+datenkorrekteingegeben: boolean = true;
+geklickt(){
+  if (this.datenkorrekteingegeben){
+    alert("Daten korrekt eingegeben und Umsatz wurde verbucht")
+    window.location.reload();
+  } if (!this.datenkorrekteingegeben){
+    alert("Daten falsch eingegeben, bitte überprüfe deine Eingaben.")
+  }
+
+}
 }
 
 @NgModule({
