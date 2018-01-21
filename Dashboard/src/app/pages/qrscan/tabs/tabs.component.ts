@@ -7,6 +7,7 @@ import {FormsModule} from "@angular/forms";
 import { Alert } from 'selenium-webdriver';
 import { AuthService } from '../../../auth/auth.service';
 import { Points, PointService } from '../../points/points.service';
+import { QrscanComponent } from '../qrscan.component';
 
 @Component({
   selector: 'ngx-tabs',
@@ -17,12 +18,14 @@ export class TabsComponent {
   public point : Points = new Points(null,null,null);
 
 constructor(public auth : AuthService, public pointService : PointService){
+
 }
 
   camStarted = false;
   selectedDevice = undefined;
   qrResult = "";
   availableDevices = [];
+  auth0 = "auth0|"
    
   displayCameras(cams: any[]) {
     this.availableDevices = cams;

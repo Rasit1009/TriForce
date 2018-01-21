@@ -37,6 +37,7 @@ export class SellerOverviewComponent {
   constructor(private modalService: NgbModal, public auth: AuthService, public pointsService: PointService, public creditService: CreditService) {
     this.pointsService.getSeller(this.auth.id).subscribe(res => {
       this.seller = res;
+      console.log(this.seller);
       this.setUser(this.seller);
     });
 
@@ -118,7 +119,9 @@ export class SellerOverviewComponent {
     var couponDetail = this.couponSystem.find(x => x.selleri === sellerID.selleri).coupondetail;
     var missingPoints = maxPoints - sellerID.points;
     this.missingPoints = missingPoints;
+    if(this.missingPoints == 0){
     this.CreateCredit();
+  }
     try {
       const activeModal = this.modalService.open(ModalComponent, { size: 'lg', container: 'nb-layout' });
       activeModal.componentInstance.modalSellername = this.getSellerName(businessname); //Name mit SellerID aus Datenbank auslesen
@@ -128,7 +131,8 @@ export class SellerOverviewComponent {
       activeModal.componentInstance.modalCouponDetail = this.getCouponDetail(couponDetail);
       activeModal.componentInstance.modalCoupontext = this.getCouponText(couponText);
       activeModal.componentInstance.modalMissingPoints = this.getMissingPoints(missingPoints);
-      activeModal.componentInstance.value = 100-currentPoints; 
+      activeModal.componentInstance.value = currentPoints; 
+      activeModal.componentInstance.remaining = missingPoints; 
 
       
       //subscription bis Observable des Credits zurückkommt, damit credit nie leer ist
@@ -137,8 +141,10 @@ export class SellerOverviewComponent {
         if(this.creditid){
           console.log("kommt das nicht als zweites?");
           try {
+            if(this.missingPoints == 0){
         activeModal.componentInstance.modalCredit = this.getCredit(this.creditid);
         activeModal.componentInstance.qr = this.creditid; 
+      }
           } catch (error) {
             
           }
