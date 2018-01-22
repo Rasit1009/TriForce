@@ -78,7 +78,7 @@ namespace WebApplication4.Controllers
                 
                 var Person = _context.Users.SingleOrDefault(
                 c => c.I == useri);
-                Person.AllPoints = Person.AllPoints + Guti.Points;
+                //Person.AllPoints = Person.AllPoints + Guti.Points;
                 Guti.Points = 0;
                 _context.Remove(Gutschein);
                 _context.Update(Guti);

@@ -56,6 +56,7 @@ namespace WebApplication4
 
                     I = id,
                     vorhanden = true,
+                    AllPoints = 0,
 
                 };
 
