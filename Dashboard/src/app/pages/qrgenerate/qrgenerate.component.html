@@ -1,7 +1,9 @@
-<!--Überschrift //ffried 8.12.-->
-<h5 class="grid-h">Mein LoloCODE</h5>
-<span id="instruction">Dies ist dein LoloCODE, zeige ihn beim Einkauf deinem Händler vor, sammle, und spare!</span>
-<br><br>
+<nb-card style="max-width: 525px">
+        <nb-card-header>Mein LoloCODE</nb-card-header>
+        <nb-card-body>
+
+
+<h6>Dies ist dein LoloCODE, zeige ihn beim Einkauf deinem Händler vor, sammle LoloCOINs und spare!</h6>
 
 
 <ngx-qrcode [qrc-element-type]="elementType" [qrc-value] = "value">
@@ -9,11 +11,10 @@
 
 <br>
 
-<span id="instruction">LolocoID:&nbsp;</span>
-<span id="instruction">{{value}}</span>
 
+<div class="lolocoID">{{value}}</div>
 <br>
-<br>
+
 
 <!--Eingabefeld //ffried 6.12.-->
 <!--
@@ -27,4 +28,6 @@
 </div>
 -->
 
+        </nb-card-body>
+</nb-card>
 

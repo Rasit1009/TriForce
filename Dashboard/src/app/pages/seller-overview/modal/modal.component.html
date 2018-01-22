@@ -14,100 +14,145 @@
       <nb-card-body>
 
         <!-- Breite >= 992px &&  QR-Code angezeigt-->
-        <div class="maxw992">
+        <div class="maxw992" *ngIf="remainingScans() == 0">
 
-        <div class="row show-grid">
-          <div class="col-12 col-sm-6 col-md-8">
-            <div class="coupontextleft">
+          <div class="row show-grid">
+            <div class="col-12 col-sm-6 col-md-8">
+              <div class="coupontextleft">
 
-            <br><br>
+                <br>
+                <br>
+                <!-- Gutscheinbezeichnung-->
+                <h4>{{modalCoupontext}}</h4>
+                <!-- Gutscheindetails-->
+                <h6 class="coupondetail">{{modalCouponDetail}}</h6>
+                <br>
+                <!-- Gutscheincodestring
+          <span>{{modalCredit}}</span> -->
+              </div>
+
+            </div>
+
+            <div class="col-6 col-md-4">
+
+              <!--QR-CODE -->
+              <div class="qrcode">
+              <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="qr"></ngx-qrcode>
+              <div class="codeManual1">{{modalCredit}}</div>
+              </div>
+
+            </div>
+          </div>
+          
+          
+        </div>
+
+
+
+
+        
+
+
+
+        <!-- Breite >= 992px &&  Solar angezeigt-->
+        <div class="maxw992" *ngIf="remainingScans() == 1">
+
+
+            <div class="coupontext">
+
+                <br>
+                <!-- Gutscheinbezeichnung-->
+                <h4>{{modalCoupontext}}</h4>
+                <!-- Gutscheindetails-->
+                <h6 class="coupondetail">{{modalCouponDetail}} </h6>
+                <br>
+                <!-- Gutscheincodestring
+                <span>{{modalCredit}}</span> -->
+              </div>
+    
+    
+              <div *ngIf="remainingScans() == 1">
+    
+                <nb-card size="xsmall" class="solar-card">
+                  <nb-card-body>
+                    <!-- Solar-Anzeige -->
+                    <div echarts [options]="option" class="echart"></div>
+    
+                    <!-- Verbleibend zu sammelnde Punkte-->
+                    <div class="info">
+                      <div class="value">Sammle noch {{modalMissingPoints}} LoloCOINs um diesen Gutschein freizuschalten!</div>
+                    </div>
+    
+                  </nb-card-body>
+                </nb-card>
+    
+              </div>
+    
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Breite < 992px -->
+        <div class="minw992">
+
+
+          <div class="coupontext">
+
+            <br>
             <!-- Gutscheinbezeichnung-->
-            <h5>{{modalCoupontext}}</h5>
+            <h4>{{modalCoupontext}}</h4>
             <!-- Gutscheindetails-->
             <h6 class="coupondetail">{{modalCouponDetail}} </h6>
             <br>
             <!-- Gutscheincodestring
-          <span>{{modalCredit}}</span> -->
+            <span>{{modalCredit}}</span> -->
           </div>
 
-          </div>
-
-          <div class="col-6 col-md-4">
 
           <!-- 1. Fall: Noch nicht ausreichend Punkte gesammelt -->
-          <div *ngIf="!remainingScans() == 0">
+          <div *ngIf="remainingScans() == 1">
 
-            <!-- Solar-Anzeige -->
-            <div echarts [options]="option" class="echart"></div>
 
-            <!-- Verbleibend zu sammelnde Punkte-->
-            <div class="info">
-              <div class="value">Noch {{ modalMissingPoints}} Punkte bis zum nächsten Gutschein!</div>
-            </div>
+            <nb-card size="xsmall" class="solar-card">
+              <nb-card-body>
+                <!-- Solar-Anzeige -->
+                <div echarts [options]="option" class="echart"></div>
+
+                <!-- Verbleibend zu sammelnde Punkte-->
+                <div class="info">
+                  <div class="value">Sammle noch {{modalMissingPoints}} LoloCOINs um diesen Gutschein freizuschalten!</div>
+                </div>
+
+              </nb-card-body>
+            </nb-card>
+
           </div>
 
 
           <!--2. Fall: Ausreichend Punkte gesammelt -->
-          <div *ngIf="remainingScans() == 0">
+          <div *ngIf="remainingScans() == 0" class="qrcode">
             <!--QR-CODE -->
             <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="qr"></ngx-qrcode>
+            <div class="codeManual2">{{modalCredit}}</div>
           </div>
 
-          </div>
-        </div>
-      </div>
 
-
-
-
-
-       <!-- Breite < 992px &&  QR-Code angezeigt-->
-       <div class="minw992">
-
-          
-              <div class="coupontext">
-  
-              <br>
-              <!-- Gutscheinbezeichnung-->
-              <h5>{{modalCoupontext}}</h5>
-              <!-- Gutscheindetails-->
-              <h6 class="coupondetail">{{modalCouponDetail}} </h6>
-              <br>
-              <!-- Gutscheincodestring
-            <span>{{modalCredit}}</span> -->
-            </div>
-  
-            
-  
-            
-  
-            <!-- 1. Fall: Noch nicht ausreichend Punkte gesammelt -->
-            <div *ngIf="!remainingScans() == 0">
-  
-              <!-- Solar-Anzeige -->
-              <div echarts [options]="option" class="echart"></div>
-  
-              <!-- Verbleibend zu sammelnde Punkte-->
-              <div class="info">
-                <div class="value">Noch {{modalMissingPoints}} Punkte bis zum nächsten Gutschein!</div>
-              </div>
-            </div>
-  
-  
-            <!--2. Fall: Ausreichend Punkte gesammelt -->
-            <div *ngIf="remainingScans() == 0" class="qrcode">
-              <!--QR-CODE -->
-              <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="qr"></ngx-qrcode>
-            </div>
-  
-            
           
         </div>
 
 
 
 
-    
+        
       </nb-card-body>
 
     </nb-card>
