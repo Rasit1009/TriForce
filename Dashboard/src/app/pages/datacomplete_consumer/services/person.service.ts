@@ -14,7 +14,7 @@ export class PersonService {
     .map(r =>r.json())
     .map(e =>e.map 
       (c=> new Person(c.i,c.isSeller,c.vorhanden, c.firstname, c.lastname, c.email, c.street,c.plz,
-      c.city,c.housenumber,c.businessname,c.business,c.text,c.imagepath,
+      c.city,c.housenumber,c.businessname,c.business,c.text,c.imagepath,c.allPoints,
       c.day,c.month,c.year,c.profession,c.familystatus,c.gender)));
   }
 

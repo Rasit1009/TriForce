@@ -73,6 +73,7 @@ export class ConsumerComponent {
       } catch (error) {
       }
     });
+    
     this.gesammelt = this.auth.person.allPoints;
   }
   setUser(person: Points[]) {
