@@ -64,23 +64,29 @@ coupon_id;
 indb(){
 //this.geklickt()
 
-
+    /*
     this.coupon = document.getElementById("coupon");
-    this.coupon_id = this.coupon.value;
+    this.coupon_id = this.coupon.value; */
+
     this.textvalue = document.getElementById("consumerid");
     this.textvalue_id = this.textvalue.value;
-    this.amount = document.getElementById("amount");
+    this.handleQrCodeResult(this.textvalue_id);
+
+    /*this.amount = document.getElementById("amount");
     this.amount_id = this.amount.value;
     this.point.useri = this.textvalue_id;
     this.point.points = this.amount_id;
-    this.point.selleri = this.auth.person.i; 
+    this.point.selleri = this.auth.person.i; */
+
    // this.point.useri = this.textvalue_id; 
     
+   /*
     if(this.textvalue_id.indexOf("auth") >= 0){ 
       this.pointService.sendPoints(this.point).subscribe(()=>alert("Punkte versandt"));
     } else {
       this.pointService.cashCoupon(this.coupon_id).subscribe(()=>alert("gutgeschrieben"));
-    }
+    }*/
+
     //this.consumerid = document.getElementById("consumerid");
     //this.consumer_id = this.qrResult;
     //this.sellerid = this.auth.person.i;

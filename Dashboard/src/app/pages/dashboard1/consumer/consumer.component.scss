@@ -82,12 +82,20 @@
     width: 100%;
     height: auto;
     border:none;
+    transform:scale(0.75);
+    transition:all 1s;
+}
+.rig-img2 {
+    display:block;
+    width: 100%;
+    height: auto;
+    border:none;
     transform:scale(1);
     transition:all 1s;
 }
 
 #rig li:hover .rig-img {
-    transform:scale(1.10);
+    transform:scale(0.9);
 }
         
 /* If have the overlay layer */
