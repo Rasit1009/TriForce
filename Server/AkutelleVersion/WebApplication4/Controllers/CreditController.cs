@@ -75,8 +75,11 @@ namespace WebApplication4.Controllers
                 selleri = Gutschein.Selleri;
 
                 var Guti = _context.Coupon.SingleOrDefault(h => h.Selleri == selleri && h.Useri == useri);
+                
+                var Person = _context.Users.SingleOrDefault(
+                c => c.I == useri);
+                Person.AllPoints = Person.AllPoints + Guti.Points;
                 Guti.Points = 0;
-
                 _context.Remove(Gutschein);
                 _context.Update(Guti);
                 _context.SaveChanges();

@@ -70,7 +70,7 @@ export class QrscanComponent {
       types: string[] = ['info', 'success', 'warning', 'error'];
       animations: string[] = ['fade', 'flyLeft', 'flyRight', 'slideDown', 'slideUp'];
       positions: string[] = ['toast-top-full-width', 'toast-bottom-full-width', 'toast-top-left', 'toast-top-center',
-        'toast-top-right', 'toast-bottom-right', 'toast-bottom-center', 'toast-bottom-left', 'toast-center'];
+      'toast-top-right', 'toast-bottom-right', 'toast-bottom-center', 'toast-bottom-left', 'toast-center'];
     
     
       makeToast() {
