@@ -125,6 +125,15 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
       return this._currentUser;  
   }
 
+  getAllSeller(){
+    for(var i = 0; i<this.people.length; i++){
+      if(this.people[i].isSeller == true){
+        this.sellerList.push(this.people[i]);
+      }
+    }
+    return this.sellerList; 
+  }
+
   getSeller(seller : any[]){
     var index; 
     for(var i = 0; i<seller.length; i++){

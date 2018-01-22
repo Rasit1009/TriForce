@@ -5,6 +5,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ModalComponent } from './modal/modal.component';
 import { promise } from 'selenium-webdriver';
+import { AuthService } from '../../auth/auth.service';
+import { Person } from '../datacomplete_consumer/services/person.service';
+import { Http } from '@angular/http';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 
 
@@ -15,11 +19,63 @@ import { promise } from 'selenium-webdriver';
 })
 export class SellermapComponent implements OnInit{
 
+  allSeller : Person[] = []; 
+  lat; 
+  lng; 
+  isCoordSource = new BehaviorSubject<any>(null);
+  _currentCoord : Observable<any> = this.isCoordSource.asObservable().first(); 
 
-  constructor(private modalService: NgbModal) {
-    console.log("Yolo");
-    
+  addresses : marker[] = [
+    {
+		  lat: 50.997292,
+		  lng: 6.905840,
+		  label: 'A',
+      draggable: false
+	  },
+  ]; 
+
+
+  constructor(private modalService: NgbModal, public auth : AuthService, public http : Http) {
+  //  console.log("Yolo");
+      
+        this.allSeller = (this.auth.getAllSeller()); 
+       // console.log(this.allSeller);
+        var address : string[] = []; 
+        var result; 
+        //console.log(this.allSeller.length);
+            var zaehler = 0;  
+            console.log(this.allSeller);  
+            for(var i = 0; i<this.allSeller.length; i++){
+            address[i] = this.allSeller[i].street + (" ") + this.allSeller[i].housenumber + (" ") + this.allSeller[i].city;  
+          }
+
+          zaehler = 0; 
+            this.getLocation(address[0]).then(msg => {
+              console.log(msg);    
+        });
+        
+
+               /* this.lat = msg.results[0].geometry.location.lat;
+                this.lng = msg.results[0].geometry.location.lng;
+                this.addresses[0].lat = this.lat; 
+                this.addresses[0].lng = this.lng; 
+                this.addresses[0].label = this.allSeller[zaehler].businessname[0];
+                this.sellerName = this.allSeller[zaehler].businessname;  
+                this.markers.push(this.addresses[0]);
+                zaehler++; */
    }
+
+   setNewCoord(lat : any){
+     console.log("coord geändert");
+    this.isCoordSource.next(lat);
+   }
+
+   getLocation(term: string):Promise<any> {
+    return this.http.get('http://maps.google.com/maps/api/geocode/json?address=' + term + 'CA&sensor=false')
+         .toPromise()
+         .then((response) => Promise.resolve(response.json()))
+         .catch((error) => Promise.resolve(error.json()));
+ }
 
   showLargeModal() {
     const activeModal = this.modalService.open(ModalComponent, { size: 'lg', container: 'nb-layout' });
@@ -103,8 +159,8 @@ setData(){
   //lat: number = 50.941278;
   //lng: number = 6.958281;
 
-  lat: number = this.positionlat;
-  lng: number = this.positionlng;
+//  lat: number = this.positionlat;
+ // lng: number = this.positionlng;
   
 
   clickedMarker(label: string, index: number) {
@@ -124,24 +180,6 @@ setData(){
   }
   
   markers: marker[] = [
-	  {
-		  lat: 50.997292,
-		  lng: 6.905840,
-		  label: 'A',
-      draggable: false
-	  },
-	  {
-		  lat: 50.947392,
-		  lng: 6.915850,
-		  label: 'B',
-		  draggable: false
-	  },
-	  {
-		  lat: 50.967399,
-		  lng: 6.904750,
-		  label: 'C',
-		  draggable: true
-    }
   ]
 }
 
