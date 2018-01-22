@@ -147,6 +147,7 @@ namespace WebApplication4.Controllers
 
             var Po = _context.Coupon.SingleOrDefault(
                 c => c.Selleri == pu.Selleri && c.Useri == pu.Useri);
+            var Person = _context.Users.SingleOrDefault(c => c.I == pu.Useri);
             if (Po == null)
             {
 
@@ -159,7 +160,7 @@ namespace WebApplication4.Controllers
 
 
                 };
-               
+                Person.AllPoints = Person.AllPoints + pu.Points;
                 _context.Coupon.Add(Po);
                 _context.SaveChanges();
                 return Ok();
@@ -168,6 +169,7 @@ namespace WebApplication4.Controllers
             else
             {
                 Po.Points = Po.Points + pu.Points;
+                Person.AllPoints = Person.AllPoints + pu.Points;
                 _context.SaveChanges();
 
                 _context.Update(Po);

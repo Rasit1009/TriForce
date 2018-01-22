@@ -51,9 +51,9 @@ export class ConsumerComponent {
       this.seller = res;
       var zaehler = 0; 
 
-      for(var i = 0; i<this.seller.length; i++){
-        this.gesammelt = this.gesammelt + this.seller[i].points; 
-      }
+      //for(var i = 0; i<this.seller.length; i++){
+       // this.gesammelt = this.gesammelt + this.seller[i].points; 
+      //}
       for(var i = this.seller.length; i>this.seller.length-4; i--){
         this.lastseller[zaehler] = this.seller[i];
         zaehler++;
@@ -73,6 +73,10 @@ export class ConsumerComponent {
       } catch (error) {
       }
     });
+
+    if(this.auth.person.allPoints){
+    this.gesammelt = this.auth.person.allPoints;
+    }
   }
   setUser(person: Points[]) {
     this.isPersonSource.next(person);

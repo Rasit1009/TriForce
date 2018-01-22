@@ -1,13 +1,23 @@
 <div class="row">
   <div class="col md-1">
     <nb-card>
-      <nb-card-header>Bisher gesammelte LoloCOINs</nb-card-header>
-      <div>Gespar:</div>
+      <nb-card-header>Dein LoloSCORE</nb-card-header>
       <nb-card-body>
-        <br>
-        <h1>{{gesammelt}} €</h1>
-        <br>
+        <span style="display:block; margin-bottom: 13px;"></span>
 
+        <!-- Anzeige LoloCOINs-->
+        <div class="score"><img class="lolocoin" src="../../../../assets/images/LOLOCO_Coin.png">&nbsp; {{gesammelt}}</div>
+
+
+        <br>
+        
+        <!-- Anzeige Badges-->
+        <div *ngIf="30 >= gesammelt && gesammelt >= 0" class="badgetext"><img class="lolobadge" src="../../../../assets/images/star_badge.png">&nbsp;&nbsp;LOLOCO-Newbie</div> 
+        <div *ngIf="100 >= gesammelt && gesammelt > 30" class="badgetext"><img class="lolobadge" src="../../../../assets/images/adventurer_badge.png">&nbsp;&nbsp;LOLOCO-Adventurer</div> 
+        <div *ngIf="500 >= gesammelt && gesammelt > 100" class="badgetext"><img class="lolobadge" src="../../../../assets/images/expert_badge.png">&nbsp;&nbsp;LOLOCO-Expert</div> 
+        <div *ngIf="gesammelt > 500" class="badgetext"><img class="lolobadge" src="../../../../assets/images/king_badge.png">&nbsp;&nbsp;LOLOCO-King</div>
+
+        <span style="display:block; margin-bottom: 13px;"></span>
       </nb-card-body>
     </nb-card>
   </div>
@@ -80,7 +90,7 @@
 
 
         
-        <img class="rig-img" src="../../../../assets/images/banner2.png">
+        <img class="rig-img2" src="../../../../assets/images/banner2.png">
         </nb-card-body>
     </nb-card>
 

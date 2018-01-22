@@ -1,69 +1,36 @@
-<div class="row">
-    <div class="col-sm-6">
-            <span>Kamera wählen: &nbsp;</span>
+<div>
+    <!--Kamerawahl-->
+    <span>Kamera wählen: &nbsp;</span>
+    <select (change)="onChange($event.target.value)">
+        <option *ngFor="let device of availableDevices" value="{{device.deviceId}}">{{device.label}}</option>
+    </select>
 
-            <select (change)="onChange($event.target.value)">
-              <option *ngFor="let device of availableDevices" value="{{device.deviceId}}">{{device.label}}</option>
-            </select>
-        
-            <br>
-            <br>
-        
-           
-              <ngx-zxing 
-                  [start]="camStarted"
-                  [device]="selectedDevice"
-                  (onCamsFound)="displayCameras($event)"
-                  (onScan)="handleQrCodeResult($event)"
-              ></ngx-zxing>
-            
-              <span>Dein gescannter LoloCODE: &nbsp;<strong id="result">{{qrResult}}</strong></span>
+    <br>
+    <br>
+
+    <!--Scannerfenster-->
+    <ngx-zxing [start]="camStarted" [device]="selectedDevice" (onCamsFound)="displayCameras($event)" (onScan)="handleQrCodeResult($event)"></ngx-zxing>
+
+
+    <br>
+    <!--Ergebnisanzeige
+    <span>Dein gescannter LoloCODE: &nbsp;
+        <strong id="result">{{qrResult}}</strong>
+    </span>
+    <br>
+    -->
+
+    <br>
+
+
+    <div class="input-group">
+        <input id="consumerid" type="text" class="form-control" placeholder="LoloCODE manuell eingeben...">
+        <span class="input-group-btn">
+            <button class="btn btn-danger" (click)="indb()">
+                Einkauf Gutschreiben
+            </button>
+            <p></p>
+        </span>
     </div>
-    <div class="col-sm-4 right">
-            <span><strong >Umsatz manuell eingeben:</strong></span>
-            <div class="qs1">?
-                <div class="popover above">Statt der Scan-Funktion auf der linken Seite kannst du hier die Umsätze deiner Kunden manuell eingeben und in LoloCOINs verwandeln.
-                </div>
-            </div>
 
-
-            <br>
-            <div class="input-group col-sm-12">
-                    
-                    <input id="consumerid" type="text" class="form-control" placeholder="LOLOCO ID eingeben..." value="{{qrResult}}" >
-             
-              
-          </div>
-      
-          <div class="input-group col-sm-12">
-              <input id="amount" type="number" class="form-control" placeholder="Betrag/Menge eingeben..." value="{{test}}">
-
-            </div><br>
-            <div class="input-group col-sm-8">
-
-                  <button class="btn btn-danger" (click)="indb()">
-                      Einkauf Gutschreiben
-                  </button>
-          </div> <br>
-          <div id="strich">            
-            </div><br><br>
-            <span><strong >Gutscheincode manuell eingeben:</strong></span>
-            <div class="qs1">?
-                <div class="popover above">Statt der Scan-Funktion kannst du hier den Gutschein deiner Kunden manuell eingeben um diesen wieder zurückzusetzen.
-                </div>
-            </div>
-
-
-            <br>
-            <div class="input-group col-sm-12">
-              <input id="coupon" type="text" class="form-control" placeholder="Gutscheincode eingeben..." value="{{test1}}">
-
-            </div><br>
-            <div class="input-group col-sm-8">
-
-                  <button class="btn btn-danger" (click)="indb()">
-                      Gutschein Einlösen
-                  </button>
-          </div>
-    </div>
 </div>
