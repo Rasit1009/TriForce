@@ -3,7 +3,7 @@
     <nb-card>
       <nb-card-header>Dein LoloSCORE</nb-card-header>
       <nb-card-body>
-        <span style="display:block; margin-bottom: 9px;"></span>
+        <span style="display:block; margin-bottom: 13px;"></span>
 
         <!-- Anzeige LoloCOINs-->
         <div class="score"><img class="lolocoin" src="../../../../assets/images/LOLOCO_Coin.png">&nbsp; {{gesammelt}}</div>
@@ -17,7 +17,7 @@
         <div *ngIf="500 >= gesammelt && gesammelt > 100" class="badgetext"><img class="lolobadge" src="../../../../assets/images/expert_badge.png">&nbsp;&nbsp;LOLOCO-Expert</div> 
         <div *ngIf="gesammelt > 500" class="badgetext"><img class="lolobadge" src="../../../../assets/images/king_badge.png">&nbsp;&nbsp;LOLOCO-King</div>
 
-        <span style="display:block; margin-bottom: 3px;"></span>
+        <span style="display:block; margin-bottom: 13px;"></span>
       </nb-card-body>
     </nb-card>
   </div>
