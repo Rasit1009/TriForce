@@ -29,6 +29,18 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/datacomplete_consumer',
     // home: true,
   },
+  {
+    title: 'Hilfe',
+    icon: 'fa fa-question-circle',
+    link: '/pages/help_consumer',
+    // home: true,
+  },,
+  {
+    title: 'Hilfe',
+    icon: 'fa fa-question-circle',
+    link: '/pages/help_seller',
+    // home: true,
+  },
 
 ];
 
