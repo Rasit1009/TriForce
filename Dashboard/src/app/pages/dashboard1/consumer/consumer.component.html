@@ -45,12 +45,14 @@
         </li> -->
         
 
-        <li *ngFor="let s of seller; let i=index; let last=last" (click)="showLargeModal(s)">        
+        <li *ngFor="let s of seller; let i=index; let last=last" (click)="showLargeModal(s)">  
+         
             <a class="rig-cell">
                        <img class="rig-img" [src]="getSellerPic(s)">
                         <span class="rig-overlay"></span>
                         <span class="rig-text"></span>
             </a>  
+
         </li>
     
        
