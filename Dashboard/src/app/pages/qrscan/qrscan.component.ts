@@ -37,18 +37,20 @@ export class QrscanComponent {
   }
 
 
-  showSmallModal(codestring) {
+  showSmallModal(codestring, valid?) {
     var collectCode; 
     var couponCode; 
   console.log(codestring);
 //Unterscheidung Gutschein oder Sammelcode
     //Sammelcode
+    if(valid){
     if(codestring.indexOf("auth") >= 0){
       collectCode = codestring; 
     //Gutschein
     } else {
       couponCode = codestring; 
     }
+  }
       
 
     if(collectCode){
@@ -66,10 +68,12 @@ export class QrscanComponent {
         activeModal.componentInstance.modalHeader = 'Gutschein einlösen';      
         activeModal.componentInstance.couponCode = couponCode;
         activeModal.componentInstance.couponText = this.coupon.coupontext; 
-        
         activeModal.componentInstance.coupondetail = this.coupon.coupondetail; 
       })
-      //activeModal.componentInstance.couponText = this.auth.person.; 
+    } else if(!valid){ 
+      const activeModal = this.modalService.open(ModalComponent, { size: 'sm', container: 'nb-layout'});
+      activeModal.componentInstance.modalHeader = 'Gutschein ungültig';      
+     // activeModal.componentInstance.couponCode = couponCode;
     }
   //  activeModal.componentInstance.couponid = 
     

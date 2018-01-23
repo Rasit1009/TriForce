@@ -47,7 +47,7 @@ export class ConsumerComponent {
 
   constructor(private modalService: NgbModal, public auth : AuthService, public pointsService : PointService,
      private toasterService: ToasterService, public creditService: CreditService) { 
-    this.pointsService.getSeller(this.auth.id).subscribe(res => {
+      this.pointsService.getSeller(this.auth.id).subscribe(res => {
       this.seller = res;
       var zaehler = 0; 
 
