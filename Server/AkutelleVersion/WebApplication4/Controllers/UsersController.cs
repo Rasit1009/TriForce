@@ -57,6 +57,8 @@ namespace WebApplication4
                     I = id,
                     vorhanden = true,
                     AllPoints = 0,
+                    Imagepath = "http://www.suedstadtsport.de/down/klick.jpg",
+                    AllCredit = 0,
 
                 };
 
@@ -184,6 +186,8 @@ namespace WebApplication4
             public bool vorhanden { get; set; }
             public string Imagepath { get; set; }
             public int AllPoints { get; set; }
+
+            public float AllCredit { get; set; }
             public int PLZ { get; set; }
             public string Housenumber { get; set; }
             public string City { get; set; }
@@ -249,7 +253,7 @@ namespace WebApplication4
         }
 
 
-        //Jana Teutenberg: Methode, die überpürft, ob der User vorhanden ist und ihn dann löscht
+        //Jana Teutenberg: Methode, die zurück gibt, welche Altersanteile es gibt
         [HttpGet("Age/{id}", Name = "Age")]
         // GET: Users/Age/5
         public IActionResult Averageage(string id)
@@ -330,7 +334,8 @@ namespace WebApplication4
             }
 
         }
-        
+
+       
 
         public class Age
         {
@@ -339,6 +344,16 @@ namespace WebApplication4
             public double Age3 { get; set; }
             public double Age4 { get; set; }
             public double Age5 { get; set; }
+        }
+
+        public class Day
+        {
+            public string Monday { get; set; }
+            public string Tuesday { get; set; }
+            public string Wednesday { get; set; }
+            public string Thursday { get; set; }
+            public string Friday { get; set; }
+            public string Saturday { get; set; }
         }
 
         public int Getage( int d, int m, int y, int tag, int monat, int jahr)
