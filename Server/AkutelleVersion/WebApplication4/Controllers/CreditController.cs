@@ -52,11 +52,6 @@ namespace WebApplication4.Controllers
             {
                 return Ok(Gutschein.Creditid);
             }
-
-
-
-
-
         }
 
         //Jana Teutenberg: Methode, die den eine Creditid bekommt und diesen Gutschein und seine Punkte löscht
@@ -91,10 +86,6 @@ namespace WebApplication4.Controllers
                 
                 return Ok(true);
             }
-
-
-
-
 
         }
 
