@@ -1,7 +1,19 @@
 <div *ngIf="seller">
+
     <nb-card>
       <nb-card-header>Deine Händler</nb-card-header>
+    
       <nb-card-body>
+
+        <div *ngIf="seller.length == 0">
+            <br>
+            <div class="noseller"> Du hast noch keinen Händler besucht.</div>
+            <br>
+            <div class="noseller"> Gehe auf 'Händler in der Nähe', um zu sehen bei welchen Händlern du mit LOLOCO sparen kannst.</div>
+            <br>
+        </div>
+
+
     <ul id="rig">
       <li *ngFor="let s of seller; let i=index; let last=last" (click)="showLargeModal(s)">
           <div *ngIf="seller.length>=i" > 
@@ -94,3 +106,4 @@
 </nb-card-body>
 </nb-card>
 </div>
+
