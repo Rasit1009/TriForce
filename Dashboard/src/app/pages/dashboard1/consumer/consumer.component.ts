@@ -74,9 +74,14 @@ export class ConsumerComponent {
       }
     });
 
-    if(this.auth.person.allPoints){
-    this.gesammelt = this.auth.person.allPoints;
+    try {
+      if(this.auth.person.allPoints){
+        this.gesammelt = this.auth.person.allPoints;
+        }
+    } catch (error) {
+      console.log("error");
     }
+
   }
   setUser(person: Points[]) {
     this.isPersonSource.next(person);

@@ -26,6 +26,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { PointService } from './pages/points/points.service';
 import { CouponService } from './pages/coupon/coupon.service';
 import {CreditService} from './pages/points/credit.service';
+import { AgeService } from './pages/dashboard2/ChartService/AgeService';
+
 
 
 
@@ -43,7 +45,7 @@ import {CreditService} from './pages/points/credit.service';
   ],
   bootstrap: [AppComponent],
   providers: [
-    { provide: APP_BASE_HREF, useValue: '/' },AuthService, PersonService, PointService,CreditService, CouponService
+    { provide: APP_BASE_HREF, useValue: '/' },AuthService, PersonService, PointService,CreditService, CouponService, AgeService
   ],
 })
 export class AppModule {
