@@ -79,7 +79,7 @@ export class ConsumerComponent {
         this.gesammelt = this.auth.person.allPoints;
         }
     } catch (error) {
-      console.log("error. keine gesammelten Punkte");
+      console.log("error");
     }
 
   }

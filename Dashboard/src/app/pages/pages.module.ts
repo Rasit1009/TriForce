@@ -15,6 +15,8 @@ import { ScChoiceModule } from './sc-choice/sc-choice.module';
 import { TestComponent } from './test/test.component';
 import { Dashboard2Module } from './dashboard2/dashboard2.module';
 import { CouponsettingModule } from './couponsetting/couponsetting.module';
+import { Help_ConsumerModule } from './help_consumer/help_consumer.module';
+import { Help_SellerModule } from './help_seller/help_seller.module';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -34,7 +36,9 @@ const PAGES_COMPONENTS = [
     SellermapModule,
     SellerOverviewModule,
     ScChoiceModule,
-    CouponsettingModule
+    CouponsettingModule,
+    Help_ConsumerModule,
+    Help_SellerModule
   ],
   declarations: [
     ...PAGES_COMPONENTS,

@@ -12,6 +12,8 @@ import { SellerOverviewComponent } from './seller-overview/seller-overview.compo
 import { ScChoiceComponent } from './sc-choice/sc-choice.component';
 import { Dashboard2Component } from './dashboard2/dashboard2.component';
 import { CouponsettingComponent } from './couponsetting/couponsetting.component';
+import { Help_ConsumerComponent } from './help_consumer/help_consumer.component';
+import { Help_SellerComponent } from './help_seller/help_seller.component';
 
 const routes: Routes = [{
   path: '',
@@ -46,6 +48,12 @@ const routes: Routes = [{
   },{
     path: 'couponsetting',
     component: CouponsettingComponent,
+  },{
+    path: 'help_consumer',
+    component: Help_ConsumerComponent,
+  },{
+    path: 'help_seller',
+    component: Help_SellerComponent,
   }, {
     path: 'ui-features',
     loadChildren: './ui-features/ui-features.module#UiFeaturesModule',

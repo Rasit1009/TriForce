@@ -44,6 +44,10 @@
             </a>
         </li> -->
         
+        <li *ngIf="true">
+            test
+        </li>
+
         <li *ngFor="let s of seller; let i=index; let last=last" (click)="showLargeModal(s)">        
             <a class="rig-cell">
                        <img class="rig-img" [src]="getSellerPic(s)">
