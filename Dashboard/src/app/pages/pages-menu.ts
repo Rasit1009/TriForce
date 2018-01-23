@@ -34,13 +34,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'fa fa-question-circle',
     link: '/pages/help_consumer',
     // home: true,
-  },,
-  {
-    title: 'Hilfe',
-    icon: 'fa fa-question-circle',
-    link: '/pages/help_seller',
-    // home: true,
-  },
+  }
+
 
 ];
 
@@ -69,6 +64,12 @@ export const MENU_ITEMS_SELLER: NbMenuItem[] = [
     link: '/pages/couponsetting',
     // home: true,
   },
+  {
+    title: 'Hilfe',
+    icon: 'fa fa-question-circle',
+    link: '/pages/help_seller',
+    // home: true,
+  }
 ];
 
 export const MENU_ITEMS_FIRST: NbMenuItem[] = [
