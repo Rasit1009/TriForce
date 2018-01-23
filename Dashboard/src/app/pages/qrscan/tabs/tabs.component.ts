@@ -8,6 +8,7 @@ import { Alert } from 'selenium-webdriver';
 import { AuthService } from '../../../auth/auth.service';
 import { Points, PointService } from '../../points/points.service';
 import { QrscanComponent } from '../qrscan.component';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'ngx-tabs',
@@ -39,8 +40,11 @@ constructor(public auth : AuthService, public pointService : PointService, publi
   handleQrCodeResult(result: string) {
     console.log("Result", result);
     //QR CODE RESULT
-    console.log(result);
     this.qrResult = result;
+
+    
+
+
     this.scanni.showSmallModal(result);
   }
   

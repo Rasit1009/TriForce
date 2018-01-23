@@ -7,9 +7,20 @@
       <div class="modal-body">
         {{ modalContent }}
 <br><br>
-        <div class="input-group col-sm-12"><input id="umsatz" type="number" class="form-control" placeholder="Umsatz eingeben" ></div>
+        <div class="input-group col-sm-12"><input id="umsatz" type="number" class="form-control" placeholder="Umsatz eingeben..." ></div>
       </div>
+
+      <div *ngIf="couponCode">COUPON {{couponText}}  {{coupondetail}}</div>
+
+      <div *ngIf="collectCode">SAMMLER</div>
+  
   
       <div class="modal-footer">
         <button class="btn btn-md btn-primary" (click)="closeModal()">LoloCOINs gutschreiben</button>
       </div>
+
+      <div class="modal-footer">
+        <div class="cancel">
+          <button class="btn btn-md btn-ghost" (click)="justClose()">Abbrechen</button>
+        </div>
+        </div>

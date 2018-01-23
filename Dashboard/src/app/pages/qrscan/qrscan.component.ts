@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 import { ModalComponent } from './modal.component';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 
 import 'style-loader!angular2-toaster/toaster.css';
 import { AuthService } from '../../auth/auth.service';
+import { PointService, Points } from '../points/points.service';
+import { CouponService, CouponSystem } from '../coupon/coupon.service';
 
 @Component({
   selector: 'ngx-qrscan',
@@ -13,9 +16,14 @@ import { AuthService } from '../../auth/auth.service';
   templateUrl: './qrscan.component.html',
 })
 export class QrscanComponent {
+  points : Points = new Points(null,null,null);
+  couponText; 
+  coupon : CouponSystem;
+
   
 
-  constructor(private modalService: NgbModal, public toasterService: ToasterService, public auth: AuthService) { 
+  constructor(private modalService: NgbModal, public toasterService: ToasterService, public auth: AuthService, 
+    public pointservice : PointService, public couponSystem : CouponService) { 
 
 
     this.initToasts();
@@ -27,14 +35,47 @@ export class QrscanComponent {
 
     activeModal.componentInstance.modalHeader = 'Large Modal';
   }
-  showSmallModal(consumer_id) {
-    const activeModal = this.modalService.open(ModalComponent, { size: 'sm', container: 'nb-layout' });
 
-    activeModal.componentInstance.modalHeader = 'Erfolgreich Gescannt';
-    activeModal.componentInstance.consumerid = consumer_id; 
-    activeModal.componentInstance.sellerid = this.auth.id; 
+
+  showSmallModal(codestring) {
+    var collectCode; 
+    var couponCode; 
+  console.log(codestring);
+//Unterscheidung Gutschein oder Sammelcode
+    //Sammelcode
+    if(codestring.indexOf("auth") >= 0){
+      collectCode = codestring; 
+    //Gutschein
+    } else {
+      couponCode = codestring; 
+    }
+      
+
+    if(collectCode){
+      const activeModal = this.modalService.open(ModalComponent, { size: 'sm', container: 'nb-layout'});
+        activeModal.componentInstance.modalHeader = 'Punkte sammeln';      
+        activeModal.componentInstance.collectCode = collectCode;
+        activeModal.componentInstance.sellerid = this.auth.id; 
+    }
+     else if(couponCode){
+      this.couponSystem.getCoupon(this.auth.id).subscribe(result => {
+        this.coupon = result; 
+        console.log(result);
+        const activeModal = this.modalService.open(ModalComponent, { size: 'sm', container: 'nb-layout'});
+        activeModal.componentInstance.modalHeader = 'Gutschein einlösen';      
+        activeModal.componentInstance.couponCode = couponCode;
+        activeModal.componentInstance.couponText = this.coupon.coupontext; 
+        
+        activeModal.componentInstance.coupondetail = this.coupon.coupondetail; 
+      })
+
+      //activeModal.componentInstance.couponText = this.auth.person.; 
+    }
+  //  activeModal.componentInstance.couponid = 
     
-  }
+    
+    
+  } 
 
     //---------------------------------------------TOAST START----------------------------------------------------
     datennochnichtvollstaendig: boolean = true;
