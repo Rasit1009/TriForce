@@ -18,6 +18,12 @@ export class PersonService {
       c.day,c.month,c.year,c.profession,c.familystatus,c.gender)));
   }
 
+  public getExisting(code : string):Observable<boolean>{
+    return this.http
+    .get('localhost:49873/api/users/getUs/' + code)
+    .map(r=>r.json());
+  }
+
   public getUser(token : any): Observable<any>{
     return this.http
     .get('http://localhost:49873/api/users/get/' + token)

@@ -52,11 +52,6 @@ namespace WebApplication4.Controllers
             {
                 return Ok(Gutschein.Creditid);
             }
-
-
-
-
-
         }
 
         //Jana Teutenberg: Methode, die den eine Creditid bekommt und diesen Gutschein und seine Punkte löscht
@@ -92,9 +87,25 @@ namespace WebApplication4.Controllers
                 return Ok(true);
             }
 
+        }
 
 
+        //Jana Teutenberg: Methode, die Anzahl der aktuellen Gutschein zurück gibt
+        [HttpGet("GetAllCredit/{id}", Name = "GetAllCredit")]
+        // GET: Coupon/GetAllCredit/5
+        public IActionResult GetAllCredit(string id)
+        {
+            var All = new List<Credit>();
+            int Anzahl = 0;
+            All = _context.Credit.Where(u => u.Selleri == id).ToList();
 
+            foreach (Credit p in All)
+            {
+
+                Anzahl = Anzahl + 1;
+            }
+
+            return Ok(Anzahl);
 
         }
 
