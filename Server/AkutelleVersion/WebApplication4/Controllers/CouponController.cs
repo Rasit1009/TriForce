@@ -160,7 +160,9 @@ namespace WebApplication4.Controllers
 
 
                 };
+                
                 Person.AllPoints = Person.AllPoints + pu.Points;
+                _context.Update(Person);
                 _context.Coupon.Add(Po);
                 _context.SaveChanges();
                 return Ok();

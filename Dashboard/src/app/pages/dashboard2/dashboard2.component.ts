@@ -3,6 +3,7 @@ import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-t
 
 import 'style-loader!angular2-toaster/toaster.css';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'ngx-dashboard2',
@@ -17,10 +18,18 @@ datennochnichtvollstaendig: boolean = true;
 wurdebeidirschoneingekauft: boolean = true;
 gutscheinsystemnochnichtausgefuellt: boolean = true;
 ersteanmeldung: boolean = true;
+allegutscheine = 0;
 
-  constructor(private toasterService: ToasterService) {
+  constructor(private toasterService: ToasterService, private auth: AuthService) {
 
     this.initToasts();
+    try {
+      if(this.auth.person.allCredit){
+        this.allegutscheine = this.auth.person.allCredit;
+        }
+    } catch (error) {
+      console.log("error");
+    }
 
   }
 
