@@ -1,26 +1,74 @@
+<!-- 1.Fall: Gutschein-->
+<div *ngIf="couponCode">
+
+  <div class="modal-header">
+    <span aria-hidden="true">Gültiger Gutschein erkannt</span>
+  </div>
+
+  <div class="modal-body">
+    <div class="coupon">
+      <div class="couponText">{{couponText}}</div>
+      <br> 
+      <div class="couponDetail">{{coupondetail}}</div>
+    </div>
+
+  </div>
+
+ 
+
+  <div class="modal-footer">
+      <div class="button">
+    <button class="btn btn-md btn-primary" (click)="bookCoupon()">Gutschein einlösen</button>
+  </div>
+  </div>
+
+  <div class="modal-footer">
+    <div class="button">
+      <button class="btn btn-md btn-ghost" (click)="justClose()">Abbrechen</button>
+    </div>
+  </div>
 
 
-<div class="modal-header">
-        <span>{{ modalHeader }}</span>
-          <span aria-hidden="true">&times;</span>
+
+</div>
+
+
+<!-- 2.Fall: Sammelcode-->
+<div *ngIf="collectCode">
+
+    <div class="modal-header">
+      <span>LoloCODE erkannt</span>
+      <span aria-hidden="true">&times;</span>
+    </div>
+  
+
+    <div class="modal-body">
+      
+      Bitt gebe die Umsatzhöhe dieses Einkaufs in EUR ein:
+
+      <br>
+      <br>
+
+    <!--Eingabefeld-->
+      <div class="input-group col-sm-12">
+        <input id="umsatz" type="number" class="form-control" placeholder="Umsatz eingeben...">
       </div>
-      <div class="modal-body">
-        {{ modalContent }}
-<br><br>
-        <div class="input-group col-sm-12"><input id="umsatz" type="number" class="form-control" placeholder="Umsatz eingeben..." ></div>
-      </div>
+    </div>
 
-      <div *ngIf="couponCode">COUPON {{couponText}}  {{coupondetail}}</div>
-
-      <div *ngIf="collectCode">SAMMLER</div>
   
   
-      <div class="modal-footer">
-        <button class="btn btn-md btn-primary" (click)="closeModal()">LoloCOINs gutschreiben</button>
+    <div class="modal-footer">
+        <div class="button">
+      <button class="btn btn-md btn-primary" (click)="bookPoints()">LoloCOINs gutschreiben</button>
+    </div>
+    </div>
+  
+    <div class="modal-footer">
+      <div class="button">
+        <button class="btn btn-md btn-ghost" (click)="justClose()">Abbrechen</button>
       </div>
-
-      <div class="modal-footer">
-        <div class="cancel">
-          <button class="btn btn-md btn-ghost" (click)="justClose()">Abbrechen</button>
-        </div>
-        </div>
+    </div>
+  
+  
+  
+  </div>

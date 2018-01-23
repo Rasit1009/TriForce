@@ -19,7 +19,7 @@ export class QrscanComponent {
   points : Points = new Points(null,null,null);
   couponText; 
   coupon : CouponSystem;
-
+  
   
 
   constructor(private modalService: NgbModal, public toasterService: ToasterService, public auth: AuthService, 
@@ -55,6 +55,7 @@ export class QrscanComponent {
       const activeModal = this.modalService.open(ModalComponent, { size: 'sm', container: 'nb-layout'});
         activeModal.componentInstance.modalHeader = 'Punkte sammeln';      
         activeModal.componentInstance.collectCode = collectCode;
+        console.log(this.auth.id);
         activeModal.componentInstance.sellerid = this.auth.id; 
     }
      else if(couponCode){
@@ -68,7 +69,6 @@ export class QrscanComponent {
         
         activeModal.componentInstance.coupondetail = this.coupon.coupondetail; 
       })
-
       //activeModal.componentInstance.couponText = this.auth.person.; 
     }
   //  activeModal.componentInstance.couponid = 

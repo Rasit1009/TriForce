@@ -24,23 +24,6 @@ export class ModalComponent {
   }
 
 
-  closeModal() {
-
-    
-    /*
-    if(this.consumerid.indexOf("auth") >= 0){
-      if(this.points.points){
-      
-    }
-    } else {
-     
-       
-      });
-    }
-    */
-    
-  }
-
   bookPoints(){
     this.points.points = (<HTMLInputElement>document.getElementById("umsatz")).value;
     this.points.useri = this.consumerid; 
