@@ -40,9 +40,6 @@ namespace WebApplication4.Controllers
         // GET: Coupon/GetPoints/5/5
         public IActionResult GetPoints(string uid, string sid)
         {
-
-
-
             var Po = _context.Coupon.SingleOrDefault(
                 c => c.Useri == uid && c.Selleri == sid);
             if (Po == null)
@@ -56,13 +53,26 @@ namespace WebApplication4.Controllers
                 int poi = Po.Points;
                 return Ok(poi);
             }
-
-
-
-
-
         }
 
+        //Jana Teutenberg: Methode, die aktuellen Punktestand bei diesem Händler angibt
+        [HttpGet("GetAllPoints/{id}", Name = "GetAllPoints")]
+        // GET: Coupon/GetAllPoints/5
+        public IActionResult GetAllPoints(string id)
+        {
+            var All = new List<Coupon>();
+            int Anzahl = 0;
+            All = _context.Coupon.Where(u => u.Selleri == id).ToList();
+
+            foreach (Coupon p in All)
+            {
+                
+                Anzahl = Anzahl + p.Points;
+            }
+
+            return Ok(Anzahl);
+
+        }
 
         //Jana Teutenberg: Methode, die alle Händler des Users zurückgibt
         [HttpGet("GetSeller/{uid}", Name = "GetSeller")]
