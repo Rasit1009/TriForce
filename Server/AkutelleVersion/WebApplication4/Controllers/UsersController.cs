@@ -87,7 +87,7 @@ namespace WebApplication4
 
         }
 
-        //Jana Teutenberg: Methode, die überpürft, ob der User vorhanden ist und ihn sonst anlegt mit einer Id
+        //Jana Teutenberg: Methode, die überpürft, ob der User vorhanden ist 
         [HttpGet("GetUs/{id}", Name = "GetUs")]
         // GET: Users/GetUs/5
         public IActionResult GetUs(string id)
@@ -378,7 +378,7 @@ namespace WebApplication4
             public double Age4 { get; set; }
             public double Age5 { get; set; }
         }
-
+         
         
 
         public int Getage( int d, int m, int y, int tag, int monat, int jahr)

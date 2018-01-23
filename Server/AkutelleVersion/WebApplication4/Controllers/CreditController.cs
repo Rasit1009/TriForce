@@ -89,6 +89,26 @@ namespace WebApplication4.Controllers
 
         }
 
+
+        //Jana Teutenberg: Methode, die Anzahl der aktuellen Gutschein zurück gibt
+        [HttpGet("GetAllCredit/{id}", Name = "GetAllCredit")]
+        // GET: Coupon/GetAllCredit/5
+        public IActionResult GetAllCredit(string id)
+        {
+            var All = new List<Credit>();
+            int Anzahl = 0;
+            All = _context.Credit.Where(u => u.Selleri == id).ToList();
+
+            foreach (Credit p in All)
+            {
+
+                Anzahl = Anzahl + 1;
+            }
+
+            return Ok(Anzahl);
+
+        }
+
         //Jana Teutenberg: Methode, die einen Gutschein validiert
         [HttpGet("ValidCoupon/{id}", Name = "ValidCoupon")]
         // Api/credit/validcoupon/id

@@ -1,20 +1,70 @@
-<h1>Händler-Dashboard</h1>
+<h4>Händler-Dashboard</h4>
+
+<nb-card>
+  <nb-card-header>Aktueller Status</nb-card-header>
+  <nb-card-body>
+    <div class="row show-grid">
+      <div class="col-md-4">
+        <br>
+        <div class="beschreibungen">Anzahl offener LoloCOINs &nbsp;
+            <div class="qs2">?
+                <div class="popover above">Anzahl der LoloCOINs die Kunden aktuell bei mir gesammelt haben, die aber noch nicht in Gutscheine umgewandelt wurden.
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="daten"><img class="lolocoin" src="../../../assets/images/LOLOCO_Coin.png">&nbsp;&nbsp;25</div>
+        <br>
+      </div>
+      <div class="col-md-4">
+        <br>
+          <div class="beschreibungen">Anzahl offener Gutscheine &nbsp;
+              <div class="qs3">?
+                  <div class="popover above">Anzahl der offenen Gutscheine, die Kunden bei mir bereits freigeschaltet, aber noch nicht eingelöst haben.
+                  </div>
+              </div>
+          </div>
+          <br>
+          <div class="daten"><img class="loloqr" src="../../../assets/images/LOLOCO_QR.png">&nbsp;&nbsp;25</div>
+        <br>
+
+      </div>
+      <div class="col-md-4">
+        <br>
+          <div class="beschreibungen">Geldwert offener Gutscheine &nbsp;
+              <div class="qs4">?
+                  <div class="popover above">Finanzieller Gesamtwert der noch offenen Gutscheine.
+                  </div>
+              </div>
+          </div>
+          <br>
+        <div class="daten"> <div class="euro">€</div> &nbsp;25</div>
+        <br>
+        
+      </div>
+    </div>
+
+  </nb-card-body>
+</nb-card>
+
 
 <div class="row">
   <div class="col-md-12">
-    <ngx-electricity></ngx-electricity>
+
+    <ngx-echarts></ngx-echarts>
+
   </div>
 </div>
+
+<!--Aufwändige Statistik ohne Funktion
 <div class="row">
-  <div class="col-md-12">
-
-        <ngx-echarts></ngx-echarts>
-
-  </div>
-</div>
+    <div class="col-md-12">
+      <ngx-electricity></ngx-electricity>
+    </div>
+  </div>-->
 
 
-    <toaster-container [toasterconfig]="config"></toaster-container>
+<toaster-container [toasterconfig]="config"></toaster-container>
 
 
 
@@ -32,7 +82,7 @@
   <div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
   <!--  <ngx-solar [chartValue]="72"></ngx-solar> -->
 
-    <!--   <ngx-kitten></ngx-kitten> -->
+<!--   <ngx-kitten></ngx-kitten> -->
 
 <!--
   </div>
