@@ -54,7 +54,7 @@ constructor(public auth : AuthService, public credit : CreditService, public poi
       if(result.indexOf("auth") >= 0){
         this.person.getExisting(result).subscribe(res=>{
           this.exists = res; 
-        this.scanni.showSmallModal(result,this.exists);
+          this.scanni.showSmallModal(result,this.exists);
         })
       } else {
         this.credit.getValidity(result).subscribe(res => {

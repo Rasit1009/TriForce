@@ -20,7 +20,7 @@ export class PersonService {
 
   public getExisting(code : string):Observable<boolean>{
     return this.http
-    .get('localhost:49873/api/users/getUs/' + code)
+    .get('http://localhost:49873/api/users/getUs/' + code)
     .map(r=>r.json());
   }
 
@@ -35,6 +35,13 @@ export class PersonService {
     return this.http
     .post('http://localhost:49873/api/users', people);
   }
+
+  public getComplete(code : string):Observable<boolean>{
+    return this.http
+    .get('http://localhost:49873/api/users/complete/' + code)
+    .map(r=>r.json());
+  }
+
 }
 export class Person{
   constructor(public i, public isSeller, public vorhanden, 
