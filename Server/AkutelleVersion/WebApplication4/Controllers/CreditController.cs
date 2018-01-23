@@ -93,9 +93,35 @@ namespace WebApplication4.Controllers
 
         }
 
+        //Jana Teutenberg: Methode, die einen Gutschein validiert
+        [HttpGet("ValidCoupon/{id}", Name = "ValidCoupon")]
+        // Api/credit/validcoupon/id
+        public IActionResult Valid(string id)
+        {
+            var Gutschein = _context.Credit.SingleOrDefault(c => c.Creditid == id);
+
+            if (Gutschein == null)
+            {
+                return Ok(false);
+
+            }
+
+            else
+            {
+             
+
+                return Ok(true);
+            }
 
 
-        
+
+
+
+        }
+
+
+
+
         public class Gutschein
         {
             public string Creditid { get; set; }
