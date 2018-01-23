@@ -8,6 +8,9 @@ import { Alert } from 'selenium-webdriver';
 import { AuthService } from '../../../auth/auth.service';
 import { Points, PointService } from '../../points/points.service';
 import { QrscanComponent } from '../qrscan.component';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { CouponSystem } from '../../coupon/coupon.service';
+import { CreditService } from '../../points/credit.service';
 
 @Component({
   selector: 'ngx-tabs',
@@ -17,7 +20,7 @@ import { QrscanComponent } from '../qrscan.component';
 export class TabsComponent {
   public point : Points = new Points(null,null,null);
 
-constructor(public auth : AuthService, public pointService : PointService, public scanni: QrscanComponent, public toastparty: QrscanComponent){
+constructor(public auth : AuthService, public credit : CreditService, public pointService : PointService, public scanni: QrscanComponent, public toastparty: QrscanComponent){
 
 }
 
@@ -26,6 +29,8 @@ constructor(public auth : AuthService, public pointService : PointService, publi
   qrResult = "";
   availableDevices = [];
   auth0 = "auth0|";
+  valid : boolean; 
+  zaehler = 0; 
    
   displayCameras(cams: any[]) {
     this.availableDevices = cams;
@@ -37,11 +42,21 @@ constructor(public auth : AuthService, public pointService : PointService, publi
   }
   
   handleQrCodeResult(result: string) {
-    console.log("Result", result);
+    this.zaehler++;
     //QR CODE RESULT
-    console.log(result);
-    this.qrResult = result;
-    this.scanni.showSmallModal(result);
+    if(this.zaehler % 2 == 1){
+  
+      console.log("trifft zu " + this.zaehler);
+      this.qrResult = result;
+      if(result.indexOf("auth") >= 0){
+        this.scanni.showSmallModal(result);
+      } else {
+        this.credit.getValidity(result).subscribe(res => {
+          this.valid = res;
+            this.scanni.showSmallModal(result,this.valid);
+        })
+      }
+    }
   }
   
   onChange(selectedValue: string){
@@ -71,6 +86,7 @@ indb(){
     this.textvalue = document.getElementById("consumerid");
     this.textvalue_id = this.textvalue.value;
     this.handleQrCodeResult(this.textvalue_id);
+    this.zaehler++;
 
     /*this.amount = document.getElementById("amount");
     this.amount_id = this.amount.value;

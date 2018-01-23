@@ -6,48 +6,46 @@ import { Observable, BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'ngx-modal',
   templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent {
 
   points : Points = new Points(null,null,null);
-  modalHeader: string;
-  modalContent = `Der LoloCODE wurde erfolgreich gescannt. Bitte geben Sie nun den Kaufbetrag ein, um deinem Kunden LoloCOINs gutzuschreiben: `;
+  
   umsatz = '';
   consumerid; 
   sellerid; 
-
-  isCoordSource = new BehaviorSubject<any>(null);
-  _currentCoord : Observable<any> = this.isCoordSource.asObservable().first(); 
+  couponCode;
+  collectCode; 
+  couponText; 
+  coupondetail;
 
   constructor(private activeModal: NgbActiveModal, public pointservice : PointService) { 
-
-
-
   }
 
-  angekommen(punkte : any){
-    this.isCoordSource.next(punkte);
-  }
 
-  closeModal() {
-
+  bookPoints(){
     this.points.points = (<HTMLInputElement>document.getElementById("umsatz")).value;
-    this.points.useri = this.consumerid; 
-    this.points.selleri = this.sellerid; 
-    if(this.consumerid.indexOf("auth") >= 0){
-      if(this.points.points){
-      this.pointservice.sendPoints(this.points).subscribe(()=>{alert("Punkte versandt")
+    this.points.useri = this.collectCode; 
+    console.log(this.sellerid);
+    this.points.selleri = this.sellerid;
+    console.log(this.points.points + " ist einfach leer"); 
+    if(this.points.points){
+      this.pointservice.sendPoints(this.points).subscribe(()=>{alert("Umsatzeingabe registriert.")
       this.activeModal.close()});
+      }
     }
-    } else {
-      this.pointservice.cashCoupon(this.consumerid).subscribe(result =>{
-        console.log("hat geklappt " + result);
-        alert("gutgeschrieben");
-        this.activeModal.close();
-       
-      });
-    }
-    
-    
+
+
+  bookCoupon(){
+    this.pointservice.cashCoupon(this.couponCode).subscribe(result =>{
+      console.log("Coupon Gutgeschrieben:" + result);
+      alert("Der Gutschein wurde eingelöst.");
+      this.activeModal.close();
+  })
+}
+
+  justClose(){
+    this.activeModal.close();
   }
 }

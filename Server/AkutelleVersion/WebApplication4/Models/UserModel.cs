@@ -34,6 +34,7 @@ namespace WebApplication4.Models
         public int AllPoints { get; set; }
 
         public bool vorhanden { get; set; }
+        public float AllCredit { get; set; }
 
 
     }

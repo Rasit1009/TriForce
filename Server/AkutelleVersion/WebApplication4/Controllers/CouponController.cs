@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication4.Daten;
 using WebApplication4.Models;
+
 using WebApplication4.Controllers;
 using static WebApplication4.Controllers.CouponSystemController;
 
@@ -16,7 +17,8 @@ namespace WebApplication4.Controllers
     public class CouponController : Controller
     {
         private readonly LolocoContext _context;
-        
+        public DateTime da = DateTime.Now;
+
 
 
         public CouponController(LolocoContext context)
@@ -148,6 +150,17 @@ namespace WebApplication4.Controllers
             var Po = _context.Coupon.SingleOrDefault(
                 c => c.Selleri == pu.Selleri && c.Useri == pu.Useri);
             var Person = _context.Users.SingleOrDefault(c => c.I == pu.Useri);
+            var Trans = new Models.Action()
+            {
+                Selleri = pu.Selleri,
+                Date = this.da,
+                Useri = pu.Useri,
+                Sales = pu.Points,
+                Wochentag = da.DayOfWeek.ToString(),
+
+            };
+            _context.Action.Add(Trans);
+            
             if (Po == null)
             {
 
@@ -160,7 +173,9 @@ namespace WebApplication4.Controllers
 
 
                 };
+                
                 Person.AllPoints = Person.AllPoints + pu.Points;
+                _context.Update(Person);
                 _context.Coupon.Add(Po);
                 _context.SaveChanges();
                 return Ok();
