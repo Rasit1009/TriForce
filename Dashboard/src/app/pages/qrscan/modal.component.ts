@@ -24,37 +24,23 @@ export class ModalComponent {
   }
 
 
-  closeModal() {
-
-    
-    /*
-    if(this.consumerid.indexOf("auth") >= 0){
-      if(this.points.points){
-      
-    }
-    } else {
-     
-       
-      });
-    }
-    */
-    
-  }
-
   bookPoints(){
     this.points.points = (<HTMLInputElement>document.getElementById("umsatz")).value;
-    this.points.useri = this.consumerid; 
-    this.points.selleri = this.sellerid; 
-
-    this.pointservice.sendPoints(this.points).subscribe(()=>{alert("Punkte versandt")
+    this.points.useri = this.collectCode; 
+    console.log(this.sellerid);
+    this.points.selleri = this.sellerid;
+    console.log(this.points.points + " ist einfach leer"); 
+    if(this.points.points){
+      this.pointservice.sendPoints(this.points).subscribe(()=>{alert("Umsatzeingabe registriert.")
       this.activeModal.close()});
-  }
+      }
+    }
 
 
   bookCoupon(){
     this.pointservice.cashCoupon(this.couponCode).subscribe(result =>{
       console.log("Coupon Gutgeschrieben:" + result);
-      alert("gutgeschrieben");
+      alert("Der Gutschein wurde eingelöst.");
       this.activeModal.close();
   })
 }

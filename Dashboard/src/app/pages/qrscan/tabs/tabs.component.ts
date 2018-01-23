@@ -33,6 +33,7 @@ constructor(public auth : AuthService, public credit : CreditService, public poi
   auth0 = "auth0|";
   valid : boolean; 
   exists : boolean;
+  zaehler = 0; 
    
   displayCameras(cams: any[]) {
     this.availableDevices = cams;
@@ -44,22 +45,24 @@ constructor(public auth : AuthService, public credit : CreditService, public poi
   }
   
   handleQrCodeResult(result: string) {
-    console.log("Result", result);
+    this.zaehler++;
     //QR CODE RESULT
-    this.qrResult = result;
-    if(result.indexOf("auth") >= 0){
-      this.person.getExisting(result).subscribe(res=>{
-      this.exists = res; 
-      this.scanni.showSmallModal(result,this.exists);
-      })
-      this.scanni.showSmallModal(result);
-    } else {
-      this.credit.getValidity(result).subscribe(res => {
-        this.valid = res;
-          this.scanni.showSmallModal(result,this.valid);
-      })
+    if(this.zaehler % 2 == 1){
+  
+      console.log("trifft zu " + this.zaehler);
+      this.qrResult = result;
+      if(result.indexOf("auth") >= 0){
+        this.person.getExisting(result).subscribe(res=>{
+          this.exists = res; 
+        this.scanni.showSmallModal(result,this.exists);
+        })
+      } else {
+        this.credit.getValidity(result).subscribe(res => {
+          this.valid = res;
+            this.scanni.showSmallModal(result,this.valid);
+        })
+      }
     }
-    
   }
   
   onChange(selectedValue: string){
@@ -89,6 +92,7 @@ indb(){
     this.textvalue = document.getElementById("consumerid");
     this.textvalue_id = this.textvalue.value;
     this.handleQrCodeResult(this.textvalue_id);
+    this.zaehler++;
 
     /*this.amount = document.getElementById("amount");
     this.amount_id = this.amount.value;

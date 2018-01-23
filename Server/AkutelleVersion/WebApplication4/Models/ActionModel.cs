@@ -12,7 +12,8 @@ namespace WebApplication4.Models
         public string Useri { get; set; }
 
         public int Sales{ get; set; }
+        public string Wochentag { get; set; }
 
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
     }
 }

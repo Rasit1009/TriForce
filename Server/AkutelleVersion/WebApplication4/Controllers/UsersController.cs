@@ -57,6 +57,8 @@ namespace WebApplication4
                     I = id,
                     vorhanden = true,
                     AllPoints = 0,
+                    Imagepath = "http://www.suedstadtsport.de/down/klick.jpg",
+                    AllCredit = 0,
 
                 };
 
@@ -84,6 +86,24 @@ namespace WebApplication4
             // return Ok(vorhanden);
 
         }
+
+        //Jana Teutenberg: Methode, die überpürft, ob der User vorhanden ist und ihn sonst anlegt mit einer Id
+        [HttpGet("GetUs/{id}", Name = "GetUs")]
+        // GET: Users/GetUs/5
+        public IActionResult GetUs(string id)
+        {
+            var Person = _context.Users.SingleOrDefault(
+                c => c.I == id);
+            if (Person == null)
+            {
+                return Ok(false);
+            }
+            else
+            {
+                return Ok(true);
+            }
+        }
+
         //Jana Teutenberg: Methode, die eine Id bekommt und den Vornamen zurück gibt
         [HttpGet("Getfirstname/{id}", Name = "GetFirstname")]
         // GET: Users/GetFirstname
@@ -184,6 +204,8 @@ namespace WebApplication4
             public bool vorhanden { get; set; }
             public string Imagepath { get; set; }
             public int AllPoints { get; set; }
+
+            public float AllCredit { get; set; }
             public int PLZ { get; set; }
             public string Housenumber { get; set; }
             public string City { get; set; }
@@ -234,12 +256,27 @@ namespace WebApplication4
             {
                 return BadRequest();
             }
-            if (Person.Firstname == null || Person.Lastname == null || Person.Street == null)
+            if (Person.IsSeller == true)
             {
-                return Ok(false);
+                if (Person.Firstname == null || Person.Lastname == null || Person.Street == null || Person.Businessname == null || Person.City == null || Person.Housenumber == null || Person.Imagepath == null || Person.PLZ == 0 || Person.Text == null || Person.Business== null)
+                {
+                    return Ok(false);
+                }
+                else
+                {
+                    return Ok(true);
+                }
             }
             else
-            { return Ok(true);
+            {
+                if (Person.Firstname == null || Person.Lastname == null || Person.Street == null || Person.Day == 0 || Person.City == null || Person.Housenumber == null || Person.Familystatus == null || Person.PLZ == 0 || Person.Gender == null || Person.Month == 0 || Person.Profession == null || Person.Year == 0)
+                {
+                    return Ok(false);
+                }
+                else
+                {
+                    return Ok(true);
+                }
             }
 
 
@@ -249,7 +286,7 @@ namespace WebApplication4
         }
 
 
-        //Jana Teutenberg: Methode, die überpürft, ob der User vorhanden ist und ihn dann löscht
+        //Jana Teutenberg: Methode, die zurück gibt, welche Altersanteile es gibt
         [HttpGet("Age/{id}", Name = "Age")]
         // GET: Users/Age/5
         public IActionResult Averageage(string id)
@@ -330,7 +367,8 @@ namespace WebApplication4
             }
 
         }
-        
+
+       
 
         public class Age
         {
@@ -340,6 +378,8 @@ namespace WebApplication4
             public double Age4 { get; set; }
             public double Age5 { get; set; }
         }
+
+        
 
         public int Getage( int d, int m, int y, int tag, int monat, int jahr)
         {

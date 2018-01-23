@@ -26,6 +26,8 @@ namespace WebApplication4.Controllers
         public IActionResult Generate([FromBody] Gutschein gutschein)
         {
             var Gutschein = _context.Credit.SingleOrDefault(c => c.Selleri == gutschein.Selleri && c.Useri == gutschein.Useri);
+            var Sys = _context.CouponSystem.SingleOrDefault(c => c.Selleri == gutschein.Selleri);
+            var Handler = _context.Users.SingleOrDefault(h => h.I == gutschein.Selleri);
 
             if (Gutschein == null)
             {
@@ -34,8 +36,11 @@ namespace WebApplication4.Controllers
                     
                     Selleri = gutschein.Selleri,
                     Useri = gutschein.Useri,
+                    
                 };
-
+                //Handler.AllCredit = 1;
+                Handler.AllCredit = Handler.AllCredit + Sys.Moneyvalue;
+                _context.Update(Handler);
                 _context.Credit.Add(Gutschein);
                 _context.SaveChanges();
 
@@ -47,11 +52,6 @@ namespace WebApplication4.Controllers
             {
                 return Ok(Gutschein.Creditid);
             }
-
-
-
-
-
         }
 
         //Jana Teutenberg: Methode, die den eine Creditid bekommt und diesen Gutschein und seine Punkte löscht
@@ -86,10 +86,6 @@ namespace WebApplication4.Controllers
                 
                 return Ok(true);
             }
-
-
-
-
 
         }
 

@@ -118,7 +118,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
     var index = this.people.findIndex(x => x.i === this.person.i)
     this.people[index] = this.person; 
     console.log(this.people[index]);
-    this.personService.savePeople(this.person).subscribe(() =>alert("geht"));
+    this.personService.savePeople(this.person).subscribe();
   }
 
   getUser() {
@@ -148,7 +148,7 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
     new Person(this.person.i,this.person.isSeller,this.person.vorhanden,this.person.firstname,
       this.person.lastname,this.person.email,this.person.street,this.person.plz,
       this.person.city,this.person.housenumber,this.person.businessname,
-      this.person.business,this.person.text,this.person.imagepath, this.person.allPoints,this.person.day,
+      this.person.business,this.person.text,this.person.imagepath, this.person.allPoints, this.person.allCredit,this.person.day,
       this.person.month,this.person.year,this.person.profession,this.person.familystatus,this.person.gender);
     this.people.push(person);
   }
