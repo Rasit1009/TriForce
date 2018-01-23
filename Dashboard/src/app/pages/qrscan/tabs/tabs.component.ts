@@ -11,6 +11,7 @@ import { QrscanComponent } from '../qrscan.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CouponSystem } from '../../coupon/coupon.service';
 import { CreditService } from '../../points/credit.service';
+import { PersonService } from '../../datacomplete_consumer/services/person.service';
 
 @Component({
   selector: 'ngx-tabs',
@@ -20,7 +21,8 @@ import { CreditService } from '../../points/credit.service';
 export class TabsComponent {
   public point : Points = new Points(null,null,null);
 
-constructor(public auth : AuthService, public credit : CreditService, public pointService : PointService, public scanni: QrscanComponent, public toastparty: QrscanComponent){
+constructor(public auth : AuthService, public credit : CreditService, public pointService : PointService, 
+  public scanni: QrscanComponent, public toastparty: QrscanComponent, public person : PersonService){
 
 }
 
@@ -30,6 +32,7 @@ constructor(public auth : AuthService, public credit : CreditService, public poi
   availableDevices = [];
   auth0 = "auth0|";
   valid : boolean; 
+  exists : boolean;
    
   displayCameras(cams: any[]) {
     this.availableDevices = cams;
@@ -45,6 +48,10 @@ constructor(public auth : AuthService, public credit : CreditService, public poi
     //QR CODE RESULT
     this.qrResult = result;
     if(result.indexOf("auth") >= 0){
+      this.person.getExisting(result).subscribe(res=>{
+      this.exists = res; 
+      this.scanni.showSmallModal(result,this.exists);
+      })
       this.scanni.showSmallModal(result);
     } else {
       this.credit.getValidity(result).subscribe(res => {

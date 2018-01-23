@@ -54,10 +54,14 @@ export class ConsumerComponent {
       //for(var i = 0; i<this.seller.length; i++){
        // this.gesammelt = this.gesammelt + this.seller[i].points; 
       //}
+
       for(var i = this.seller.length; i>this.seller.length-4; i--){
-        this.lastseller[zaehler] = this.seller[i];
-        zaehler++;
+        if(this.seller[i]){
+          this.lastseller[zaehler] = this.seller[i];
+          zaehler++;
+        }
       }
+      console.log(this.lastseller);
       console.log(this.seller);
       this.setUser(this.seller);
 
