@@ -1,4 +1,32 @@
-<!-- 1.Fall: Gutschein-->
+<!-- 1.Fall: Ungültiger Code-->
+<div *ngIf="!couponCode && !collectCode">
+
+    <div class="modal-header">
+      <span aria-hidden="true">Code ungültig</span>
+    </div>
+  
+    <div class="modal-body">
+      
+      Der erkannte Code ist ungültig.
+  
+    </div>
+  
+  
+  
+    <div class="modal-footer">
+      <div class="button">
+        <button class="btn btn-md btn-ghost" (click)="justClose()">OK</button>
+      </div>
+    </div>
+  
+  
+  
+  </div>
+
+  
+
+
+<!-- 2.Fall: Gutschein-->
 <div *ngIf="couponCode">
 
   <div class="modal-header">
@@ -33,7 +61,7 @@
 </div>
 
 
-<!-- 2.Fall: Sammelcode-->
+<!-- 3.Fall: Sammelcode-->
 <div *ngIf="collectCode">
 
     <div class="modal-header">
@@ -44,7 +72,7 @@
 
     <div class="modal-body">
       
-      Bitt gebe die Umsatzhöhe dieses Einkaufs in EUR ein:
+      Bitte gebe die Umsatzhöhe dieses Einkaufs in EUR ein:
 
       <br>
       <br>

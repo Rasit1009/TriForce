@@ -43,14 +43,16 @@ export class QrscanComponent {
   console.log(codestring);
 //Unterscheidung Gutschein oder Sammelcode
     //Sammelcode
-    if(valid){
+   
     if(codestring.indexOf("auth") >= 0){
       collectCode = codestring; 
     //Gutschein
     } else {
+      if(valid){
       couponCode = codestring; 
-    }
+    } 
   }
+  
       
 
     if(collectCode){
