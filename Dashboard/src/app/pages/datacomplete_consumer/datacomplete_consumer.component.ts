@@ -62,11 +62,13 @@ export class Datacomplete_ConsumerComponent {
       }
     });
 
+
+    /*
     if(this.completion_value == 100){
       setTimeout(() => { this.showToast('sucess', 'Vollständige Daten', 'Deine Daten sind vollständig. Du kannst diese jederzeit ändern und aktualisieren.');}, 1000);
     } if(this.completion_value != 100){
       setTimeout(() => { this.showToast('info', 'Unvollständig Daten', 'Bitte vervollständige deine Daten um mehr Punkte zu sammeln.');}, 1000);
-    }
+    } */
 
    // this.initToasts();
   }
@@ -92,7 +94,7 @@ datenaktualisieren: boolean = true;
 
   config: ToasterConfig;
 
-  position = 'toast-top-right';
+  position = 'toast-bottom-right';
   animationType = 'flyleft';
   title = 'HI there!';
   content = `I'm cool toaster!`;
