@@ -58,7 +58,7 @@ namespace WebApplication4
                     vorhanden = true,
                     AllPoints = 0,
                     Imagepath = "http://www.suedstadtsport.de/down/klick.jpg",
-                    AllCredit = 0,
+                    
 
                 };
 
@@ -205,7 +205,7 @@ namespace WebApplication4
             public string Imagepath { get; set; }
             public int AllPoints { get; set; }
 
-            public float AllCredit { get; set; }
+            
             public int PLZ { get; set; }
             public string Housenumber { get; set; }
             public string City { get; set; }

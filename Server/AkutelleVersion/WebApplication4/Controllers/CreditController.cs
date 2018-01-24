@@ -26,8 +26,7 @@ namespace WebApplication4.Controllers
         public IActionResult Generate([FromBody] Gutschein gutschein)
         {
             var Gutschein = _context.Credit.SingleOrDefault(c => c.Selleri == gutschein.Selleri && c.Useri == gutschein.Useri);
-            var Sys = _context.CouponSystem.SingleOrDefault(c => c.Selleri == gutschein.Selleri);
-            var Handler = _context.Users.SingleOrDefault(h => h.I == gutschein.Selleri);
+            
 
             if (Gutschein == null)
             {
@@ -39,8 +38,8 @@ namespace WebApplication4.Controllers
                     
                 };
                 //Handler.AllCredit = 1;
-                Handler.AllCredit = Handler.AllCredit + Sys.Moneyvalue;
-                _context.Update(Handler);
+                
+                
                 _context.Credit.Add(Gutschein);
                 _context.SaveChanges();
 
@@ -106,6 +105,27 @@ namespace WebApplication4.Controllers
             }
 
             return Ok(Anzahl);
+
+        }
+
+        //Jana Teutenberg: Methode, die den Wert der aktuellen Gutschein zurück gibt
+        [HttpGet("GetAllCreditValue/{id}", Name = "GetAllCreditValue")]
+        // GET: Coupon/GetAllCredit/5
+        public IActionResult GetAllCreditValue(string id)
+        {
+            var Sys = _context.CouponSystem.SingleOrDefault(c => c.Selleri == id);
+            float Value;
+            var All = new List<Credit>();
+            int Anzahl = 0;
+            All = _context.Credit.Where(u => u.Selleri == id).ToList();
+
+            foreach (Credit p in All)
+            {
+
+                Anzahl = Anzahl + 1;
+            }
+            Value = Anzahl * Sys.Moneyvalue;
+            return Ok(Value);
 
         }
 
