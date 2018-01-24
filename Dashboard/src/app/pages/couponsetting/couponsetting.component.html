@@ -79,8 +79,8 @@
             <span style="display:block; margin-bottom: 9px;"></span>
 
 
-                    <input *ngIf="coupon.moneyvalue" id="moneyvalue" type="input" class="form-control" [value]="coupon.moneyvalue" />
-                    <input *ngIf="!coupon.moneyvalue" id="moneyvalue" type="input" class="form-control" placeholder="Betrag eingeben..." />
+                    <input *ngIf="coupon.moneyvalue" id="moneyvalue" type="number" class="form-control" [value]="coupon.moneyvalue" />
+                    <input *ngIf="!coupon.moneyvalue" id="moneyvalue" type="number" class="form-control" placeholder="Betrag eingeben..." />
                 
         <br>
         <br>

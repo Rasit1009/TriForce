@@ -58,7 +58,7 @@ namespace WebApplication4
                     vorhanden = true,
                     AllPoints = 0,
                     Imagepath = "http://www.suedstadtsport.de/down/klick.jpg",
-                    AllCredit = 0,
+                    
 
                 };
 
@@ -86,6 +86,24 @@ namespace WebApplication4
             // return Ok(vorhanden);
 
         }
+
+        //Jana Teutenberg: Methode, die überpürft, ob der User vorhanden ist 
+        [HttpGet("GetUs/{id}", Name = "GetUs")]
+        // GET: Users/GetUs/5
+        public IActionResult GetUs(string id)
+        {
+            var Person = _context.Users.SingleOrDefault(
+                c => c.I == id);
+            if (Person == null)
+            {
+                return Ok(false);
+            }
+            else
+            {
+                return Ok(true);
+            }
+        }
+
         //Jana Teutenberg: Methode, die eine Id bekommt und den Vornamen zurück gibt
         [HttpGet("Getfirstname/{id}", Name = "GetFirstname")]
         // GET: Users/GetFirstname
@@ -187,7 +205,7 @@ namespace WebApplication4
             public string Imagepath { get; set; }
             public int AllPoints { get; set; }
 
-            public float AllCredit { get; set; }
+            
             public int PLZ { get; set; }
             public string Housenumber { get; set; }
             public string City { get; set; }
@@ -238,12 +256,28 @@ namespace WebApplication4
             {
                 return BadRequest();
             }
-            if (Person.Firstname == null || Person.Lastname == null || Person.Street == null)
+            if (Person.IsSeller == true)
             {
-                return Ok(false);
+                var Sys = _context.CouponSystem.SingleOrDefault(c => c.Selleri == id);
+                if (Person.Firstname == null || Person.Lastname == null || Person.Street == null || Person.Businessname == null || Person.City == null || Person.Housenumber == null || Person.Imagepath == null || Person.PLZ == 0 || Person.Text == null || Person.Business== null ||Sys.Coupondetail == null || Sys.Coupontext == null || Sys.Moneyvalue == 0 || Sys.Selleri == null || Sys.Number == 0)
+                {
+                    return Ok(false);
+                }
+                else
+                {
+                    return Ok(true);
+                }
             }
             else
-            { return Ok(true);
+            {
+                if (Person.Firstname == null || Person.Lastname == null || Person.Street == null || Person.Day == 0 || Person.City == null || Person.Housenumber == null || Person.Familystatus == null || Person.PLZ == 0 || Person.Gender == null || Person.Month == 0 || Person.Profession == null || Person.Year == 0)
+                {
+                    return Ok(false);
+                }
+                else
+                {
+                    return Ok(true);
+                }
             }
 
 
@@ -345,16 +379,8 @@ namespace WebApplication4
             public double Age4 { get; set; }
             public double Age5 { get; set; }
         }
-
-        public class Day
-        {
-            public string Monday { get; set; }
-            public string Tuesday { get; set; }
-            public string Wednesday { get; set; }
-            public string Thursday { get; set; }
-            public string Friday { get; set; }
-            public string Saturday { get; set; }
-        }
+         
+        
 
         public int Getage( int d, int m, int y, int tag, int monat, int jahr)
         {

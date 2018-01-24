@@ -180,6 +180,103 @@ setData(){
   }
   
   markers: marker[] = [
+    {
+      lat: 50.941911,
+      lng:  6.956812,
+      label: 'G',
+      draggable: false,
+    },
+    {
+      lat: 50.948946,
+      lng: 6.923270,
+      label: 'U',
+      draggable: false,
+    },
+    {
+      lat: 50.947834,
+      lng: 6.920917,
+      label: 'L',
+      draggable: false,
+    },
+    {
+      lat: 50.918200,
+      lng: 6.960677,
+      label: 'D',
+      draggable: false,
+    },
+    {
+      lat: 50.918837,
+      lng: 6.960443,
+      label: 'E',
+      draggable: false,
+    },
+    {
+      lat: 50.917036,
+      lng: 6.925157,
+      label: 'K',
+      draggable: false,
+    },
+    {
+      lat: 50.996911,
+      lng: 6.906057,
+      label: 'S',
+      draggable: false,
+    },
+    {
+      lat: 50.935306,
+      lng: 6.938741,
+      label: 'A',
+      draggable: false,
+    },
+    {
+      lat: 50.946370,
+      lng: 6.925387,
+      label: 'Z',
+      draggable: false,
+    },
+    {
+      lat: 50.929549,
+      lng: 6.938353,
+      label: 'O',
+      draggable: false,
+    },
+    {
+      lat: 50.949203,
+      lng: 6.926824,
+      label: 'B',
+      draggable: false,
+    },
+    {
+      lat: 50.938649,
+      lng: 6.973711,
+      label: 'R',
+      draggable: false,
+    },
+    {
+      lat: 50.937277,
+      lng: 6.947252,
+      label: 'H',
+      draggable: false,
+    },
+    {
+      lat: 50.947378,
+      lng: 6.946133,
+      label: 'M',
+      draggable: false,
+    },
+    {
+      lat: 50.916644,
+      lng: 6.928902,
+      label: 'C',
+      draggable: false,
+    },
+    {
+      lat: 50.912277,
+      lng: 6.960442,
+      label: 'P',
+      draggable: false,
+    },
+        
   ]
 }
 

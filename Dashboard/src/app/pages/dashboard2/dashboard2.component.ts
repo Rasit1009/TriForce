@@ -4,6 +4,10 @@ import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-t
 import 'style-loader!angular2-toaster/toaster.css';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { AuthService } from '../../auth/auth.service';
+import { Injectable } from "@angular/core";
+import { Http } from '@angular/http';
+import {Observable} from'rxjs/Rx';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'ngx-dashboard2',
@@ -18,20 +22,64 @@ datennochnichtvollstaendig: boolean = true;
 wurdebeidirschoneingekauft: boolean = true;
 gutscheinsystemnochnichtausgefuellt: boolean = true;
 ersteanmeldung: boolean = true;
-allegutscheine = 0;
+allegutscheineMoneyvalue = 0;
+anzahllolocoins = 0;
+anzahlgutscheine =0;
 
-  constructor(private toasterService: ToasterService, private auth: AuthService) {
+  constructor(private toasterService: ToasterService, private auth: AuthService,private http: Http) {
 
     this.initToasts();
     try {
-      if(this.auth.person.allCredit){
-        this.allegutscheine = this.auth.person.allCredit;
-        }
+      this.getValue(this.auth.id).subscribe(res => { 
+        this.allegutscheineMoneyvalue= res;
+        //this.setDay(this.day);
+        
+        console.log(this.allegutscheineMoneyvalue+"Value"); });
+    } catch (error) {
+      console.log("error");
+    }
+    try {
+      this.getDay(this.auth.id).subscribe(res => { 
+        this.anzahllolocoins= res;
+        //this.setDay(this.day);
+        
+        console.log(this.anzahllolocoins +"Lolocoins");
+        
+      });
     } catch (error) {
       console.log("error");
     }
 
+    try {
+      this.getCredit(this.auth.id).subscribe(res => { 
+        this.anzahlgutscheine= res;
+        //this.setDay(this.day);
+        
+        console.log(this.anzahlgutscheine +"gutscheine");
+        
+      });
+    } catch (error) {
+      console.log("error");
+    }
   }
+
+  
+    public getDay(id : any): Observable<any>{
+      return this.http
+            .get('http://localhost:49873/api/coupon/getAllPoints/' + id)
+            .map(r =>r.json());
+     }
+     public getValue(id : any): Observable<any>{
+      return this.http
+            .get('http://localhost:49873/api/credit/getAllCreditValue/' + id)
+            .map(r =>r.json());
+     }
+     public getCredit(id : any): Observable<any>{
+      return this.http
+            .get('http://localhost:49873/api/credit/getAllCredit/' + id)
+            .map(r =>r.json());
+     }
+  
 
   initToasts(){
     //function call delay for fade-in effect mhendric 18.01.18
