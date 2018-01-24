@@ -259,7 +259,7 @@ namespace WebApplication4
             if (Person.IsSeller == true)
             {
                 var Sys = _context.CouponSystem.SingleOrDefault(c => c.Selleri == id);
-                if (Person.Firstname == null || Person.Lastname == null || Person.Street == null || Person.Businessname == null || Person.City == null || Person.Housenumber == null || Person.Imagepath == null || Person.PLZ == 0 || Person.Text == null || Person.Business== null ||Sys == null)
+                if (Person.Firstname == null || Person.Lastname == null || Person.Street == null || Person.Businessname == null || Person.City == null || Person.Housenumber == null || Person.Imagepath == null || Person.PLZ == 0 || Person.Text == null || Person.Business== null ||Sys.Coupondetail == null || Sys.Coupontext == null || Sys.Moneyvalue == 0 || Sys.Selleri == null || Sys.Number == 0)
                 {
                     return Ok(false);
                 }
