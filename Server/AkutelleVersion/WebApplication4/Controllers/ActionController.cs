@@ -21,7 +21,7 @@ namespace WebApplication4.Controllers
             _context = context;
         }
 
-        //Jana Teutenberg: Methode, die den eine Creditid bekommt und diesen Gutschein und seine Punkte löscht
+        //Jana Teutenberg: Methode, die die durchschnittlichen Tagesumsätze berechnet
         [HttpGet("getDay/{id}", Name = "getDay")]
         // Api/action/getDay/{id}
         public IActionResult getDay(string id)
