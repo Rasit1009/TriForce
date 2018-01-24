@@ -69,7 +69,7 @@ anzahlgutscheine =0;
      }
      public getCredit(id : any): Observable<any>{
       return this.http
-            .get('http://localhost:49873/api/coupon/getAllCredit/' + id)
+            .get('http://localhost:49873/api/credit/getAllCredit/' + id)
             .map(r =>r.json());
      }
   
