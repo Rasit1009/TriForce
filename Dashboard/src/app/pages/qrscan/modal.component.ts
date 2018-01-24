@@ -45,6 +45,7 @@ export class ModalComponent {
     this.pointservice.cashCoupon(this.couponCode).subscribe(result =>{
       console.log("Coupon Gutgeschrieben:" + result);
       alert("Der Gutschein wurde eingelöst.");
+      this.showToast('success','Gutschein verbucht','Glückwunsch der Gutschein wurde erfolgreich eingereicht und wurde beim Kunden wieder deaktiviert..');
       this.activeModal.close();
   })
 }
