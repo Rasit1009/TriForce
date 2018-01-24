@@ -15,7 +15,7 @@ export class DayService {
 
 public getDay(id : any): Observable<Day>{
  return this.http
-       .get('http://localhost:49873/api/action/getday/' + id)
+       .get('https://lolocoback.azurewebsites.net/api/action/getday/' + id)
        .map(r =>r.json());
 }
 

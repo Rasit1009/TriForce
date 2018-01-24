@@ -66,17 +66,17 @@ anzahlgutscheine =0;
   
     public getDay(id : any): Observable<any>{
       return this.http
-            .get('http://localhost:49873/api/coupon/getAllPoints/' + id)
+            .get('https://lolocoback.azurewebsites.net/api/coupon/getAllPoints/' + id)
             .map(r =>r.json());
      }
      public getValue(id : any): Observable<any>{
       return this.http
-            .get('http://localhost:49873/api/credit/getAllCreditValue/' + id)
+            .get('https://lolocoback.azurewebsites.net/api/credit/getAllCreditValue/' + id)
             .map(r =>r.json());
      }
      public getCredit(id : any): Observable<any>{
       return this.http
-            .get('http://localhost:49873/api/credit/getAllCredit/' + id)
+            .get('https://lolocoback.azurewebsites.net/api/credit/getAllCredit/' + id)
             .map(r =>r.json());
      }
   

@@ -10,7 +10,7 @@ export class PersonService {
 
   public getPeople(): Observable<any>{
      return this.http
-    .get('http://localhost:49873/api/users/')
+    .get('https://lolocoback.azurewebsites.net/api/users/')
     .map(r =>r.json())
     .map(e =>e.map 
       (c=> new Person(c.i,c.isSeller,c.vorhanden, c.firstname, c.lastname, c.email, c.street,c.plz,
@@ -20,30 +20,30 @@ export class PersonService {
 
   public getExisting(code : string):Observable<boolean>{
     return this.http
-    .get('http://localhost:49873/api/users/getUs/' + code)
+    .get('https://lolocoback.azurewebsites.net/api/users/getUs/' + code)
     .map(r=>r.json());
   }
 
   public getUser(token : any): Observable<any>{
     return this.http
-    .get('http://localhost:49873/api/users/get/' + token)
+    .get('https://lolocoback.azurewebsites.net/api/users/get/' + token)
     .map(r => r.json()); 
   }
 
   public setScan(token : any): Observable<any>{
     return this.http
-    .get('http://localhost:49873/api/users/GetScan/' + token);
+    .get('https://lolocoback.azurewebsites.net/api/users/GetScan/' + token);
   }
   
 
   public savePeople(people: Person): Observable<any>{
     return this.http
-    .post('http://localhost:49873/api/users', people);
+    .post('https://lolocoback.azurewebsites.net/api/users', people);
   }
 
   public getComplete(code : string):Observable<boolean>{
     return this.http
-    .get('http://localhost:49873/api/users/complete/' + code)
+    .get('https://lolocoback.azurewebsites.net/api/users/complete/' + code)
     .map(r=>r.json());
   }
 

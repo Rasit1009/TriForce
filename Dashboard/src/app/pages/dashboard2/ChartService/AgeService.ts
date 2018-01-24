@@ -15,7 +15,7 @@ export class AgeService {
 
 public getAge(id : any): Observable<Age>{
  return this.http
-       .get('http://localhost:49873/api/users/age/' + id)
+       .get('https://lolocoback.azurewebsites.net/api/users/age/' + id)
        .map(r =>r.json());
 }
 

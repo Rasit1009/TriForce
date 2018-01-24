@@ -38,7 +38,7 @@ _doneUser : Observable<Person> = this.isPersonSource.asObservable().first();
     domain: 'lolocode.eu.auth0.com',
     responseType: 'token id_token',
     audience: 'https://lolocode.eu.auth0.com/userinfo',
-    redirectUri: 'http://localhost:8000/callback',     
+    redirectUri: 'https://lolocodash.azurewebsites.net/callback',     
     scope: 'openid email'
   });
 
@@ -74,7 +74,7 @@ _doneUser : Observable<Person> = this.isPersonSource.asObservable().first();
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    location.replace("http://localhost:8000/login");
+    location.replace("https://lolocodash.azurewebsites.net/login/login");
   }
 
   public isAuthenticated(): boolean {

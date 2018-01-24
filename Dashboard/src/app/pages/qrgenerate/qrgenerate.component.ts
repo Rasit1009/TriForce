@@ -28,7 +28,7 @@ export class QrgenerateComponent{
 
   listen() : Observable<any>{
     return this.http
-    .get('http://localhost:49873/api/users/getScanned/' + this.auth.id)
+    .get('https://lolocoback.azurewebsites.net/api/users/getScanned/' + this.auth.id)
     .map(r=>r.json());
   }
 

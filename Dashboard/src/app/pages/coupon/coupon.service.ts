@@ -13,12 +13,12 @@ export class CouponService {
 
 public sendSystem(coupon : Coupon): Observable<any>{
 return this.http
-.post('http://localhost:49873/api/couponsystem', coupon);
+.post('https://lolocoback.azurewebsites.net/api/couponsystem', coupon);
 }
 
 public getCoupon(id : any): Observable<any>{
  return this.http
-       .get('http://localhost:49873/api/couponsystem/get/' + id)
+       .get('https://lolocoback.azurewebsites.net/api/couponsystem/get/' + id)
        .map(r =>r.json());
 }
 

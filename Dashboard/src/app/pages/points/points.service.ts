@@ -14,12 +14,12 @@ couponDefault : CouponSystem[] = [];
 
 public sendPoints(punkte : Points): Observable<any>{
 return this.http
-.post('http://localhost:49873/api/coupon/points', punkte);
+.post('https://lolocoback.azurewebsites.net/api/coupon/points', punkte);
 }
 
 public getSeller(id : any): Observable<any[]>{
  return this.http
-       .get('http://localhost:49873/api/coupon/getSeller/' + id)
+       .get('https://lolocoback.azurewebsites.net/api/coupon/getSeller/' + id)
        .map(r =>r.json())
        .map(e =>e.map 
          (c=> new Points(c.useri,c.selleri,c.points)));
@@ -28,7 +28,7 @@ public getSeller(id : any): Observable<any[]>{
 public getSystem(seller : Points[]): Observable<CouponSystem[]>{
     if(seller){
     return this.http
-    .post('http://localhost:49873/api/coupon/getSystem/', seller)
+    .post('https://lolocoback.azurewebsites.net/api/coupon/getSystem/', seller)
     .map(r =>r.json())
     .map(e =>e.map 
       (c=> new CouponSystem(c.CouponSystemid,c.selleri,c.coupontext,c.coupondetail,c.moneyvalue,c.number)));
@@ -38,7 +38,7 @@ public getSystem(seller : Points[]): Observable<CouponSystem[]>{
 
 public cashCoupon(id : any): Observable<any>{
     return this.http
-          .get('http://localhost:49873/api/credit/cash/' + id)
+          .get('https://lolocoback.azurewebsites.net/api/credit/cash/' + id)
           .map(r =>r.json());
    }
 
