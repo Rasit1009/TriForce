@@ -108,19 +108,6 @@ this.toastm.showToast('success', 'Daten aktualisiert und gespeichert', '');
     this.person.year = 0;
   }
 
-
-
-
- // this.person.lastname = (<HTMLInputElement>document.getElementById("lastname")).value; 
- // this.person.street = (<HTMLInputElement>document.getElementById("street")).value;
-/*  this.person.housenumber = (<HTMLInputElement>document.getElementById("housenumber")).value;
-  this.person.city =  (<HTMLInputElement>document.getElementById("city")).value;
-  this.person.plz =  (<HTMLInputElement>document.getElementById("plz")).value;
-  this.person.day =  (<HTMLInputElement>document.getElementById("day")).value;
-  this.person.month =  (<HTMLInputElement>document.getElementById("month")).value;
-  this.person.year =  (<HTMLInputElement>document.getElementById("year")).value;
-  */
-
   if((<HTMLInputElement>document.getElementById("profession")).value && (<HTMLInputElement>document.getElementById("profession")).value != "Bitte wählen..."){
     this.person.profession = (<HTMLInputElement>document.getElementById("profession")).value;
   }else{
@@ -138,8 +125,24 @@ this.toastm.showToast('success', 'Daten aktualisiert und gespeichert', '');
   }else{
     this.person.gender = "";
   }
+  if((<HTMLInputElement>document.getElementById("firstname")).value&&(<HTMLInputElement>document.getElementById("lastname")).value&&
+  (<HTMLInputElement>document.getElementById("street")).value&&(<HTMLInputElement>document.getElementById("housenumber")).value&&
+  (<HTMLInputElement>document.getElementById("city")).value&&(<HTMLInputElement>document.getElementById("plz")).value&&
+  (<HTMLInputElement>document.getElementById("day")).value&&(<HTMLInputElement>document.getElementById("month")).value&&
+  (<HTMLInputElement>document.getElementById("year")).value&&(<HTMLInputElement>document.getElementById("profession")).value && 
+  (<HTMLInputElement>document.getElementById("profession")).value != "Bitte wählen..."&&(<HTMLInputElement>document.getElementById("familystatus")).value && 
+  (<HTMLInputElement>document.getElementById("familystatus")).value != "Bitte wählen..."&&(<HTMLInputElement>document.getElementById("gender")).value && 
+  (<HTMLInputElement>document.getElementById("gender")).value != "Bitte wählen..."){
+    this.auth.c_complete = true; 
+    this.auth.setNewUserData(this.person);
+    this.auth.setUser(this.person);
+    
+  } else {
+    this.auth.c_complete = false; 
+    alert("bitte alle Daten ausfüllen");
+  }
+  
 
-   this.auth.setNewUserData(this.person);
   }
   starRate = 2;
   heartRate = 4;

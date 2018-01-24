@@ -2,6 +2,11 @@
 <ngx-consumer></ngx-consumer> --> 
 <!-- <h1>Händler-Dashboard</h1> -->
 <!--<ngx-seller></ngx-seller> -->
-<ngx-consumer *ngIf=!isSeller&&!vorhanden></ngx-consumer> 
-<ngx-dashboard2 *ngIf=isSeller&&!vorhanden></ngx-dashboard2>
+<ngx-consumer *ngIf=!s_complete&&c_complete&&!isSeller&&!vorhanden></ngx-consumer> 
+<ngx-dashboard2 *ngIf=!c_complete&&s_complete&&isSeller&&!vorhanden></ngx-dashboard2>
 <app-sc-choice *ngIf=vorhanden></app-sc-choice>
+<ngx-datacomplete-consumer *ngIf=!c_complete&&!s_complete&&!isSeller&&!vorhanden></ngx-datacomplete-consumer>
+<ngx-datacomplete *ngIf=!c_complete&&!s_complete&&isSeller&&!vorhanden></ngx-datacomplete>
+
+
+

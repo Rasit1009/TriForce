@@ -25,7 +25,7 @@ token : any;
 person : Person;
 people : Person[] = [];
 sellerList : Person[] = [];
-isSeller : boolean; 
+isSeller : boolean = false; 
 isPersonSource = new BehaviorSubject<Person>(null);
 _currentUser : Observable<Person> = this.isPersonSource.asObservable().first(); 
 s_complete : boolean = false;
@@ -102,6 +102,7 @@ _doneUser : Observable<Person> = this.isPersonSource.asObservable().first();
       this.people = results[0];
       console.log(this.people);
       this.person = results[1]; 
+      this.isSeller = this.person.isSeller;
       if(this.people.find(x => x.i === this.person.i)){
         console.log("user bereits vorhanden");
         this.setDone(true);
@@ -113,8 +114,6 @@ _doneUser : Observable<Person> = this.isPersonSource.asObservable().first();
 
     this.isDoneSource.subscribe(()=> {
       this.personService.getComplete(this.id).subscribe(res=>{
-        console.log(res);
-
           if(this.person.isSeller){
             this.s_complete = res;
             this.c_complete = false; 
@@ -123,11 +122,14 @@ _doneUser : Observable<Person> = this.isPersonSource.asObservable().first();
             this.s_complete = false; 
           }
           this.setUser(this.person);
+          
       },()=>console.log("noch nicht da")); 
 
     })
+  }
 
-    
+  routToSetting(){
+    this.router.navigate(['/pages/couponsetting']);
   }
 
   setDone(done :boolean){

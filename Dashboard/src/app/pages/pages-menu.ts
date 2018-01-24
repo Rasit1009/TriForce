@@ -81,6 +81,43 @@ export const MENU_ITEMS_FIRST: NbMenuItem[] = [
   }
 ];
 
+export const MENU_ITEMS_SELLER_COMPLETE: NbMenuItem[] = [
+  {
+    title: 'Daten verwalten',
+    icon: 'fa fa-user-o',
+    link: '/pages/datacomplete_seller',
+    // home: true,
+  },
+  {
+    title: 'Gutschein verwalten',
+    icon: 'fa fa-money',
+    link: '/pages/couponsetting',
+    // home: true,
+  },
+  {
+    title: 'Hilfe',
+    icon: 'fa fa-question-circle',
+    link: '/pages/help_seller',
+    // home: true,
+  }
+];
+
+export const MENU_ITEMS_CONSUMER_COMPLETE: NbMenuItem[] = [
+  {
+    title: 'Daten verwalten',
+    icon: 'fa fa-user-o',
+    link: '/pages/datacomplete_consumer',
+    // home: true,
+  },
+  {
+    title: 'Hilfe',
+    icon: 'fa fa-question-circle',
+    link: '/pages/help_consumer',
+    // home: true,
+  }
+];
+
+
 
 
   /**

@@ -77,10 +77,10 @@ export class SellermapComponent implements OnInit{
          .catch((error) => Promise.resolve(error.json()));
  }
 
-  showLargeModal() {
+  showLargeModal(m : marker) {
     const activeModal = this.modalService.open(ModalComponent, { size: 'lg', container: 'nb-layout' });
     console.log('constructortest');
-    activeModal.componentInstance.modalHeader = 'Museum Ludwig';
+    activeModal.componentInstance.modalHeader;
     
   }
 
@@ -181,6 +181,8 @@ setData(){
   
   markers: marker[] = [
     {
+      
+
       lat: 50.941911,
       lng:  6.956812,
       label: 'G',

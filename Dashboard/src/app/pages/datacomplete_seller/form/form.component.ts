@@ -110,7 +110,22 @@ export class FormComponent implements OnInit {
       this.person.imagepath = "";
     };
 */
-   this.auth.setNewUserData(this.person);
+  if((<HTMLInputElement>document.getElementById("firstname")).value&&
+  (<HTMLInputElement>document.getElementById("lastname")).value&&(<HTMLInputElement>document.getElementById("businessname")).value&&
+  (<HTMLInputElement>document.getElementById("street")).value&&(<HTMLInputElement>document.getElementById("housenumber")).value&&
+  (<HTMLInputElement>document.getElementById("city")).value&&(<HTMLInputElement>document.getElementById("plz")).value&&
+  (<HTMLInputElement>document.getElementById("text")).value&&(<HTMLInputElement>document.getElementById("business")).value && 
+  (<HTMLInputElement>document.getElementById("business")).value != "Branche..."){
+    this.auth.setNewUserData(this.person);
+    this.auth.setUser(this.person);
+    this.auth.routToSetting(); 
+  } else {
+    this.auth.s_complete = false; 
+    this.auth.setNewUserData(this.person);
+    this.auth.setUser(this.person);
+  }
+   
+
   }
   starRate = 2;
   heartRate = 4;
