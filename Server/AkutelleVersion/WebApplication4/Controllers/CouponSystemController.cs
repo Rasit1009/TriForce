@@ -25,36 +25,46 @@ namespace WebApplication4.Controllers
         [HttpPost]
         public IActionResult Update([FromBody] Gutscheinart guti)
         {
-            var Gutscheina = _context.CouponSystem.SingleOrDefault(
-              c => c.Selleri == guti.Selleri);
-            if (Gutscheina== null)
+            try
             {
-                Gutscheina = new CouponSystem()
+                var Gutscheina = _context.CouponSystem.SingleOrDefault(
+                c => c.Selleri == guti.Selleri);
+                if (Gutscheina == null)
                 {
-                    Selleri = guti.Selleri,
-                    Coupondetail = guti.Coupondetail,
-                    Coupontext = guti.Coupontext,
-                    Moneyvalue = guti.Moneyvalue,
-                    Number = guti.Number,
-                };
-                _context.CouponSystem.Add(Gutscheina);
+                    Gutscheina = new CouponSystem()
+                    {
+                        Selleri = guti.Selleri,
+                        Coupondetail = guti.Coupondetail,
+                        Coupontext = guti.Coupontext,
+                        Moneyvalue = guti.Moneyvalue,
+                        Number = guti.Number,
+                    };
+                    _context.CouponSystem.Add(Gutscheina);
+                    _context.SaveChanges();
+
+                }
+
+                else
+                {
+
+                    Gutscheina.Coupontext = guti.Coupontext;
+                    Gutscheina.Coupondetail = guti.Coupondetail;
+                    Gutscheina.Moneyvalue = guti.Moneyvalue;
+                    Gutscheina.Number = guti.Number;
+
+                }
+
+
+                _context.CouponSystem.Update(Gutscheina);
                 _context.SaveChanges();
-
             }
-
-            else
+            catch (Exception)
             {
 
-                Gutscheina.Coupontext = guti.Coupontext;
-                Gutscheina.Coupondetail = guti.Coupondetail;
-                Gutscheina.Moneyvalue = guti.Moneyvalue;
-                Gutscheina.Number = guti.Number;
-               
+                return Ok();
             }
 
 
-            _context.CouponSystem.Update(Gutscheina);
-            _context.SaveChanges();
 
             return Ok();
         }

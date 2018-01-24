@@ -20,6 +20,9 @@ import { ToasterModule } from 'angular2-toaster';
     SolarComponent,
     FormComponent,
     ChangeEmail,
+  ],
+  exports:[
+    Datacomplete_ConsumerComponent
   ]
 })
 export class Datacomplete_ConsumerModule { }

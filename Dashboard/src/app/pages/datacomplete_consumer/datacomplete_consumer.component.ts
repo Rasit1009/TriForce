@@ -7,7 +7,7 @@ import 'style-loader!angular2-toaster/toaster.css';
 
 
 @Component({
-  selector: 'ngx-datacomplete',
+  selector: 'ngx-datacomplete-consumer',
   styleUrls: ['./datacomplete_consumer.component.scss'],
   templateUrl: './datacomplete_consumer.component.html',
 })

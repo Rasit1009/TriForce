@@ -97,8 +97,19 @@ this.showToast('sucess', 'test', 'test');
     }
   } */
 
-    this.couponService.sendSystem(this.coupon).subscribe(()=>alert("geht klar"));
-  }
+    console.log(this.coupon);
+    if((<HTMLInputElement>document.getElementById("value")).value&&(<HTMLInputElement>document.getElementById("text")).value&&
+    (<HTMLInputElement>document.getElementById("detail")).value&&(<HTMLInputElement>document.getElementById("detail")).value&&
+    (<HTMLInputElement>document.getElementById("value")).value){
+      this.auth.s_complete = true; 
+      this.couponService.sendSystem(this.coupon).subscribe(()=>alert("geht klar"),()=>alert("ungültige Eingabe"));
+      this.auth.setNewUserData(this.auth.person);
+    } else{
+      this.auth.s_complete = false;  
+      alert("Bitte alle Felder ausfüllen");
+      this.auth.setNewUserData(this.auth.person);
+    }
+     }
 
 
 

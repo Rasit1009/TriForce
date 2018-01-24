@@ -57,7 +57,7 @@ export class Datacomplete_SellerComponent {
           console.log(this.person.text);
           this.completion_value = this.completion_value + 10;
         }
-        if(this.person.imagepath){
+        if(this.person.imagepath && this.person.imagepath != "http://www.suedstadtsport.de/down/klick.jpg"){
           console.log(this.person.imagepath);
           this.completion_value = this.completion_value + 30;
         }
