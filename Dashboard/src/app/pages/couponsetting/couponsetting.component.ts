@@ -20,7 +20,7 @@ export class CouponsettingComponent implements OnInit {
   
   constructor(public auth : AuthService, public couponService : CouponService, public toasterService: ToasterService) {
 
-this.showToast('sucess', 'test', 'test');
+// this.showToast('sucess', 'test', 'test');
 this.clearToasts();
 
 
@@ -106,6 +106,7 @@ this.clearToasts();
       this.couponService.sendSystem(this.coupon).subscribe(()=>alert("geht klar"),()=>alert("ungültige Eingabe"));
       this.auth.setNewUserData(this.auth.person);
       location.replace('/'); 
+     
     } else{
       this.auth.s_complete = false;  
       this.clearToasts();

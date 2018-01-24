@@ -85,14 +85,8 @@ anzahlgutscheine =0;
     //function call delay for fade-in effect mhendric 18.01.18
 
     if(this.ersteanmeldung){
-      setTimeout(() => { this.showToast('sucess', '♥-lich Willkommen', 'Du hast es fast geschafft, digitalisiere jetzt dein Unternehmen.');}, 1000);
-    }   if(this.datennochnichtvollstaendig){
-        setTimeout(() => { this.showToast('info', 'Profil nicht vollständig', 'Bitte vervollständigen Sie Ihr Profil. (Daten verwalten)');}, 2000);
-      } if (this.gutscheinsystemnochnichtausgefuellt){
-        setTimeout(() => { this.showToast('error', 'Gutscheinsystem', 'Bitte wählen Sie Ihr individuelles Gutscheinsystem. (Gutschein verwalten)');}, 4000);
-      } if (this.wurdebeidirschoneingekauft){
-        setTimeout(() => { this.showToast('success', 'Glückwunsch', 'Deine Kunden sind glücklich bei dir LOLOCO nutzen zu können.');}, 3000);
-      }
+      setTimeout(() => { this.showToast('sucess', '♥-lich Willkommen', 'Du hast es geschafft, jetzt kannst du zusammen mit LOLOCO durchstarten.');}, 1000);
+    }   
     
       }
 

@@ -23,8 +23,8 @@
 
         <span style="display:block; margin-bottom: 9px;"></span>
         
-        <input *ngIf="!coupon.number" id="value" type="input" class="form-control" placeholder="Anzahl benötigter LoloCOINs eingeben..." />
-        <input *ngIf="coupon.number" id="value" type="input" class="form-control" [value]="coupon.number"/>
+        <input *ngIf="!coupon.number" id="value" type="number" class="form-control" placeholder="Anzahl benötigter LoloCOINs eingeben..." />
+        <input *ngIf="coupon.number" id="value" type="number" class="form-control" [value]="coupon.number"/>
         <br>
         <br>
 

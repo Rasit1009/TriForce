@@ -240,12 +240,8 @@ ersteanmeldung: boolean = true;
   initToasts(){
     //function call delay for fade-in effect mhendric 18.01.18
     if(this.ersteanmeldung){
-      setTimeout(() => { this.showToast('sucess', '♥-lich Willkommen', 'Gleich hast du es geschafft und kannst mit dem Sparen loslegen.');}, 1000);
-    }   if(this.datennochnichtvollstaendig){
-        setTimeout(() => { this.showToast('info', 'Profil nicht vollständig', 'Bitte vervollständige Dein Profil. (Daten verwalten)');}, 2000);
-      } if (this.gutscheinverfuegbar){
-        setTimeout(() => { this.showToast('success', 'Gutschein vorhanden', 'Du hast genug LOLOCoin gesammelt und einen Gutschein freigeschaltet,');}, 4000);
-      }
+      setTimeout(() => { this.showToast('sucess', '♥-lich Willkommen', 'LOLOCO hilft dir beim Sparen.');}, 1000);
+    }  
     
       }
 
