@@ -30,9 +30,11 @@ anzahlgutscheine =0;
 
     this.initToasts();
     try {
-      if(this.auth.person.allCredit){
-        this.allegutscheineMoneyvalue = this.auth.person.allCredit;
-        }
+      this.getValue(this.auth.id).subscribe(res => { 
+        this.allegutscheineMoneyvalue= res;
+        //this.setDay(this.day);
+        
+        console.log(this.allegutscheineMoneyvalue+"Value"); });
     } catch (error) {
       console.log("error");
     }
@@ -67,9 +69,14 @@ anzahlgutscheine =0;
             .get('http://localhost:49873/api/coupon/getAllPoints/' + id)
             .map(r =>r.json());
      }
+     public getValue(id : any): Observable<any>{
+      return this.http
+            .get('http://localhost:49873/api/credit/getAllCreditValue/' + id)
+            .map(r =>r.json());
+     }
      public getCredit(id : any): Observable<any>{
       return this.http
-            .get('http://localhost:49873/api/coupon/getAllCredit/' + id)
+            .get('http://localhost:49873/api/credit/getAllCredit/' + id)
             .map(r =>r.json());
      }
   
