@@ -318,7 +318,14 @@ namespace WebApplication4
             int A3 = 0;
             int A4= 0;
             int A5= 0;
-            Age Alterd;
+            Age Alterd = new Age()
+            {
+                Age1 = 0,
+                Age2 = 0,
+                Age3 = 0,
+                Age4 = 0,
+                Age5 = 0,
+            };
 
             var us = new User();
             // var Person = _context.Users.SingleOrDefault(
@@ -371,7 +378,7 @@ namespace WebApplication4
 
             if (Anzahl == 0)
             {
-                return Ok(null);
+                return Ok(Alterd);
             }
             else
             {

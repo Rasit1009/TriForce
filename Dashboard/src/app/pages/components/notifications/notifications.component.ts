@@ -13,7 +13,7 @@ export class NotificationsComponent {
 
   config: ToasterConfig;
 
-  position = 'toast-top-right';
+  position = 'toast-bottom-right';
   animationType = 'fade';
   title = 'HI there!';
   content = `I'm cool toaster!`;

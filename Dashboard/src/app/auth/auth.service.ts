@@ -114,6 +114,7 @@ _doneUser : Observable<Person> = this.isPersonSource.asObservable().first();
 
     this.isDoneSource.subscribe(()=> {
       this.personService.getComplete(this.id).subscribe(res=>{
+        try {
           if(this.person.isSeller){
             this.s_complete = res;
             this.c_complete = false; 
@@ -121,11 +122,18 @@ _doneUser : Observable<Person> = this.isPersonSource.asObservable().first();
             this.c_complete = res;
             this.s_complete = false; 
           }
+        } catch (error) {
+        }
+
           this.setUser(this.person);
           
       },()=>console.log("noch nicht da")); 
 
     })
+  }
+
+  routToDash(){
+    this.router.navigate(['/pages/dashboard']);
   }
 
   routToSetting(){
