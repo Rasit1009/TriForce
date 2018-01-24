@@ -101,6 +101,7 @@ export class CouponsettingComponent implements OnInit {
       this.auth.s_complete = true; 
       this.couponService.sendSystem(this.coupon).subscribe(()=>alert("geht klar"),()=>alert("ungültige Eingabe"));
       this.auth.setNewUserData(this.auth.person);
+      location.replace('/'); 
     } else{
       this.auth.s_complete = false;  
       alert("Bitte alle Felder ausfüllen");

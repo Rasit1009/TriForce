@@ -121,8 +121,9 @@ export class FormComponent implements OnInit {
     this.auth.routToSetting(); 
   } else {
     this.auth.s_complete = false; 
-    this.auth.setNewUserData(this.person);
-    this.auth.setUser(this.person);
+    alert("Bitte alle Felder ausfüllen");
+    //this.auth.setNewUserData(this.person);
+    //this.auth.setUser(this.person);
   }
    
 

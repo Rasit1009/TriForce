@@ -20,49 +20,13 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class SellermapComponent implements OnInit{
 
   allSeller : Person[] = []; 
-  lat; 
-  lng; 
   isCoordSource = new BehaviorSubject<any>(null);
   _currentCoord : Observable<any> = this.isCoordSource.asObservable().first(); 
 
-  addresses : marker[] = [
-    {
-		  lat: 50.997292,
-		  lng: 6.905840,
-		  label: 'A',
-      draggable: false
-	  },
-  ]; 
 
 
   constructor(private modalService: NgbModal, public auth : AuthService, public http : Http) {
   //  console.log("Yolo");
-      
-        this.allSeller = (this.auth.getAllSeller()); 
-       // console.log(this.allSeller);
-        var address : string[] = []; 
-        var result; 
-        //console.log(this.allSeller.length);
-            var zaehler = 0;  
-            console.log(this.allSeller);  
-            for(var i = 0; i<this.allSeller.length; i++){
-            address[i] = this.allSeller[i].street + (" ") + this.allSeller[i].housenumber + (" ") + this.allSeller[i].city;  
-          }
-
-          zaehler = 0; 
-            this.getLocation(address[0]).then(msg => {
-              console.log(msg);    
-        });
-        
-
-               /* this.lat = msg.results[0].geometry.location.lat;
-                this.lng = msg.results[0].geometry.location.lng;
-                this.addresses[0].lat = this.lat; 
-                this.addresses[0].lng = this.lng; 
-                this.addresses[0].label = this.allSeller[zaehler].businessname[0];
-                this.sellerName = this.allSeller[zaehler].businessname;  
-                this.markers.push(this.addresses[0]);
-                zaehler++; */
    }
 
    setNewCoord(lat : any){
@@ -80,8 +44,9 @@ export class SellermapComponent implements OnInit{
   showLargeModal(m : marker) {
     const activeModal = this.modalService.open(ModalComponent, { size: 'lg', container: 'nb-layout' });
     console.log('constructortest');
-    activeModal.componentInstance.modalHeader;
-    
+    activeModal.componentInstance.sellerHeader = m.header;
+    activeModal.componentInstance.sellerText = m.sellertext;
+    activeModal.componentInstance.sellerLogo = m.sellerlogo;
   }
 
 sellerName = 'Museum Ludwig';
@@ -155,9 +120,9 @@ setData(){
   // google maps zoom level
   zoom: number = 12;
   
-  // initial center position for the map
-  //lat: number = 50.941278;
-  //lng: number = 6.958281;
+   //initial center position for the map
+    lat: number = 50.941278;
+    lng: number = 6.958281;
 
 //  lat: number = this.positionlat;
  // lng: number = this.positionlng;
@@ -182,97 +147,144 @@ setData(){
   markers: marker[] = [
     {
       
-
+      header: "TEST",
+      sellertext: "TEST",
+      sellerlogo: "TEST",
       lat: 50.941911,
       lng:  6.956812,
       label: 'G',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.948946,
       lng: 6.923270,
       label: 'U',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.947834,
       lng: 6.920917,
       label: 'L',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.918200,
       lng: 6.960677,
       label: 'D',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.918837,
       lng: 6.960443,
       label: 'E',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.917036,
       lng: 6.925157,
       label: 'K',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.996911,
       lng: 6.906057,
       label: 'S',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.935306,
       lng: 6.938741,
       label: 'A',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.946370,
       lng: 6.925387,
       label: 'Z',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.929549,
       lng: 6.938353,
       label: 'O',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.949203,
       lng: 6.926824,
       label: 'B',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.938649,
       lng: 6.973711,
       label: 'R',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.937277,
       lng: 6.947252,
       label: 'H',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.947378,
       lng: 6.946133,
       label: 'M',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.916644,
       lng: 6.928902,
       label: 'C',
       draggable: false,
     },
     {
+      header: "",
+      sellertext: "",
+      sellerlogo: "",
       lat: 50.912277,
       lng: 6.960442,
       label: 'P',
@@ -284,6 +296,9 @@ setData(){
 
 // just an interface for type safety.
 interface marker {
+  header? : string; 
+  sellertext? : string; 
+  sellerlogo? : string; 
 	lat: number;
 	lng: number;
 	label?: string;
