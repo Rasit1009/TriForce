@@ -35,8 +35,9 @@ export class ModalComponent {
     console.log(this.points.points + " ist einfach leer"); 
     if(this.points.points){
       this.pointservice.sendPoints(this.points).subscribe(()=>{
-      this.activeModal.close()});
-      this.showToast('success','Umsatz verbucht','Glückwunsch der Umsatz dewürde erfolgreich in LoloCOINs umgewandelt.');
+        this.showToast('success','Umsatz verbucht','Glückwunsch der Umsatz wurde erfolgreich verbucht.'); this.activeModal.close()
+    });
+      
       }
     }
 
