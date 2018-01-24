@@ -45,8 +45,8 @@ export class FormComponent implements OnInit {
     */
 
     //Toastimplementierung
-    this.toast.clearToasts();
-    this.toast.showToast('success', 'Daten aktualisiert und gespeichert', '');
+    //this.toast.clearToasts();
+   // this.toast.showToast('success', 'Daten aktualisiert und gespeichert', '');
     
 
   if((<HTMLInputElement>document.getElementById("firstname")).value){
@@ -116,12 +116,13 @@ export class FormComponent implements OnInit {
   (<HTMLInputElement>document.getElementById("city")).value&&(<HTMLInputElement>document.getElementById("plz")).value&&
   (<HTMLInputElement>document.getElementById("text")).value&&(<HTMLInputElement>document.getElementById("business")).value && 
   (<HTMLInputElement>document.getElementById("business")).value != "Branche..."){
+    this.toast.showToast('success', 'Erfolgreich', 'Daten erfolgreich eingegeben.')
     this.auth.setNewUserData(this.person);
     this.auth.setUser(this.person);
     this.auth.routToSetting(); 
   } else {
     this.auth.s_complete = false; 
-    alert("Bitte alle Felder ausfüllen");
+    this.toast.showToast('error', 'Fehler', 'Bitte alle Felder ausfüllen.')
     //this.auth.setNewUserData(this.person);
     //this.auth.setUser(this.person);
   }
