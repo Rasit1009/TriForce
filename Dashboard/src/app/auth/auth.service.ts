@@ -74,7 +74,7 @@ _doneUser : Observable<Person> = this.isPersonSource.asObservable().first();
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    location.replace("https://lolocodash.azurewebsites.net/login/login");
+    location.replace("https://lolocodash.azurewebsites.net/login");
   }
 
   public isAuthenticated(): boolean {
