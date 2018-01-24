@@ -118,21 +118,27 @@ namespace WebApplication4.Controllers
             var All = new List<Credit>();
             int Anzahl = 0;
             All = _context.Credit.Where(u => u.Selleri == id).ToList();
-            if (Sys.Moneyvalue == 0)
+            if (Sys == null)
             {
                 return Ok(Anzahl);
             }
             else
             {
-                foreach (Credit p in All)
+                if (Sys.Moneyvalue == 0)
                 {
-
-                    Anzahl = Anzahl + 1;
+                    return Ok(Anzahl);
                 }
-                Value = Anzahl * Sys.Moneyvalue;
-                return Ok(Value);
-            }
+                else
+                {
+                    foreach (Credit p in All)
+                    {
 
+                        Anzahl = Anzahl + 1;
+                    }
+                    Value = Anzahl * Sys.Moneyvalue;
+                    return Ok(Value);
+                }
+            }
 
         }
 

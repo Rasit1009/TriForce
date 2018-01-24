@@ -390,25 +390,35 @@ namespace WebApplication4
             }
             foreach ( User u in Usli)
             {
-                if (this.Getage(u.Day, u.Month, u.Year, Tag, Monat, Jahr) <= 18)
+                try
                 {
-                    A1 = A1 + 1;
+
+                    if (this.Getage(u.Day, u.Month, u.Year, Tag, Monat, Jahr) <= 18)
+                    {
+                        A1 = A1 + 1;
+                    }
+                    else if (this.Getage(u.Day, u.Month, u.Year, Tag, Monat, Jahr) <= 25)
+                    {
+                        A2 = A2 + 1;
+                    }
+                    else if (this.Getage(u.Day, u.Month, u.Year, Tag, Monat, Jahr) <= 35)
+                    {
+                        A3 = A3 + 1;
+                    }
+                    else if (this.Getage(u.Day, u.Month, u.Year, Tag, Monat, Jahr) <= 50)
+                    {
+                        A4 = A4 + 1;
+                    }
+                    else if (this.Getage(u.Day, u.Month, u.Year, Tag, Monat, Jahr) <= 200)
+                    {
+                        A5 = A5 + 1;
+                    }
+
                 }
-                else if(this.Getage(u.Day, u.Month, u.Year, Tag, Monat, Jahr) <= 25  )
+                catch (Exception)
                 {
-                    A2 = A2 + 1;
-                }
-                else if (this.Getage(u.Day, u.Month, u.Year, Tag, Monat, Jahr) <= 35)
-                {
-                    A3 = A3 + 1;
-                }
-                else if(this.Getage(u.Day, u.Month, u.Year, Tag, Monat, Jahr) <= 50)
-                {
-                    A4 = A4 + 1;
-                }
-                else if(this.Getage(u.Day, u.Month, u.Year, Tag, Monat, Jahr) <= 200)
-                {
-                    A5 = A5 + 1;
+
+                    return Ok();
                 }
             }
 
