@@ -33,7 +33,8 @@ constructor(public auth : AuthService, public credit : CreditService, public poi
   auth0 = "auth0|";
   valid : boolean; 
   exists : boolean;
-  zaehler = 0; 
+  zaehler1 = new Date('December 17, 1995 03:24:00');
+  zaehler2; 
    
   displayCameras(cams: any[]) {
     this.availableDevices = cams;
@@ -45,11 +46,9 @@ constructor(public auth : AuthService, public credit : CreditService, public poi
   }
   
   handleQrCodeResult(result: string) {
-    this.zaehler++;
-    //QR CODE RESULT
-    if(this.zaehler % 2 == 1){
-  
-      console.log("trifft zu " + this.zaehler);
+    this.zaehler2 = new Date();
+    if(this.zaehler2.getTime() - this.zaehler1.getTime()  > 2500){      
+      this.zaehler1 = new Date();
       this.qrResult = result;
       if(result.indexOf("auth") >= 0){
         this.person.getExisting(result).subscribe(res=>{
@@ -92,7 +91,7 @@ indb(){
     this.textvalue = document.getElementById("consumerid");
     this.textvalue_id = this.textvalue.value;
     this.handleQrCodeResult(this.textvalue_id);
-    this.zaehler++;
+
 
     /*this.amount = document.getElementById("amount");
     this.amount_id = this.amount.value;

@@ -34,5 +34,6 @@ namespace WebApplication4.Models
 
         public bool vorhanden { get; set; }
 
+
     }
 }

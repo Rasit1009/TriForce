@@ -14,8 +14,10 @@
         <br>
         <span>Ihr Logo: </span>
         <br> <br>
+        <div class="imagediv">
         <img *ngIf="person.imagepath" class="rig-img" src="{{person.imagepath}}" alt="Es konnte kein Bild unter diesem Link gefunden werden." >
         <img *ngIf="!person.imagepath" class="rig-img" src="http://berlin.pm-camp.org/wp-content/uploads/2016/03/hier-koennte-ihr-logo-stehen-350x140.png" alt="Es konnte kein Bild unter diesem Link gefunden werden." >
+        </div>
         <br>
         <br>
 
