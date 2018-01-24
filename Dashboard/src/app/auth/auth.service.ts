@@ -28,7 +28,10 @@ sellerList : Person[] = [];
 isSeller : boolean; 
 isPersonSource = new BehaviorSubject<Person>(null);
 _currentUser : Observable<Person> = this.isPersonSource.asObservable().first(); 
-
+s_complete : boolean = false;
+c_complete : boolean = false;
+isDoneSource = new BehaviorSubject<boolean>(null);
+_doneUser : Observable<Person> = this.isPersonSource.asObservable().first(); 
 
   auth0 = new auth0.WebAuth({
     clientID: 'u9ppezA7kI29KclGl7qlailQbwnwqu30',
@@ -93,21 +96,43 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
     console.log("anschließend die mail " + this.email ); 
     let first = this.personService.getPeople(); 
     let second = this.personService.getUser(this.id);
+    let third = this.personService.getComplete(this.id);
+    var seq = Observable.concat(first,second,third);
     Observable.forkJoin([first,second]).subscribe(results => {
       this.people = results[0];
       console.log(this.people);
       this.person = results[1]; 
-      console.log(this.person);
       if(this.people.find(x => x.i === this.person.i)){
         console.log("user bereits vorhanden");
+        this.setDone(true);
       } else {
       this.addUser(this.person);
-      };
-      this.setUser(this.person);
-      
-    });
+      this.setDone(true);
+      }; 
+    },()=>console.log("noch nicht da"));
+
+    this.isDoneSource.subscribe(()=> {
+      this.personService.getComplete(this.id).subscribe(res=>{
+        console.log(res);
+
+          if(this.person.isSeller){
+            this.s_complete = res;
+            this.c_complete = false; 
+          } else {
+            this.c_complete = res;
+            this.s_complete = false; 
+          }
+          this.setUser(this.person);
+      },()=>console.log("noch nicht da")); 
+
+    })
+
+    
   }
 
+  setDone(done :boolean){
+    this.isDoneSource.next(done);
+  }
   setUser(person: Person) {
     this.isPersonSource.next(person);
   }
@@ -148,9 +173,9 @@ _currentUser : Observable<Person> = this.isPersonSource.asObservable().first();
     new Person(this.person.i,this.person.isSeller,this.person.vorhanden,this.person.firstname,
       this.person.lastname,this.person.email,this.person.street,this.person.plz,
       this.person.city,this.person.housenumber,this.person.businessname,
-      this.person.business,this.person.text,this.person.imagepath, this.person.allPoints, this.person.allCredit,this.person.day,
+      this.person.business,this.person.text,this.person.imagepath, this.person.allPoints, this.person.day,
       this.person.month,this.person.year,this.person.profession,this.person.familystatus,this.person.gender);
-    this.people.push(person);
+      this.people.push(person);
   }
 
   refreshSubscription: any;
