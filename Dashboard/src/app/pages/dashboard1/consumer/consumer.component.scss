@@ -79,8 +79,11 @@
 /* If have the image layer */
 .rig-img {
     display:block;
-    width: 100%;
+    width: auto;
     height: auto;
+
+    max-width: 100%;
+    max-height: 300px;
     border:none;
     transform:scale(0.75);
     transition:all 1s;

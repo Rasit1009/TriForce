@@ -94,7 +94,7 @@ export class CouponsettingComponent implements OnInit {
     }
   } */
 
-    this.couponService.sendSystem(this.coupon).subscribe(()=>alert("geht klar"));
+    this.couponService.sendSystem(this.coupon).subscribe(()=>alert("Daten gespeichert"));
   }
 
 
