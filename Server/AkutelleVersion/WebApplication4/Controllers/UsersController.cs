@@ -58,6 +58,7 @@ namespace WebApplication4
                     vorhanden = true,
                     AllPoints = 0,
                     Imagepath = "http://www.suedstadtsport.de/down/klick.jpg",
+                    isScanned = false, 
                     
 
                 };
@@ -211,10 +212,55 @@ namespace WebApplication4
             public string City { get; set; }
 
             public string Businessname { get; set; }
+            public bool isScanned { get; set; }
 
         }
 
+        [HttpGet("GetScan/{id}", Name = "GetScan")]
+        public IActionResult Scan(string id)
+        {
+            var Person = _context.Users.SingleOrDefault(
+              c => c.I ==id);
+            if (Person == null)
+            {
+                return BadRequest();
+            }
 
+            else
+            {
+                Person.isScanned = true; 
+            }
+
+
+            _context.Users.Update(Person);
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
+        [HttpGet("GetScanned/{id}", Name = "GetScanned")]
+        public IActionResult GetScan(string id)
+        {
+            var Person = _context.Users.SingleOrDefault(
+              c => c.I == id);
+            if (Person.isScanned == false)
+            {
+
+                return Ok(false);
+     
+            }
+
+            else
+            {
+                Person.isScanned = false;
+                _context.Users.Update(Person);
+                _context.SaveChanges();
+                return Ok(true);
+
+            }
+
+            
+        }
 
         //Jana Teutenberg: Methode, die überpürft, ob der User vorhanden ist und ihn dann löscht
         [HttpGet("Delete/{id}", Name = "Delete")]

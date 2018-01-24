@@ -184,7 +184,7 @@ _doneUser : Observable<Person> = this.isPersonSource.asObservable().first();
       this.person.lastname,this.person.email,this.person.street,this.person.plz,
       this.person.city,this.person.housenumber,this.person.businessname,
       this.person.business,this.person.text,this.person.imagepath, this.person.allPoints, this.person.day,
-      this.person.month,this.person.year,this.person.profession,this.person.familystatus,this.person.gender);
+      this.person.month,this.person.year,this.person.profession,this.person.familystatus,this.person.gender, this.person.isScanned);
       this.people.push(person);
   }
 

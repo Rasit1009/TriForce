@@ -5,6 +5,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 
 import 'style-loader!angular2-toaster/toaster.css';
+import { PersonService } from '../datacomplete_consumer/services/person.service';
 
 @Component({
   selector: 'ngx-modal',
@@ -23,13 +24,15 @@ export class ModalComponent {
   couponText; 
   coupondetail;
 
-  constructor(private activeModal: NgbActiveModal, public pointservice : PointService, public toasterService: ToasterService) { 
+  constructor(private activeModal: NgbActiveModal, public pointservice : PointService, public toasterService: ToasterService, public person : PersonService) { 
   }
 
 
   bookPoints(){
     this.points.points = (<HTMLInputElement>document.getElementById("umsatz")).value;
     this.points.useri = this.collectCode; 
+    var i : string; 
+    i = this.points.useri;
     console.log(this.sellerid);
     this.points.selleri = this.sellerid;
     console.log(this.points.points + " ist einfach leer"); 
@@ -37,6 +40,8 @@ export class ModalComponent {
       this.pointservice.sendPoints(this.points).subscribe(()=>{
         this.showToast('success','Umsatz verbucht','Glückwunsch der Umsatz wurde erfolgreich verbucht.'); this.activeModal.close()
     });
+
+    this.person.setScan(i).subscribe(()=>console.log("auf true gesetzt"));
       
       }
     }

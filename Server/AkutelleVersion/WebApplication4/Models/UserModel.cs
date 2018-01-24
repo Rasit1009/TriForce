@@ -33,6 +33,7 @@ namespace WebApplication4.Models
         public int AllPoints { get; set; }
 
         public bool vorhanden { get; set; }
+        public bool isScanned { get; set; }
 
 
     }
