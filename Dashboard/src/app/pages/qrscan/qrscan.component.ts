@@ -26,7 +26,7 @@ export class QrscanComponent {
     public pointservice : PointService, public couponSystem : CouponService) { 
 
 
-    this.initToasts();
+   // this.initToasts();
 
   }
 

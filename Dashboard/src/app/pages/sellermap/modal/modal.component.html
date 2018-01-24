@@ -1,5 +1,5 @@
     <div class="modal-header">
-        <span>{{ modalHeader }}</span>
+        <span>{{ sellerHeader }}</span>
         <button class="close" aria-label="Close" (click)="closeModal()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -12,9 +12,9 @@
              
                     <div class="modal-body">
                             <div id="logoleft">
-                                <img class="rig-img" id="logopic" src="{{ logopicture }}">
+                                <img class="rig-img" id="logopic" src="{{ sellerLogo }}">
                             </div>
-                            <div id="textright"> {{ descriptionSeller }}
+                            <div id="textright"> {{ sellerText }}
                        
                             </div>
                           </div>

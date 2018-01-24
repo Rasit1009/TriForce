@@ -15,7 +15,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class EchartsPieComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
-  age: Age = new Age(null,null,null,null,null);
+  age: Age = new Age(0,0,0,0,0);
    
   isPersonSource = new BehaviorSubject<Age>(null);
   _currentSellerList: Observable<Age> = this.isPersonSource.asObservable().first();
@@ -27,7 +27,12 @@ export class EchartsPieComponent implements AfterViewInit, OnDestroy {
     
     this.ageService.getAge(this.auth.id).subscribe(res => { 
       this.age = res;
-      this.setAge(this.age);
+      try {
+        this.setAge(this.age);
+      } catch (error) {
+        console.log("kein Alter vorhanden");
+      }
+      
       console.log(this.age.age2);
       console.log(this.age);
     });

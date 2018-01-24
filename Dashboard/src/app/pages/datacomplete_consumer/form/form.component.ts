@@ -49,7 +49,7 @@ export class FormComponent implements OnInit {
     }
 */
 this.toastm.clearToasts();
-this.toastm.showToast('success', 'Daten aktualisiert und gespeichert', '');
+// this.toastm.showToast('success', 'Daten aktualisiert und gespeichert', '');
 
   //this.person.i = this.auth.person.i; 
   if((<HTMLInputElement>document.getElementById("firstname")).value){
@@ -136,10 +136,11 @@ this.toastm.showToast('success', 'Daten aktualisiert und gespeichert', '');
     this.auth.c_complete = true; 
     this.auth.setNewUserData(this.person);
     this.auth.setUser(this.person);
+    this.toastm.showToast('success', 'Eingabe korrekt', 'Deine Daten wurden gespeichert.');
     
   } else {
     this.auth.c_complete = false; 
-    alert("bitte alle Daten ausfüllen");
+    this.toastm.showToast('error', 'Achtung', 'Bitte alle Daten ausfüllen.');
   }
   
 
