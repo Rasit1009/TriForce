@@ -30,20 +30,13 @@
 </div>
 
 
-
-    <nb-card class="col md-1">
+<div *ngIf="seller">
+    <nb-card *ngIf="seller.length != 0" class="col md-1">
         <nb-card-header>Zuletzt besuchte Händler</nb-card-header>
         <nb-card-body>
       <ul id="rig">
         
-  <!--      <li>
-            <a class="rig-cell" (click)="showLargeModal(2)">
-                <img class="rig-img" src="../../../../assets/images/seller/2.png">
-                <span class="rig-overlay"></span>
-                <span class="rig-text"> </span>
-            </a>
-        </li> -->
-        
+
 
         <li *ngFor="let s of seller; let i=index; let last=last" (click)="showLargeModal(s)">  
          
@@ -55,35 +48,12 @@
 
         </li>
     
-       
-    <!--    <li>
-            <a class="rig-cell" (click)="showLargeModal(10)">
-                <img class="rig-img" src="../../../assets/images/seller/10.png">
-                <span class="rig-overlay"></span>
-                <span class="rig-text"> </span>
-            </a>
-        </li>
-
-        <li>
-            <a class="rig-cell" (click)="showLargeModal(6)">
-                <img class="rig-img" src="../../../../assets/images/seller/6.png">
-                <span class="rig-overlay"></span>
-                <span class="rig-text"> </span>
-            </a>
-        </li>
-
-        <li>
-            <a class="rig-cell" (click)="showLargeModal(7)">
-                <img class="rig-img" src="../../../../assets/images/seller/7.png">
-                <span class="rig-overlay"></span>
-                <span class="rig-text"> </span>
-            </a>
-        </li> -->
 
     </ul>
   
   </nb-card-body>
   </nb-card>
+</div>
 
   
 

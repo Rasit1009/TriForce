@@ -47,7 +47,7 @@ export class Person{
   constructor(public i, public isSeller, public vorhanden, 
     public firstname, public lastname, public email, public street,
     public plz, public city, public housenumber, public businessname, public business,
-    public text, public imagepath, public allPoints, public day, public month, public year, public profession,
+    public text, public imagepath, public allPoints,  public day, public month, public year, public profession,
     public familystatus, public gender){
   }
 }
